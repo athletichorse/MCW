@@ -31,6 +31,12 @@ When a product or image is added (or found missing these), fill in:
 
 Never overwrite a field the owner already filled in by hand.
 
+## Hand-printed only
+The owner sells hand-printed pieces only. On 25 Oct 2026 the 34 plain pieces (no print at all) were set to Draft at
+the owner's request (list in `.taste-skill/drafted-plain.json`). Borderline pieces (embroidered, colour-block,
+woven ikat, hand-dyed, sprayed) were kept live on purpose. Never re-activate a drafted plain piece. When a new
+upload has no print at all, tell the owner instead of featuring it; don't change its status yourself.
+
 ## Storefront rules (built into the theme — keep them when editing)
 - **Cross-sell** ("Complete the look", "Bought together", snippet `mim-xsell`): only complementary categories
   (dress → kimonos, scarves, bags; top → pants, kimonos, scarves; …), in stock, scored by same print +4,
