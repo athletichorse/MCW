@@ -57,7 +57,10 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   only in the side menu. **Side menu**: main menu, then one plain list (Shop all, Our Story, How to Measure, FAQs,
   Contact Us, Our stores), account, WhatsApp/Instagram/Email. Shop all is regular weight everywhere.
 - **Sold-out cards** (`.mim-card.is-soldout`): photo greyscale and faded, text faded, "Sold out" badge readable.
-- **Product rails** (homepage `.mim-rail__track`): ‹ 1 / N › counter under each rail.
+- **Alignment**: everything (breadcrumbs, product photo, rails' first card, contact map text) starts on the page margin
+  (1.5rem phone / 5rem desktop). Phone header slots are 44px; the language code is a 32px circle in the body font.
+- **Speed**: homepage sections after the first two use `content-visibility:auto`; the drawer stylesheet loads non-blocking.
+- **Product rails** (homepage `.mim-rail__track`, `.mim-cats__rail`): one ‹ 1 / N › counter under each rail (no top arrows).
 - **Product page**: one-photo slider with arrows and "1 / N" counter; Judge.me star badge under the title and
   review widget below the product; gold stars (#D4AF37).
 
