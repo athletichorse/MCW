@@ -14,6 +14,10 @@ When a product or image is added (or found missing these), fill in:
 2. **Tags / categorisation**: print technique (`cyano`, `eco print`, `Block print`, `botanical`, `hand printed`),
    season (`summer essential` or `winter vibes`), and material (`Linen`, `cotton`, `VISCOSE`, `canvas`, `knit`).
    These feed the Shop-by-print tabs and the weather-aware homepage shelf.
+   The print collections are smart collections on exact tags: cyano needs `cyano` + `sunprinted`, eco needs `eco`,
+   block needs `block`, botanical `botanical`, hand-printed `Hand printed` (cyano, botanical, hand-printed hide sold-out).
+   **Channels**: publish every active product to all sales channels (Online Store, Facebook & Instagram, Google & YouTube,
+   BOTIT, Instagram Shop AI, Inbox), unless the owner has deliberately hidden it.
 3. **SEO title** (≤ 60 chars): `{Name} | {Print} {Type} from Egypt – MIM`, falling back to
    `{Name} | Handmade in Egypt – MIM` or `{Name} – MIM`. Strip internal style codes (e.g. `N1/U`, `22S20`).
 4. **SEO description** (≤ 155 chars): `{Name} – a {print} {material} {type}, handmade in Egypt by MIM Creative Wear.`
