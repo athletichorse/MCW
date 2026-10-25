@@ -28,3 +28,11 @@ Never overwrite a field the owner already filled in by hand.
 ## Homepage SEO (Online Store → Preferences — owner edits manually)
 - Title: Hand-Printed Women's Clothing Made in Egypt | MIM Creative Wear
 - Description: Shop hand-printed dresses, kimonos, tops, scarves & bags made in Egypt with cyanotype, eco & block prints. Sizes XS–3XL. Cash on delivery & worldwide shipping.
+
+## Stores (used on the contact page map and the "Find our stores" buttons)
+- MIM Creative Wear Office — Ghoneim St., 2nd floor, apt. 2, off El Gameya St., opposite Mamlouk, Fustat, Cairo. 012 22116237. Google Maps: "Mim Creative Wear Office".
+- MIM Creative Wear (CSA Maadi) — 4 Road 21, CSA, Maadi, Cairo. 011 02220008. Google Maps: "Mim creative wear (CSA Maadi)".
+
+## Daily rule
+A scheduled task ("MIM daily product & image setup", 9:31 Cairo) wakes this session each day and applies the
+"New products and images" rules above to anything new or missing.
