@@ -8,7 +8,9 @@ When a product or image is added (or found missing these), fill in:
 
 1. **Product type** (drives Find My Size): one of `Dress`, `Top`, `Pants & Skirts`, `Jackets & Kimonos`,
    `Scarves & Shawls`, `Jumpsuit`, `Bags`, `Pouches & Sleeves`, `Home`.
-   Find My Size shows automatically on every type except Bags, Pouches & Sleeves and Home.
+   Find My Size shows only when the product has a Size option with real sizes to choose between
+   (XS–3XL or 1–4); it recommends within that product's own sizes. Free size, one size or no size option = no finder
+   (free-size pieces show the small "Free size, made to fit most" note instead). Never on Bags, Pouches & Sleeves, Home.
 2. **Tags / categorisation**: print technique (`cyano`, `eco print`, `Block print`, `botanical`, `hand printed`),
    season (`summer essential` or `winter vibes`), and material (`Linen`, `cotton`, `VISCOSE`, `canvas`, `knit`).
    These feed the Shop-by-print tabs and the weather-aware homepage shelf.
@@ -47,6 +49,10 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   single-variant products get one Add button. On desktop it opens only from the + button.
 - **Desktop header**: Home, Shop, Prints, Sale, About us, Contact us (small), Shop all (highlighted only on its
   page); language = current code + dropdown. Latest drops stays out of the desktop bar.
+- **Phone header**: menu + search left, logo centred, small language code + bag right; the account link lives
+  only in the side menu. **Side menu**: main menu, then one plain list (Shop all, Our Story, How to Measure, FAQs,
+  Contact Us, Our stores), account, WhatsApp/Instagram/Email. Shop all is regular weight everywhere.
+- **Product rails** (homepage `.mim-rail__track`): ‹ 1 / N › counter under each rail.
 - **Product page**: one-photo slider with arrows and "1 / N" counter; Judge.me star badge under the title and
   review widget below the product; gold stars (#D4AF37).
 
