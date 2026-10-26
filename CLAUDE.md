@@ -44,6 +44,8 @@ woven ikat, hand-dyed, sprayed) were kept live on purpose. Never re-activate a d
 upload has no print at all, tell the owner instead of featuring it; don't change its status yourself.
 
 ## Storefront rules (built into the theme — keep them when editing)
+- **Speed first**: never add images or extra requests to always-loaded UI (header, menus, drawers, footer).
+  Images only where the visitor came to see products, and lazy-loaded below the first screen.
 - **Cross-sell** ("Complete the look", "Bought together", snippet `mim-xsell`): only complementary categories
   (dress → kimonos, scarves, bags; top → pants, kimonos, scarves; …), in stock, scored by same print +4,
   shared colour +2, same fabric tag +1, same season tag +1.
@@ -58,9 +60,10 @@ upload has no print at all, tell the owner instead of featuring it; don't change
 - **Phone header**: menu + search left, logo centred, small language code + bag right; the account link lives
   only in the side menu. **Side menu** (rebuilt in v3.9.3, `snippets/header-drawer.liquid`, element `mim-menu`,
   classes `mmn-*`, nothing shared with Dawn's drawer): fixed full-height panel that slides in wherever the page is
-  scrolled, rows animate in. Order: search box → Shop all button + New in / Sale pills → Shop (category photo tiles,
+  scrolled, rows animate in. Order: search box → Shop all button + New in / Sale pills → Shop (category text tiles,
   open by default) → Prints (colour-dot chips) → About MIM & help (Our Story, How to Measure, FAQs, Contact, Our stores
   as icon tiles) → Log in (with icon) + language switch → WhatsApp/Instagram/Email icons. One section open at a time.
+  **No images in the menu** (no product photos, no logo image): it must add nothing to page load.
   Don't patch it with rules from the old drawer (`mim-drawer-extra`, `.menu-drawer`), which is no longer used.
 - **Product photo zoom**: tapping a photo opens a sideways-swipe gallery of all photos on the tapped one, ‹ n / N ›.
 - **Card colour dots**: the selected ring is drawn inside the dot (never clipped).
