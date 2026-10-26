@@ -61,6 +61,8 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   (1.5rem phone / 5rem desktop). Phone header slots are 44px; the language code is a 32px circle in the body font.
 - **Speed**: homepage sections after the first two use `content-visibility:auto`; the drawer stylesheet loads non-blocking.
 - **Product rails** (homepage `.mim-rail__track`, `.mim-cats__rail`): one ‹ 1 / N › counter under each rail (no top arrows).
+- **Card stars** (`mim-card`): gold stars + (count) under the title, from the `reviews.rating` / `reviews.rating_count`
+  metafields Judge.me syncs; shown only once a piece has a published review.
 - **Product page**: one-photo slider with arrows and "1 / N" counter; Judge.me star badge under the title and
   review widget below the product; gold stars (#D4AF37).
 
