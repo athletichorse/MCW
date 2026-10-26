@@ -28,6 +28,9 @@ When a product or image is added (or found missing these), fill in:
 6. **Collections**: add to the matching category collection (dresses, tops, pants, cardigan-more,
    scarves-shawls, bags-more) and print collection (cyano, eco-print, block-print, botanical, hand-printed).
 7. **Translations**: add FR / NL / AR versions of title, SEO title and SEO description.
+   Option names (Size, Color…) and colour names stay **English in the product data** (swatches and variant matching
+   depend on it); the theme shows them in the visitor's language through `snippets/mim-tr.liquid`. When a new colour
+   name appears, add it to the FR/NL/AR maps in `mim-tr` (format `english lowercase::translation`).
 
 8. **Category tag** (the category collections are smart collections driven by these exact tags):
    `Dresses` (Dress, Jumpsuit), `Tops`, `pant` (Pants & Skirts), `jacket` (Jackets & Kimonos),
@@ -44,6 +47,8 @@ woven ikat, hand-dyed, sprayed) were kept live on purpose. Never re-activate a d
 upload has no print at all, tell the owner instead of featuring it; don't change its status yourself.
 
 ## Storefront rules (built into the theme — keep them when editing)
+- **Every language**: any text added to the theme needs EN/FR/NL/AR (case on `request.locale.iso_code`, or `mim-tr`).
+  Arabic sort labels come from `mim-sort-name`. Judge.me's widget text is set in the Judge.me app, not the theme.
 - **Speed first**: never add images or extra requests to always-loaded UI (header, menus, drawers, footer).
   Images only where the visitor came to see products, and lazy-loaded below the first screen.
 - **Cross-sell** ("Complete the look", "Bought together", snippet `mim-xsell`): only complementary categories
