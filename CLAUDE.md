@@ -53,6 +53,8 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   single-variant products get one Add button. On desktop it opens only from the + button.
 - **Desktop header**: Home, Shop, Prints, Sale, About us, Contact us (small), Shop all (highlighted only on its
   page); language = current code + dropdown. Latest drops stays out of the desktop bar.
+  Dawn's menu CSS (list-menu, mega-menu) is copied into `mim.css` so the bar never breaks while the page loads.
+  Desktop "Find our stores" chip sits top-left of the hero, above the headline (never over photos).
 - **Phone header**: menu + search left, logo centred, small language code + bag right; the account link lives
   only in the side menu. **Side menu**: main menu, then one plain list (Shop all, Our Story, How to Measure, FAQs,
   Contact Us, Our stores), account, WhatsApp/Instagram/Email. Shop all is regular weight everywhere.
