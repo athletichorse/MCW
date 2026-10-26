@@ -56,8 +56,13 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   Dawn's menu CSS (list-menu, mega-menu) is copied into `mim.css` so the bar never breaks while the page loads.
   Desktop "Find our stores" chip sits top-left of the hero, above the headline (never over photos).
 - **Phone header**: menu + search left, logo centred, small language code + bag right; the account link lives
-  only in the side menu. **Side menu**: main menu, then one plain list (Shop all, Our Story, How to Measure, FAQs,
-  Contact Us, Our stores), account, WhatsApp/Instagram/Email. Shop all is regular weight everywhere.
+  only in the side menu. **Side menu** (rebuilt clean in v3.9.3, `snippets/header-drawer.liquid`, element `mim-menu`,
+  classes `mmn-*`, nothing shared with Dawn's drawer): a fixed full-height panel that opens wherever the page is scrolled;
+  main menu with sub-menus opening in place, then Shop all, Our Story, How to Measure, FAQs, Contact Us, Our stores,
+  account, language buttons, WhatsApp/Instagram/Email. Shop all is regular weight everywhere. Don't patch it with
+  rules from the old drawer (`mim-drawer-extra`, `.menu-drawer`), which is no longer used.
+- **Product photo zoom**: tapping a photo opens a sideways-swipe gallery of all photos on the tapped one, ‹ n / N ›.
+- **Card colour dots**: the selected ring is drawn inside the dot (never clipped).
 - **Sold-out cards** (`.mim-card.is-soldout`): photo greyscale and faded, text faded, "Sold out" badge readable.
 - **Alignment**: everything (breadcrumbs, product photo, rails' first card, contact map text) starts on the page margin
   (1.5rem phone / 5rem desktop). Phone header slots are 44px; the language code is a 32px circle in the body font.
