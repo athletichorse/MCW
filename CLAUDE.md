@@ -75,6 +75,12 @@ upload has no print at all, tell the owner instead of featuring it; don't change
 - **Sold-out cards** (`.mim-card.is-soldout`): photo greyscale and faded, text faded, "Sold out" badge readable.
 - **Alignment**: everything (breadcrumbs, product photo, rails' first card, contact map text) starts on the page margin
   (1.5rem phone / 5rem desktop). Phone header slots are 44px; the language code is a 32px circle in the body font.
+- **Photo sizes (rule, every page with product photos: cards on homepage/collection/category/search pages, product gallery,
+  zoom, homepage slider)**: on 3x phones ask for about 2x-sharp photos by adding a `(min-resolution: 2.5dppx)` entry to the
+  image `sizes` (cards `27vw` → 360w, gallery `66vw - 2.7rem` → 713w, zoom `66vw` + an 825w option, slider tiles 36vw/27vw).
+  All collection and category pages use `mim-card`, so new collections get this automatically; any new section or snippet
+  that shows product photos must do the same. The product gallery fetches the next photos once the page has loaded
+  (mim-v35.js), so swiping never waits.
 - **Homepage order**: store strip → featured slider → marquee → **Latest drops** (first product rail, collection `latest`,
   style `latest`: light-teal band, white "Just dropped" pill with a teal pulsing dot, filled teal "Shop latest" button) → weather shelf → …
 - **Speed**: homepage sections after the first two use `content-visibility:auto`; the drawer stylesheet loads non-blocking.
