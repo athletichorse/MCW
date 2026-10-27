@@ -87,6 +87,8 @@ upload has no print at all, tell the owner instead of featuring it; don't change
 - **Product rails** (homepage `.mim-rail__track`, `.mim-cats__rail`): one ‹ 1 / N › counter under each rail (no top arrows).
 - **Card stars** (`mim-card`): gold stars + (count) under the title, from the `reviews.rating` / `reviews.rating_count`
   metafields Judge.me syncs; shown only once a piece has a published review.
+- **No "Buy it now" button** (owner removed it for speed, 27 Oct 2026): `show_dynamic_checkout` stays false. One Facebook pixel
+  only (the Facebook & Instagram app's, 1307043316161430); the extra custom pixel was deleted.
 - **Product page**: one-photo slider with arrows and "1 / N" counter; Judge.me star badge under the title and
   review widget below the product; gold stars (#D4AF37).
 
