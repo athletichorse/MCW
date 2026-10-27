@@ -75,6 +75,8 @@ upload has no print at all, tell the owner instead of featuring it; don't change
 - **Sold-out cards** (`.mim-card.is-soldout`): photo greyscale and faded, text faded, "Sold out" badge readable.
 - **Alignment**: everything (breadcrumbs, product photo, rails' first card, contact map text) starts on the page margin
   (1.5rem phone / 5rem desktop). Phone header slots are 44px; the language code is a 32px circle in the body font.
+- **Homepage order**: store strip → featured slider → marquee → **Latest drops** (first product rail, collection `latest`,
+  style `latest`: light-teal band, white "Just dropped" pill with a teal pulsing dot, filled teal "Shop latest" button) → weather shelf → …
 - **Speed**: homepage sections after the first two use `content-visibility:auto`; the drawer stylesheet loads non-blocking.
 - **Product rails** (homepage `.mim-rail__track`, `.mim-cats__rail`): one ‹ 1 / N › counter under each rail (no top arrows).
 - **Card stars** (`mim-card`): gold stars + (count) under the title, from the `reviews.rating` / `reviews.rating_count`
