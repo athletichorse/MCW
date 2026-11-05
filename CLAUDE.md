@@ -70,6 +70,10 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   as icon tiles) → Log in (with icon) + language switch → WhatsApp/Instagram/Email icons. One section open at a time.
   **No images in the menu** (no product photos, no logo image): it must add nothing to page load.
   Don't patch it with rules from the old drawer (`mim-drawer-extra`, `.menu-drawer`), which is no longer used.
+- **Colour photos (rule)**: on the product page only the selected colour's photos show (gallery, counter and zoom;
+  `#MimColorMedia` in main-product + mim-v35.js). So when adding photos: upload them **grouped by colour, in the same
+  order as the colours**, and set each colour variant's image to the first photo of its group (every colour variant must
+  have one). A colour owns its variant photo and every photo after it up to the next colour's.
 - **Product photo zoom**: tapping a photo opens a sideways-swipe gallery of all photos on the tapped one, ‹ n / N ›.
 - **Card colour dots**: the selected ring is drawn inside the dot (never clipped).
 - **Sold-out cards** (`.mim-card.is-soldout`): photo greyscale and faded, text faded, "Sold out" badge readable.
