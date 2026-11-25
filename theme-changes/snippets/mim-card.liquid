@@ -1,0 +1,159 @@
+{%- comment -%}
+Light, fast product card with print chip, hover image and size preview.
+Usage: {% render 'mim-card', product: product, eager: false %}
+{%- endcomment -%}
+{%- liquid
+capture pk
+render 'mim-print-key', product: product
+endcapture
+assign pk = pk | strip
+assign img1 = product.featured_media.preview_image
+assign img2 = product.media[1].preview_image
+assign size_opt = null
+assign color_opt = null
+for o in product.options_with_values
+assign on = o.name | downcase
+if on == 'size' or on == 'sizes' or on == 'taille' or on == 'maat' or on == 'المقاس' or on == 'مقاس'
+assign size_opt = o
+elsif on contains 'colo' or on contains 'لون' or on contains 'couleur' or on contains 'kleur'
+assign color_opt = o
+endif
+endfor
+assign loading = 'lazy'
+if eager
+assign loading = 'eager'
+endif
+-%}
+<article class="mim-card mim-r{% unless product.available %} is-soldout{% endunless %}" {% if pk != blank %}data-print="{{ pk }}"{% endif %} style="--d: {{ index | default: 0 | modulo: 4 }}">
+<div class="mim-card__mwrap">
+<a href="{{ product.url }}" class="mim-card__media" tabindex="-1" aria-hidden="true">
+{%- if img1 -%}
+{%- assign card_alt = product.featured_media.alt | default: product.title -%}
+{{ img1 | image_url: width: 720 | image_tag: loading: loading, widths: '360, 540, 720', sizes: '(min-width: 990px) 20vw, (min-resolution: 2.5dppx) 27vw, 46vw', alt: card_alt, class: 'mim-card__img1' }}
+{%- if img2 -%}
+{%- assign img2_alt = product.media[1].alt -%}
+{%- if img2_alt == blank -%}{%- assign img2_alt = product.title | append: ' – view 2' -%}{%- endif -%}
+{{ img2 | image_url: width: 540 | image_tag: loading: 'lazy', widths: '360, 540', sizes: '(min-width: 990px) 20vw, (min-resolution: 2.5dppx) 27vw, 46vw', alt: img2_alt, class: 'mim-card__img2' }}
+{%- endif -%}
+{%- endif -%}
+{%- if pk != blank -%}
+{%- assign pkey = 'mim.print.' | append: pk | append: '.name' -%}
+<span class="mim-chip mim-card__chip">{{ pkey | t }}</span>
+{%- endif -%}
+{%- if product.available == false -%}
+<span class="mim-card__badge">{{ 'products.product.sold_out' | t }}</span>
+{%- elsif product.compare_at_price > product.price -%}
+{%- assign off = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price -%}
+<span class="mim-card__badge mim-card__badge--sale">-{{ off }}%</span>
+{%- endif -%}
+</a>
+{%- if product.available -%}
+{%- liquid
+assign base = product.selected_or_first_available_variant
+comment
+Quick add picks one option to show as chips: Size when it has several values, otherwise
+whichever option has the most values (e.g. Color for "Free Size" kimonos or one-size pouches).
+endcomment
+assign sp = 0
+assign pick_size = false
+if size_opt and size_opt.values.size > 1
+assign sp = size_opt.position
+assign pick_size = true
+else
+assign most = 1
+for o in product.options_with_values
+if o.values.size > most
+assign most = o.values.size
+assign sp = o.position
+endif
+endfor
+endif
+assign base_key = ''
+for ov in base.options
+unless forloop.index == sp
+assign base_key = base_key | append: ov | append: '|'
+endunless
+endfor
+-%}
+<div class="mim-qa" data-mim-qa>
+<button type="button" class="mim-qa__toggle" data-mim-qa-toggle aria-label="{{ 'mim.qa.add' | t | escape }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+<div class="mim-qa__panel">
+{%- if product.variants.size == 1 or sp == 0 -%}
+<button type="button" class="mim-qa__one" data-mim-qa-id="{{ base.id }}">{{ 'mim.qa.add_one' | t }}</button>
+{%- else -%}
+<p class="mim-qa__label">{% if pick_size %}{{ 'mim.qa.choose' | t }}{% else %}{{ 'mim.qa.add' | t }}{% endif %}</p>
+<div class="mim-qa__chips">
+{%- for v in product.variants -%}
+{%- liquid
+assign key = ''
+for ov in v.options
+unless forloop.index == sp
+assign key = key | append: ov | append: '|'
+endunless
+endfor
+-%}
+{%- if key == base_key -%}
+{%- assign si = sp | minus: 1 -%}{%- assign lbl = v.options[si] -%}
+<button type="button" class="mim-qa__chip" data-mim-qa-id="{{ v.id }}"{% unless v.available %} disabled{% endunless %}>{% render 'mim-tr', text: lbl %}</button>
+{%- endif -%}
+{%- endfor -%}
+</div>
+{%- endif -%}
+</div>
+</div>
+{%- endif -%}
+</div>
+<div>
+<h3 class="mim-card__title"><a href="{{ product.url }}">{% render 'mim-title', title: product.title %}</a></h3>
+{%- comment -%} Judge.me rating (synced to the reviews metafields); only shown once a piece has a published review {%- endcomment -%}
+{%- assign rc = product.metafields.reviews.rating_count.value | default: 0 -%}
+{%- if rc > 0 -%}
+{%- assign rv = product.metafields.reviews.rating.value.rating | default: 0 -%}
+<p class="mim-card__stars" aria-label="{{ rv | round: 1 }} / 5 · {{ rc }}"><span style="--r: {{ rv | times: 20 }}%" aria-hidden="true">★★★★★</span><small>({{ rc }})</small></p>
+{%- endif -%}
+{%- if color_opt and color_opt.values.size > 1 -%}
+{%- comment -%} Colour dots switch the card photo and link to that colour's first variant {%- endcomment -%}
+{%- assign cpos = color_opt.position | minus: 1 -%}
+<div class="mim-card__dots">
+{%- for v in color_opt.values limit: 6 -%}
+{%- liquid
+capture sw
+render 'mim-color', value: v
+endcapture
+assign sw = sw | strip
+capture vt
+render 'mim-tr', text: v
+endcapture
+capture ct
+render 'mim-tr', text: color_opt.name
+endcapture
+assign vimg = nil
+assign vid = nil
+for pv in product.variants
+if pv.options[cpos] == v
+if vid == nil
+assign vid = pv.id
+endif
+if pv.featured_media
+assign vimg = pv.featured_media.preview_image
+assign vid = pv.id
+break
+endif
+endif
+endfor
+-%}
+<button type="button" class="mim-dot{% unless v.available %} is-out{% endunless %}{% if forloop.first %} is-on{% endif %}" style="--sw: {{ sw }}" title="{{ vt | escape }}" aria-label="{{ ct | escape }}: {{ vt | escape }}"{% if vimg %} data-img="{{ vimg | image_url: width: 540 }}" data-srcset="{{ vimg | image_url: width: 360 }} 360w, {{ vimg | image_url: width: 540 }} 540w, {{ vimg | image_url: width: 720 }} 720w"{% endif %}{% if vid %} data-url="{{ product.url }}?variant={{ vid }}"{% endif %}></button>
+{%- endfor -%}
+{%- if color_opt.values.size > 6 -%}<small>+{{ color_opt.values.size | minus: 6 }}</small>{%- endif -%}
+</div>
+{%- endif -%}
+<div class="mim-card__price">
+{%- if product.price_varies -%}{{ 'products.product.price.from_price_html' | t: price: '' }}{%- endif -%}
+{%- if product.compare_at_price > product.price -%}
+<span class="mim-price-sale">{{ product.price | money_without_trailing_zeros }}</span><s class="mim-price-old">{{ product.compare_at_price | money_without_trailing_zeros }}</s>
+{%- else -%}
+<span>{{ product.price | money_without_trailing_zeros }}</span>
+{%- endif -%}
+</div>
+</div>
+</article>

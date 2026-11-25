@@ -1,0 +1,93 @@
+{%- liquid
+  assign kb = section.settings.locale_key | default: 'edit' | prepend: 'mim.home.' | append: '.'
+  assign t_eyebrow = section.settings.eyebrow
+  if t_eyebrow == blank
+    assign k = kb | append: 'eyebrow'
+    assign t_eyebrow = k | t
+  endif
+  assign t_heading = section.settings.heading
+  if t_heading == blank
+    assign k = kb | append: 'heading_html'
+    assign t_heading = k | t
+  endif
+  assign t_text = section.settings.text
+  if t_text == blank
+    assign k = kb | append: 'text_html'
+    assign t_text = k | t
+  endif
+  assign t_button_label = section.settings.button_label
+  if t_button_label == blank
+    assign k = kb | append: 'button_label'
+    assign t_button_label = k | t
+  endif
+  assign coll = section.settings.collection
+  assign img = section.settings.image
+  assign img2 = section.settings.image_2
+  if img == blank and coll != blank
+    assign img = coll.products[0].featured_media.preview_image
+  endif
+  if img2 == blank and coll != blank
+    assign img2 = coll.products[2].featured_media.preview_image
+  endif
+-%}
+<section class="mim-edit color-{{ section.settings.color_scheme }}{% if section.settings.reverse %} mim-edit--reverse{% endif %}">
+  <div class="page-width mim-edit__grid">
+    <div class="mim-edit__media">
+      <div class="mim-edit__img mim-edit__img--main mim-reveal">
+        {%- if img != blank -%}
+          {{ img | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 45vw, 90vw', widths: '400, 700, 1000, 1400', alt: img.alt | escape }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      {%- if img2 != blank -%}
+        <div class="mim-edit__img mim-edit__img--float mim-reveal">
+          {{ img2 | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 18vw, 40vw', widths: '300, 500, 700', alt: img2.alt | escape }}
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="mim-edit__copy">
+      {%- if t_eyebrow != blank -%}<p class="mim-eyebrow mim-reveal">{{ t_eyebrow }}</p>{%- endif -%}
+      <h2 class="mim-edit__title mim-reveal">{{ t_heading }}</h2>
+      {%- if t_text != blank -%}<div class="mim-edit__text mim-reveal">{{ t_text }}</div>{%- endif -%}
+      {%- if t_button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: coll.url }}" class="mim-btn mim-btn--line mim-reveal">{{ t_button_label }} <span class="mim-btn__arrow" aria-hidden="true">→</span></a>
+      {%- endif -%}
+      {%- if section.settings.show_products and coll != blank -%}
+        <ul class="mim-edit__mini mim-reveal" role="list">
+          {%- for p in coll.products limit: 3 -%}
+            <li>
+              <a href="{{ p.url }}">
+                {%- if p.featured_media -%}{{ p.featured_media.preview_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: p.title | escape }}{%- endif -%}
+                <span><span class="mim-edit__mini-title">{{ p.title }}</span><span class="mim-edit__mini-price">{{ p.price | money_without_trailing_zeros }}</span></span>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MIM · Editorial story",
+  "tag": "div",
+  "class": "section mim-section",
+  "settings": [
+    { "type": "text", "id": "locale_key", "label": "Translation key", "info": "Leave as is. Blank text fields use built-in English/Arabic copy from this key.", "default": "edit" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "richtext", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "collection", "id": "collection", "label": "Collection (images + products)" },
+    { "type": "image_picker", "id": "image", "label": "Main image" },
+    { "type": "image_picker", "id": "image_2", "label": "Floating image" },
+    { "type": "checkbox", "id": "show_products", "label": "Show 3 products", "default": true },
+    { "type": "checkbox", "id": "reverse", "label": "Image on the right", "default": false },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "presets": [{ "name": "MIM · Editorial story" }]
+}
+{% endschema %}

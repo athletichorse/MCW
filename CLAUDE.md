@@ -103,6 +103,17 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   metafields Judge.me syncs; shown only once a piece has a published review.
 - **No "Buy it now" button** (owner removed it for speed, 27 Oct 2026): `show_dynamic_checkout` stays false. One Facebook pixel
   only (the Facebook & Instagram app's, 1307043316161430); the extra custom pixel was deleted.
+- **Prices without decimals (25 Nov 2026)**: the theme never shows `.00`. Use `money_without_trailing_zeros` (never plain `money`),
+  `money_with_currency | replace: '.00 EGP', ' EGP'`, and `money_without_currency | append: '#' | replace: '.00#', '' | remove_last: '#'`.
+  JS prices go through `money()` in `assets/mim.js`, which drops `.00`. The ship bar rounds the amount still needed up to a whole pound.
+  Checkout and emails follow the store currency format (Settings → General), which only the owner can change.
+- **Side menu shipping note**: a "Free delivery over 2,999 EGP · Applies to Cairo & Giza" card sits above Log in (`.mmn__ship`, 4 languages, no image).
+- **Content pages** (`sections/mim-page.liquid`): FAQ pages show the page body as animated accordions (questions = `h6.tt-title`,
+  `p.tt-title`, `h3` or `h6`), with search, quick facts (shipping/free delivery/exchanges/payment, 4 languages, keep in line with Shipping
+  below), and a WhatsApp help card. Other pages get scroll-reveal and a sticky chapter chip bar when they have 3+ headings.
+  FAQPage JSON-LD (`mim-schema`) reads the same questions.
+- **Policy pages** (`snippets/mim-policy.liquid`, only when `request.page_type == 'policy'`): MIM header and accordion sections built from
+  the policy's own headings (h1–h6, bold-only paragraphs, bare `<strong>`), with Open all / Close all.
 - **Product page**: one-photo slider with arrows and "1 / N" counter; Judge.me star badge under the title and
   review widget below the product; gold stars (#D4AF37).
 

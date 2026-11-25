@@ -1,0 +1,41 @@
+{%- if page != blank and page.handle != section.settings.skip_handle -%}
+<div class="mpg">
+<header class="mpg-head">
+<div class="page-width mpg-head__in">
+<h1 class="mpg-title">{{ page.title | escape }}</h1>
+</div>
+</header>
+<div class="page-width mpg-body">
+<div class="mpg-rte rte">{{ page.content }}</div>
+</div>
+</div>
+<style>
+.mpg-head{background:#F3ECE2;padding-block:clamp(5rem,8vw,9rem)}
+.mpg-title{margin:0;font-family:var(--font-heading-family);font-weight:500;font-size:clamp(3.6rem,6vw,7.2rem);line-height:1;letter-spacing:-.03em;color:#14272B;animation:mpgUp .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes mpgUp{from{opacity:0;transform:translateY(24px)}}
+.mpg-body{padding-block:clamp(4rem,6vw,8rem)}
+.mpg-rte{max-width:84rem;margin-inline:auto;font-size:1.6rem;line-height:1.75;color:rgba(20,39,43,.85)}
+.mpg-rte img{max-width:100%;height:auto;border-radius:2rem;display:block;margin:2.4rem 0}
+.mpg-rte h1,.mpg-rte h2,.mpg-rte h5,.mpg-rte h6,.mpg-rte .tt-title{font-family:var(--font-heading-family);font-weight:500;color:#14272B;letter-spacing:-.01em;text-transform:none}
+.mpg-rte h1{display:none}
+.mpg-rte h2{font-size:2.6rem;margin:3.2rem 0 1.2rem}
+.mpg-rte h6,.mpg-rte .tt-title,.mpg-rte h5{font-size:2.1rem;margin:3.2rem 0 1rem;padding-top:2.4rem;border-top:1px solid rgba(20,39,43,.12)}
+.mpg-rte h6 a,.mpg-rte .tt-title a{color:inherit;text-decoration:none;pointer-events:none}
+.mpg-rte ul ul{padding-inline-start:0}
+.mpg-rte ul{padding-inline-start:2rem}
+.mpg-rte a{color:#008F9D}
+.mpg-rte .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(26rem,1fr));gap:3.2rem}
+.mpg-rte .tt-box-thumb>.tt-title:first-of-type,.mpg-rte .tt-img+.tt-title{border-top:0;padding-top:0}
+.mpg-rte iframe{max-width:100%;border-radius:2rem}
+</style>
+{%- endif -%}
+{% schema %}
+{
+"name": "MIM Page content",
+"tag": "section",
+"class": "section-mim-page",
+"settings": [
+{ "type": "text", "id": "skip_handle", "label": "Hide on page (handle)", "default": "our-story" }
+]
+}
+{% endschema %}

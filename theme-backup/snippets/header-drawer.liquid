@@ -1,0 +1,236 @@
+{%- comment -%}
+MIM phone menu (v3.9.3). Own panel (mim-menu, classes mmn-*), nothing shared with Dawn's drawer.
+No images in the menu (keeps it light). Order: search, quick buttons (Shop all / New in / Sale), Shop as text tiles, Prints as colour chips,
+About & help folded into one section, then account, language and contact icons. Sections open with a
+smooth height animation; rows slide in one after another when the menu opens.
+Shown below 990px only (desktop keeps the mega menu).
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ 'mim-v32.css' | asset_url }}" media="print" onload="this.media='all'">
+<script src="{{ 'mim-v32.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+case request.locale.iso_code
+when 'ar'
+assign l_menu = 'القائمة'
+assign l_search = 'ابحثي عن فستان، طبعة، لون…'
+assign l_shopall = 'تسوقي الكل'
+assign l_new = 'وصل حديثاً'
+assign l_sale = 'تخفيضات'
+assign l_help = 'المساعدة'
+assign l_about = 'عن ميم'
+assign l_contact = 'تواصلي معنا'
+assign l_stores = 'متاجرنا'
+assign l_in = 'تسجيل الدخول'
+assign l_acc = 'حسابي'
+assign l_close = 'إغلاق'
+assign l_all = 'عرض الكل'
+when 'fr'
+assign l_menu = 'Menu'
+assign l_search = 'Robe, imprimé, couleur…'
+assign l_shopall = 'Tout voir'
+assign l_new = 'Nouveautés'
+assign l_sale = 'Soldes'
+assign l_help = 'Aide'
+assign l_about = 'À propos'
+assign l_contact = 'Contact'
+assign l_stores = 'Nos boutiques'
+assign l_in = 'Se connecter'
+assign l_acc = 'Mon compte'
+assign l_close = 'Fermer'
+assign l_all = 'Tout voir'
+when 'nl'
+assign l_menu = 'Menu'
+assign l_search = 'Jurk, print, kleur…'
+assign l_shopall = 'Alles shoppen'
+assign l_new = 'Nieuw'
+assign l_sale = 'Sale'
+assign l_help = 'Hulp'
+assign l_about = 'Over ons'
+assign l_contact = 'Contact'
+assign l_stores = 'Onze winkels'
+assign l_in = 'Inloggen'
+assign l_acc = 'Mijn account'
+assign l_close = 'Sluiten'
+assign l_all = 'Alles bekijken'
+else
+assign l_menu = 'Menu'
+assign l_search = 'Search a dress, print, colour…'
+assign l_shopall = 'Shop all'
+assign l_new = 'New in'
+assign l_sale = 'Sale'
+assign l_help = 'Help'
+assign l_about = 'About us'
+assign l_contact = 'Contact us'
+assign l_stores = 'Our stores'
+assign l_in = 'Log in'
+assign l_acc = 'My account'
+assign l_close = 'Close'
+assign l_all = 'View all'
+endcase
+assign i = 0
+-%}
+<mim-menu class="mmn">
+<button type="button" class="header__icon header__icon--menu mmn__open" aria-label="{{ l_menu }}" aria-expanded="false" aria-controls="MimMenu">
+<span class="svg-wrapper">{{- 'icon-hamburger.svg' | inline_asset_content -}}</span>
+</button>
+<div class="mmn__scrim" data-mmn-close hidden></div>
+<div id="MimMenu" class="mmn__panel" role="dialog" aria-modal="true" aria-label="{{ l_menu }}" hidden>
+<div class="mmn__top">
+<span class="mmn__title">{{ l_menu }}</span>
+<button type="button" class="mmn__x" data-mmn-close aria-label="{{ l_close }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<nav class="mmn__body" aria-label="{{ l_menu }}">
+<form action="{{ routes.search_url }}" method="get" role="search" class="mmn__search mmn-i" style="--i:0">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+<input type="search" name="q" placeholder="{{ l_search }}" aria-label="{{ l_search }}" autocomplete="off">
+<input type="hidden" name="type" value="product">
+<input type="hidden" name="options[prefix]" value="last">
+</form>
+<div class="mmn__quick mmn-i" style="--i:1">
+<a class="mmn__btn" href="{{ routes.all_products_collection_url }}">{{ l_shopall }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a class="mmn__pill" href="/collections/latest">{{ l_new }}</a>
+<a class="mmn__pill mmn__pill--sale" href="/collections/sale">{{ l_sale }}</a>
+<a class="mmn__pill" href="/pages/our-story">{{ l_about }}</a>
+<a class="mmn__pill" href="/pages/contact-us">{{ l_contact }}</a>
+</div>
+{%- for link in section.settings.menu.links -%}
+{%- if link.links == blank -%}{%- continue -%}{%- endif -%}
+{%- assign i = i | plus: 1 -%}
+{%- assign t = link.title | downcase -%}
+{%- assign is_prints = false -%}
+{%- if t contains 'print' or t contains 'impri' or t contains 'طباع' -%}{%- assign is_prints = true -%}{%- endif -%}
+<section class="mmn__sec mmn-i{% if forloop.first %} is-open{% endif %}" style="--i:{{ i | plus: 1 }}">
+<button type="button" class="mmn__head" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">{{ link.title | escape }}<svg class="mmn__chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+<div class="mmn__fold"><div>
+{%- if is_prints -%}
+<div class="mmn__chips">
+{%- for child in link.links -%}
+{%- assign ct = child.title | downcase | append: ' ' | append: child.url -%}
+{%- assign dot = '#008f9d' -%}
+{%- if ct contains 'cyan' -%}{%- assign dot = '#1e4d8c' -%}{%- elsif ct contains 'eco' -%}{%- assign dot = '#8b5e3c' -%}{%- elsif ct contains 'block' -%}{%- assign dot = '#b4532f' -%}{%- elsif ct contains 'botan' -%}{%- assign dot = '#4f7a4a' -%}{%- endif -%}
+<a href="{{ child.url }}" style="--dot:{{ dot }}"{% if child.current %} aria-current="page"{% endif %}><i aria-hidden="true"></i>{{ child.title | escape }}</a>
+{%- endfor -%}
+</div>
+{%- else -%}
+<div class="mmn__cats">
+{%- for child in link.links -%}
+<a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title | escape }}</a>
+{%- endfor -%}
+</div>
+{%- endif -%}
+{%- if link.url != '#' and link.url != blank -%}<a class="mmn__all" href="{{ link.url }}">{{ l_all }} {% if request.locale.iso_code == 'ar' %}←{% else %}→{% endif %}</a>{%- endif -%}
+</div></div>
+</section>
+{%- endfor -%}
+<section class="mmn__sec mmn-i" style="--i:{{ i | plus: 2 }}">
+<button type="button" class="mmn__head" aria-expanded="false">{{ l_help }}<svg class="mmn__chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+<div class="mmn__fold"><div>
+<div class="mmn__help">
+<a href="/pages/how-to-measure"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7.5" width="19" height="9" rx="2"/><path d="M6.5 7.5v3M10 7.5v4.5M13.5 7.5v3M17 7.5v4.5"/></svg>{{ 'mim.drawer.t06' | t }}</a>
+<a href="/pages/faqs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 0c0 1.8-2.5 2-2.5 4M12 17h.01"/></svg>{{ 'mim.drawer.t07' | t }}</a>
+<a href="/pages/store-locator"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>{{ l_stores }}</a>
+</div>
+</div></div>
+</section>
+<div class="mmn__foot mmn-i" style="--i:{{ i | plus: 3 }}">
+{%- if shop.customer_accounts_enabled -%}
+<a class="mmn__acct" href="{{ routes.account_url }}"><span class="mmn__acct-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span>{% if customer %}{{ l_acc }}{% else %}{{ l_in }}{% endif %}</a>
+{%- endif -%}
+{%- if localization.available_languages.size > 1 -%}
+{%- form 'localization', class: 'mmn__langs' -%}
+<input type="hidden" name="return_to" value="{{ request.path }}">
+{%- for language in localization.available_languages -%}
+<button type="submit" name="language_code" value="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true" class="is-on"{% endif %}>{{ language.iso_code | upcase }}</button>
+{%- endfor -%}
+{%- endform -%}
+{%- endif -%}
+</div>
+<div class="mmn__social mmn-i" style="--i:{{ i | plus: 4 }}">
+<a href="https://wa.me/201222116237" target="_blank" rel="noopener" aria-label="WhatsApp" class="mmn__wa"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm5.8 15.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.6 8.6 0 0 1-4.3-3.7c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg></a>
+{%- if settings.social_instagram_link != blank -%}<a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="5" width="22" height="22" rx="6"/><circle cx="16" cy="16" r="5"/><circle cx="22.5" cy="9.5" r="1" fill="currentColor"/></svg></a>{%- endif -%}
+<a href="mailto:mim@mimcreativewear.com" aria-label="Email"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4" y="7" width="24" height="18" rx="3"/><path d="M5 9l11 8 11-8"/></svg></a>
+</div>
+</nav>
+</div>
+</mim-menu>
+<style>
+.header>mim-menu{grid-area:left-icons;display:flex;align-items:center;justify-self:center}
+@media (min-width:990px){.header>mim-menu{display:none}}
+.mmn__open{background:none;border:0;padding:0;cursor:pointer;color:inherit}
+.mmn__scrim:not([hidden]){display:block}
+.mmn__scrim{position:fixed;inset:0;z-index:1000;background:rgba(20,39,43,.45);opacity:0;transition:opacity .3s}
+.mmn__scrim.is-open{opacity:1}
+.mmn__panel{position:fixed;top:0;bottom:0;inset-inline-start:0;z-index:1001;width:min(90vw,40rem);height:100vh;height:100dvh;display:flex;flex-direction:column;background:#FBF8F4;color:#14272B;box-shadow:0 0 40px rgba(20,39,43,.2);transform:translateX(-100%);transition:transform .34s cubic-bezier(.2,.8,.2,1);border-start-end-radius:2.4rem;border-end-end-radius:2.4rem}
+[dir=rtl] .mmn__panel{transform:translateX(100%)}
+[dir] .mmn__panel.is-open{transform:none}
+.mmn__top{display:flex;align-items:center;justify-content:space-between;flex:none;padding:1.4rem 1.2rem .4rem 2rem}
+.mmn__title{font-size:1.3rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(20,39,43,.6)}
+[dir=rtl] .mmn__title{letter-spacing:0}
+.mmn__x{display:grid;place-items:center;width:4.4rem;height:4.4rem;padding:0;border:0;border-radius:50%;background:#fff;color:inherit;box-shadow:0 1px 6px rgba(20,39,43,.1);cursor:pointer}
+.mmn__body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:1rem 2rem calc(2.4rem + env(safe-area-inset-bottom))}
+.mmn-i{opacity:0;transform:translateY(10px)}
+.mmn__panel.is-open .mmn-i{animation:mmnIn .45s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(80ms + var(--i,0) * 45ms)}
+@keyframes mmnIn{to{opacity:1;transform:none}}
+.mmn__search{display:flex;align-items:center;gap:1rem;height:4.8rem;margin:0 0 1.2rem;padding:0 1.6rem;border-radius:99px;background:#fff;box-shadow:inset 0 0 0 1px rgba(20,39,43,.12);color:rgba(20,39,43,.55)}
+.mmn__search:focus-within{box-shadow:inset 0 0 0 2px #008F9D}
+.mmn__search input[type=search]{flex:1;min-width:0;height:100%;padding:0;border:0;background:none;color:#14272B;font:inherit;font-size:16px;outline:none;-webkit-appearance:none}
+.mmn__quick{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1.6rem}
+.mmn__btn{flex:1 0 100%;display:flex;align-items:center;justify-content:center;gap:.8rem;height:5rem;border-radius:99px;background:#008F9D;color:#fff;font-size:1.6rem;font-weight:500;letter-spacing:.02em;text-decoration:none;box-shadow:0 8px 20px -10px rgba(0,143,157,.8);transition:transform .2s}
+.mmn__btn:active{transform:scale(.98)}
+[dir=rtl] .mmn__btn svg{transform:scaleX(-1)}
+.mmn__pill{flex:1 1 calc(50% - .4rem);display:grid;place-items:center;height:4.2rem;border-radius:99px;background:#fff;color:#14272B;font-size:1.45rem;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(20,39,43,.12)}
+.mmn__pill--sale{color:#B42318;box-shadow:inset 0 0 0 1px rgba(180,35,24,.3);background:#FDF1EF}
+.mmn__sec{border-top:1px solid rgba(20,39,43,.08)}
+.mmn__head{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:5.4rem;padding:0;border:0;background:none;color:#14272B;font:inherit;font-size:1.8rem;font-weight:500;text-align:start;cursor:pointer}
+.mmn__chev{flex:none;opacity:.55;transition:transform .3s}
+.mmn__sec.is-open .mmn__chev{transform:rotate(180deg)}
+.mmn__fold{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.2,.8,.2,1)}
+.mmn__sec.is-open .mmn__fold{grid-template-rows:1fr}
+.mmn__fold>div{overflow:hidden;min-height:0}
+.mmn__cats{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;padding:.2rem 0 1rem}
+.mmn__cats a{display:flex;align-items:center;min-height:4.8rem;padding:.8rem 1.4rem;border-radius:1.4rem;background:#fff;color:#14272B;font-size:1.45rem;line-height:1.25;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(20,39,43,.08);transition:background .2s}
+.mmn__cats a:active{background:#EEF6F7}
+.mmn__cats a[aria-current]{box-shadow:inset 0 0 0 2px #008F9D}
+.mmn__chips{display:flex;flex-wrap:wrap;gap:.8rem;padding:.2rem 0 1rem}
+.mmn__chips a{display:inline-flex;align-items:center;gap:.7rem;height:4rem;padding:0 1.5rem 0 1.2rem;border-radius:99px;background:#fff;color:#14272B;font-size:1.4rem;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(20,39,43,.12)}
+.mmn__chips i{width:1.2rem;height:1.2rem;border-radius:50%;background:var(--dot)}
+.mmn__chips a[aria-current]{box-shadow:inset 0 0 0 2px var(--dot)}
+.mmn__all{display:inline-block;margin:0 0 1.4rem;font-size:1.35rem;font-weight:500;color:#00737E;text-decoration:none}
+.mmn__help{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;padding:.2rem 0 1.4rem}
+.mmn__help a{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.6rem;min-height:7.2rem;padding:1rem .6rem;border-radius:1.4rem;background:#fff;color:#14272B;font-size:1.35rem;line-height:1.25;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(20,39,43,.08)}
+.mmn__help svg{flex:none;width:2rem;height:2rem;fill:none;stroke:#008F9D;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.mmn__foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.4rem 0;border-top:1px solid rgba(20,39,43,.08)}
+.mmn__acct{display:inline-flex;align-items:center;gap:.9rem;font-size:1.5rem;color:#14272B;text-decoration:none}
+.mmn__acct-ico{display:grid;place-items:center;width:3.8rem;height:3.8rem;border-radius:50%;background:#EEF6F7;color:#00737E}
+.mmn__langs{display:flex;gap:.2rem;margin:0;padding:.3rem;border-radius:99px;background:#fff;box-shadow:inset 0 0 0 1px rgba(20,39,43,.1)}
+.mmn__langs button{min-width:3.6rem;height:3.2rem;padding:0 .8rem;border:0;border-radius:99px;background:none;color:rgba(20,39,43,.7);font:inherit;font-size:1.2rem;font-weight:500;cursor:pointer}
+.mmn__langs button.is-on{background:#14272B;color:#fff}
+.mmn__social{display:flex;justify-content:center;gap:1.2rem;padding-top:.6rem}
+.mmn__social a{display:grid;place-items:center;width:4.4rem;height:4.4rem;border-radius:50%;background:#fff;color:#14272B;box-shadow:inset 0 0 0 1px rgba(20,39,43,.1)}
+.mmn__social a.mmn__wa{color:#1A9E4B}
+.mmn__social svg{width:2rem;height:2rem}
+html.mmn-lock,html.mmn-lock body{overflow:hidden}
+html.mmn-lock .mim-wa{display:none!important}
+@media (prefers-reduced-motion:reduce){.mmn__panel,.mmn__scrim,.mmn__fold{transition:none}.mmn__panel.is-open .mmn-i{animation:none;opacity:1;transform:none}}
+</style>
+<script>
+if(!customElements.get('mim-menu')){customElements.define('mim-menu',class extends HTMLElement{
+connectedCallback(){
+var self=this;this.btn=this.querySelector('.mmn__open');this.panel=this.querySelector('.mmn__panel');this.scrim=this.querySelector('.mmn__scrim');
+document.body.appendChild(this.scrim);document.body.appendChild(this.panel);this.panel.classList.add('mmn');this.scrim.classList.add('mmn');
+this.btn.addEventListener('click',function(){self.open();});
+[this.scrim].concat([].slice.call(this.panel.querySelectorAll('[data-mmn-close]'))).forEach(function(el){el.addEventListener('click',function(){self.close();});});
+this.panel.addEventListener('keydown',function(e){if(e.key==='Escape')self.close();});
+this.panel.querySelectorAll('.mmn__head').forEach(function(h){h.addEventListener('click',function(){
+var sec=h.closest('.mmn__sec'),open=!sec.classList.contains('is-open');
+self.panel.querySelectorAll('.mmn__sec.is-open').forEach(function(s){if(s!==sec){s.classList.remove('is-open');s.querySelector('.mmn__head').setAttribute('aria-expanded','false');}});
+sec.classList.toggle('is-open',open);h.setAttribute('aria-expanded',open?'true':'false');});});
+}
+open(){var self=this;this.panel.hidden=false;this.scrim.hidden=false;void this.panel.offsetWidth;
+this.panel.classList.add('is-open');this.scrim.classList.add('is-open');
+document.documentElement.classList.add('mmn-lock');this.btn.setAttribute('aria-expanded','true');
+setTimeout(function(){var x=self.panel.querySelector('.mmn__x');x&&x.focus({preventScroll:true});},50);}
+close(){var self=this;this.panel.classList.remove('is-open');this.scrim.classList.remove('is-open');
+document.documentElement.classList.remove('mmn-lock');this.btn.setAttribute('aria-expanded','false');
+setTimeout(function(){self.panel.hidden=true;self.scrim.hidden=true;},340);this.btn.focus({preventScroll:true});}
+});}
+</script>

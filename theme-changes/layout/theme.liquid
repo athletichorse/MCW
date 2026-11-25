@@ -17,7 +17,7 @@
 {{ page_title }}
 {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
 {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-{%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+{%- unless page_title contains shop.name or page_title contains 'MIM' %} &ndash; MIM Creative Wear{% endunless -%}
 </title>
 {% if page_description %}
 <meta name="description" content="{{ page_description | escape }}">
@@ -363,5 +363,6 @@ countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count:
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 {%- render 'mim-whatsapp' -%}
+{%- if request.page_type == 'policy' -%}{% render 'mim-policy' %}{%- endif -%}
 </body>
 </html>

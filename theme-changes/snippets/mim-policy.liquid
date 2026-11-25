@@ -1,0 +1,58 @@
+{%- comment -%}
+Policy pages (/policies/refund-policy, shipping-policy, privacy-policy, terms-of-service). Rendered from layout/theme.liquid only
+when request.page_type == 'policy'. Shopify renders the policy body itself; this styles it like MIM pages and turns each section
+(h2–h4 headings, or a paragraph that is only bold text) into an animated accordion. First section opens by default.
+Any stray <style>/<title> text pasted into a policy body is hidden. No text added (headings come from the policy), no requests.
+{%- endcomment -%}
+<style>
+.shopify-policy__container{max-width:none!important;padding:0!important;margin:0!important}
+.shopify-policy__title{background:#F3ECE2;padding:clamp(5rem,8vw,9rem) 1.5rem;text-align:start}
+.shopify-policy__title h1{max-width:84rem;margin:0 auto;font-family:var(--font-heading-family);font-weight:500;font-size:clamp(3.6rem,6vw,6.4rem);line-height:1;letter-spacing:-.03em;color:#14272B;animation:mpUp .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes mpUp{from{opacity:0;transform:translateY(24px)}}
+.shopify-policy__body{max-width:84rem;margin:0 auto;padding:clamp(4rem,6vw,8rem) 1.5rem}
+.shopify-policy__body .rte{font-size:1.55rem;line-height:1.75;color:rgba(20,39,43,.82)}
+.shopify-policy__body .rte h1,.shopify-policy__body .rte h2,.shopify-policy__body .rte h3,.shopify-policy__body .rte h4{font-family:var(--font-heading-family);font-weight:500;color:#14272B;letter-spacing:-.01em}
+.shopify-policy__body .rte a{color:#008F9D}
+.mpol-acc{border-bottom:1px solid rgba(20,39,43,.12)}
+.mpol-acc>summary{display:flex;align-items:center;justify-content:space-between;gap:1.6rem;padding:2rem 0;cursor:pointer;list-style:none;font-family:var(--font-heading-family);font-size:1.9rem;font-weight:500;color:#14272B}
+.mpol-acc>summary::-webkit-details-marker{display:none}
+.mpol-acc>summary i{position:relative;flex:none;width:3.2rem;height:3.2rem;border-radius:50%;background:#F3ECE2;transition:background .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.mpol-acc>summary i:before,.mpol-acc>summary i:after{content:"";position:absolute;inset:50% auto auto 50%;width:1.2rem;height:1.5px;margin:-.75px 0 0 -.6rem;background:#14272B;transition:transform .4s,background .3s}
+.mpol-acc>summary i:after{transform:rotate(90deg)}
+.mpol-acc[open]>summary i{background:#008F9D;transform:rotate(180deg)}
+.mpol-acc[open]>summary i:before,.mpol-acc[open]>summary i:after{background:#fff}
+.mpol-acc[open]>summary i:after{transform:rotate(0)}
+.mpol-acc__b{overflow:hidden;padding-bottom:2rem}
+.mpol-acc__b>:first-child{margin-top:0}
+.mpol-intro{margin-bottom:2.4rem}
+.mpol-tools{display:flex;justify-content:flex-end;margin:0 0 .8rem}
+.mpol-tools button{border:0;background:none;color:#008F9D;font:inherit;font-size:1.35rem;cursor:pointer;padding:.6rem 0}
+@media (prefers-reduced-motion:reduce){.shopify-policy__title h1{animation:none}}
+</style>
+<script>
+(function(){
+var rte=document.querySelector('.shopify-policy__body .rte')||document.querySelector('.shopify-policy__body');if(!rte)return;
+/* text from a pasted <style>/<title> shows up as plain text: hide it */
+[].slice.call(rte.childNodes).forEach(function(n){if(n.nodeType===3&&/\{[^}]*:[^}]*\}/.test(n.nodeValue))n.nodeValue='';});
+rte.querySelectorAll('style,title,meta').forEach(function(n){n.remove();});
+var lang=(document.documentElement.lang||'en').slice(0,2);
+var L={en:['Open all','Close all'],fr:['Tout ouvrir','Tout fermer'],nl:['Alles openen','Alles sluiten'],ar:['فتح الكل','إغلاق الكل']}[lang]||['Open all','Close all'];
+function isHead(el){if(!el||el.nodeType!==1)return false;var t=el.textContent.trim();if(t.length<2||t.length>90)return false;if(/^H[1-6]$/.test(el.tagName))return true;
+  if(el.tagName==='STRONG'||el.tagName==='B')return true;
+  if(el.tagName==='P'){var b=el.querySelector('strong,b');return b&&b.textContent.trim()===t;}return false;}
+/* unwrap a single wrapper div so its sections become direct children */
+while(rte.children.length===1&&rte.firstElementChild.tagName==='DIV'&&!rte.firstElementChild.className.match(/mpol/)){var w=rte.firstElementChild;while(w.firstChild)rte.insertBefore(w.firstChild,w);w.remove();}
+var kids=[].slice.call(rte.childNodes);var heads=kids.filter(isHead);if(heads.length<2)return;
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var intro=document.createElement('div');intro.className='mpol-intro';var cur=null,list=[];
+kids.forEach(function(el){if(isHead(el)){var d=document.createElement('details');d.className='mpol-acc';var s=document.createElement('summary');var sp=document.createElement('span');sp.textContent=el.textContent.trim();s.appendChild(sp);s.appendChild(document.createElement('i'));var b=document.createElement('div');b.className='mpol-acc__b';d.appendChild(s);d.appendChild(b);rte.insertBefore(d,el);el.remove();cur=b;list.push(d);}
+  else if(cur){if(!(cur.childNodes.length===0&&el.nodeName==='BR'))cur.appendChild(el);}else{intro.appendChild(el);}});
+if(intro.childNodes.length)rte.insertBefore(intro,rte.firstChild);
+var tools=document.createElement('div');tools.className='mpol-tools';var tb=document.createElement('button');tb.type='button';tb.textContent=L[0];tools.appendChild(tb);rte.insertBefore(tools,list[0]);
+tb.addEventListener('click',function(){var open=list.some(function(d){return !d.open;});list.forEach(function(d){d.open=open;});tb.textContent=open?L[1]:L[0];});
+list[0].open=true;
+list.forEach(function(d){var b=d.querySelector('.mpol-acc__b');d.querySelector('summary').addEventListener('click',function(e){if(reduce||!b.animate)return;e.preventDefault();
+  if(!d.open){d.open=true;b.animate([{height:'0px',opacity:0},{height:b.scrollHeight+'px',opacity:1}],{duration:380,easing:'cubic-bezier(.2,.7,.2,1)'});}
+  else{var a=b.animate([{height:b.scrollHeight+'px',opacity:1},{height:'0px',opacity:0}],{duration:280,easing:'ease-in'});a.onfinish=function(){d.open=false;};}});});
+})();
+</script>

@@ -1,0 +1,299 @@
+{%- comment -%}
+MIM page content (v3.9.8). Content still comes from the page body in admin (and its FR/NL/AR translations).
+- FAQ pages (handle "faqs", or a body with the old .tt-box-faq markup): the body is split into questions (h6 / .tt-title
+  headings) and shown as animated accordions, with a live search box, quick facts (shipping, free delivery, exchanges, payment)
+  and a WhatsApp help card at the end.
+- Other pages (Techniques, Team, How to measure…): blocks fade up as they scroll in, photos zoom gently on hover, and pages with
+  3+ headings get a sticky "chapter" chip bar that follows the reading position.
+No extra requests: CSS and JS are inline and only on pages using this section. Motion is off for prefers-reduced-motion.
+{%- endcomment -%}
+{%- if page != blank and page.handle != section.settings.skip_handle -%}
+{%- liquid
+  assign is_faq = false
+  if page.handle == 'faqs' or page.content contains 'tt-box-faq'
+    assign is_faq = true
+  endif
+  case request.locale.iso_code
+    when 'ar'
+      assign l_search = 'ابحثي في الأسئلة…'
+      assign l_none = 'لا توجد أسئلة مطابقة. راسلينا على واتساب وسنرد عليكِ بسرعة.'
+      assign l_quick = 'إجابات سريعة'
+      assign l_more = 'كل الأسئلة'
+      assign l_still = 'عندك سؤال آخر؟'
+      assign l_still_t = 'نرد عادةً خلال ساعات قليلة. واتساب هو الأسرع.'
+      assign l_wa = 'راسلينا على واتساب'
+      assign l_mail = 'أرسلي بريدًا'
+      assign l_chap = 'في هذه الصفحة'
+      assign q1 = 'التوصيل في مصر'
+      assign a1 = 'عادي 85 جنيه (2–5 أيام) · سريع 120 جنيه (1–2 يوم)'
+      assign q2 = 'توصيل مجاني'
+      assign a2 = 'للطلبات فوق 2,999 جنيه · يسري على القاهرة والجيزة'
+      assign q3 = 'الشحن الدولي'
+      assign a3 = '1,200 جنيه حتى طلب 4,000 جنيه · 3,200 جنيه للطلبات الأكبر'
+      assign q4 = 'الاستبدال'
+      assign a4 = 'القطع غير الملبوسة خلال يومين من الاستلام'
+      assign q5 = 'الدفع'
+      assign a5 = 'الدفع عند الاستلام أو بالبطاقة'
+    when 'fr'
+      assign l_search = 'Rechercher une question…'
+      assign l_none = 'Aucune question ne correspond. Écrivez-nous sur WhatsApp, nous répondons vite.'
+      assign l_quick = 'Réponses rapides'
+      assign l_more = 'Toutes les questions'
+      assign l_still = 'Une autre question ?'
+      assign l_still_t = 'Nous répondons en général en quelques heures. WhatsApp est le plus rapide.'
+      assign l_wa = 'Écrire sur WhatsApp'
+      assign l_mail = 'Envoyer un e-mail'
+      assign l_chap = 'Sur cette page'
+      assign q1 = 'Livraison en Égypte'
+      assign a1 = 'Standard 85 EGP (2–5 jours) · Express 120 EGP (1–2 jours)'
+      assign q2 = 'Livraison gratuite'
+      assign a2 = 'Au-delà de 2 999 EGP · Valable au Caire et à Gizeh'
+      assign q3 = 'International'
+      assign a3 = '1 200 EGP jusqu’à 4 000 EGP de commande · 3 200 EGP au-delà'
+      assign q4 = 'Échanges'
+      assign a4 = 'Pièces non portées, sous 2 jours après réception'
+      assign q5 = 'Paiement'
+      assign a5 = 'À la livraison ou par carte'
+    when 'nl'
+      assign l_search = 'Zoek een vraag…'
+      assign l_none = 'Geen vraag gevonden. Stuur ons een WhatsApp, we antwoorden snel.'
+      assign l_quick = 'Snelle antwoorden'
+      assign l_more = 'Alle vragen'
+      assign l_still = 'Nog een vraag?'
+      assign l_still_t = 'We antwoorden meestal binnen een paar uur. WhatsApp is het snelst.'
+      assign l_wa = 'Stuur een WhatsApp'
+      assign l_mail = 'Stuur een e-mail'
+      assign l_chap = 'Op deze pagina'
+      assign q1 = 'Bezorging in Egypte'
+      assign a1 = 'Standaard 85 EGP (2–5 dagen) · Express 120 EGP (1–2 dagen)'
+      assign q2 = 'Gratis bezorging'
+      assign a2 = 'Boven 2.999 EGP · Geldt voor Caïro en Gizeh'
+      assign q3 = 'Wereldwijd'
+      assign a3 = '1.200 EGP tot 4.000 EGP bestelling · 3.200 EGP daarboven'
+      assign q4 = 'Ruilen'
+      assign a4 = 'Ongedragen stukken, binnen 2 dagen na levering'
+      assign q5 = 'Betalen'
+      assign a5 = 'Rembours of met kaart'
+    else
+      assign l_search = 'Search the questions…'
+      assign l_none = 'No matching question. Message us on WhatsApp and we will reply quickly.'
+      assign l_quick = 'Quick answers'
+      assign l_more = 'All questions'
+      assign l_still = 'Still have a question?'
+      assign l_still_t = 'We usually reply within a few hours. WhatsApp is the fastest.'
+      assign l_wa = 'Chat on WhatsApp'
+      assign l_mail = 'Send an email'
+      assign l_chap = 'On this page'
+      assign q1 = 'Delivery in Egypt'
+      assign a1 = 'Standard 85 EGP (2–5 days) · Express 120 EGP (1–2 days)'
+      assign q2 = 'Free delivery'
+      assign a2 = 'Over 2,999 EGP · Applies to Cairo & Giza'
+      assign q3 = 'Worldwide'
+      assign a3 = '1,200 EGP up to a 4,000 EGP order · 3,200 EGP above'
+      assign q4 = 'Exchanges'
+      assign a4 = 'Unworn pieces, within 2 days of delivery'
+      assign q5 = 'Payment'
+      assign a5 = 'Cash on delivery or card'
+  endcase
+-%}
+<div class="mpg{% if is_faq %} mpg--faq{% endif %}" data-mpg>
+<header class="mpg-head">
+<div class="page-width mpg-head__in">
+<h1 class="mpg-title">{{ page.title | escape }}</h1>
+{%- if is_faq -%}
+<label class="mpg-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" placeholder="{{ l_search }}" aria-label="{{ l_search }}" data-faq-q autocomplete="off"></label>
+{%- endif -%}
+</div>
+</header>
+{%- if is_faq -%}
+{%- liquid
+  assign body = page.content | replace: '<p class="tt-title">', '§Q§' | replace: '<h6 class="tt-title">', '§Q§' | replace: '<h3>', '§Q§' | replace: '<h6>', '§Q§'
+  assign parts = body | split: '§Q§'
+-%}
+<div class="page-width mpg-body">
+<div class="mpg-faq">
+<section class="mpg-facts" aria-label="{{ l_quick }}">
+<h2 class="mpg-h">{{ l_quick }}</h2>
+<ul>
+<li class="mpg-rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg><b>{{ q1 }}</b><span>{{ a1 }}</span></li>
+<li class="mpg-rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 110-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 100-5C13 2 12 7 12 7z"/></svg><b>{{ q2 }}</b><span>{{ a2 }}</span></li>
+<li class="mpg-rv"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg><b>{{ q3 }}</b><span>{{ a3 }}</span></li>
+<li class="mpg-rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg><b>{{ q4 }}</b><span>{{ a4 }}</span></li>
+<li class="mpg-rv"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg><b>{{ q5 }}</b><span>{{ a5 }}</span></li>
+</ul>
+</section>
+<h2 class="mpg-h">{{ l_more }}</h2>
+<div class="mpg-acc-list" data-faq-list>
+{%- assign n = 0 -%}
+{%- for part in parts -%}
+{%- if forloop.first -%}{%- continue -%}{%- endif -%}
+{%- liquid
+  assign head = part | split: '</' | first
+  assign q = head | strip_html | strip
+  assign a_raw = part | remove_first: head | remove: '</div>'
+  comment
+    The old body wraps questions in layout <div>s (columns), so a split leaves unbalanced div tags: drop them.
+  endcomment
+  assign segs = a_raw | split: '<div'
+  assign a_html = segs.first
+  for s in segs offset: 1
+    assign attrs = s | split: '>' | first
+    assign tail = s | remove_first: attrs | remove_first: '>'
+    assign a_html = a_html | append: tail
+  endfor
+  assign a_txt = a_html | strip_html | strip
+-%}
+{%- if q == blank -%}
+{%- if a_txt != blank -%}<div class="mpg-acc__more" hidden data-faq-more><div class="rte">{{ a_html }}</div></div>{%- endif -%}
+{%- continue -%}
+{%- endif -%}
+{%- assign n = n | plus: 1 -%}
+<details class="mpg-acc mpg-rv"{% if n == 1 %} open{% endif %}>
+<summary><span>{{ q }}</span><i aria-hidden="true"></i></summary>
+<div class="mpg-acc__body"><div class="rte">{{ a_html }}</div></div>
+</details>
+{%- endfor -%}
+</div>
+<p class="mpg-none" hidden data-faq-none>{{ l_none }}</p>
+<aside class="mpg-help mpg-rv">
+<div><b>{{ l_still }}</b><span>{{ l_still_t }}</span></div>
+<p><a class="mpg-btn" href="https://wa.me/201222116237" target="_blank" rel="noopener">{{ l_wa }}</a><a class="mpg-btn mpg-btn--ghost" href="mailto:mim@mimcreativewear.com">{{ l_mail }}</a></p>
+</aside>
+</div>
+</div>
+{%- else -%}
+<nav class="mpg-chaps" aria-label="{{ l_chap }}" hidden data-chaps><div class="page-width"><div class="mpg-chaps__row"></div></div></nav>
+<div class="page-width mpg-body">
+<div class="mpg-rte rte" data-mpg-rte>{{ page.content }}</div>
+</div>
+{%- endif -%}
+</div>
+<style>
+.mpg-head{background:#F3ECE2;padding-block:clamp(5rem,8vw,9rem)}
+.mpg-title{margin:0;font-family:var(--font-heading-family);font-weight:500;font-size:clamp(3.6rem,6vw,7.2rem);line-height:1;letter-spacing:-.03em;color:#14272B;animation:mpgUp .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes mpgUp{from{opacity:0;transform:translateY(24px)}}
+.mpg-body{padding-block:clamp(4rem,6vw,8rem)}
+.mpg-rte{max-width:84rem;margin-inline:auto;font-size:1.6rem;line-height:1.75;color:rgba(20,39,43,.85)}
+.mpg-rte img{max-width:100%;height:auto;border-radius:2rem;display:block;margin:2.4rem 0;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.mpg-rte a.tt-img,.mpg-rte p:has(>img),.mpg-rte p:has(>a>img){display:block;overflow:hidden;border-radius:2rem;margin:2.4rem 0}
+.mpg-rte a.tt-img img,.mpg-rte p>img,.mpg-rte p>a>img{margin:0}
+@media (hover:hover){.mpg-rte a.tt-img:hover img,.mpg-rte p:has(>img):hover img{transform:scale(1.04)}}
+.mpg-rte a.tt-img[href="#"]{pointer-events:none}
+.mpg-rte h1,.mpg-rte h2,.mpg-rte h5,.mpg-rte h6,.mpg-rte .tt-title{font-family:var(--font-heading-family);font-weight:500;color:#14272B;letter-spacing:-.01em;text-transform:none}
+.mpg-rte h1{display:none}
+.mpg-rte h2{font-size:2.6rem;margin:3.2rem 0 1.2rem}
+.mpg-rte h6,.mpg-rte .tt-title,.mpg-rte h5{font-size:2.1rem;margin:3.2rem 0 1rem;padding-top:2.4rem;border-top:1px solid rgba(20,39,43,.12);scroll-margin-top:14rem}
+.mpg-rte h6 a,.mpg-rte .tt-title a{color:inherit;text-decoration:none;pointer-events:none}
+.mpg-rte ul ul{padding-inline-start:0}
+.mpg-rte ul{padding-inline-start:2rem}
+.mpg-rte a{color:#008F9D}
+.mpg-rte .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(26rem,1fr));gap:3.2rem}
+.mpg-rte .tt-box-thumb>.tt-title:first-of-type,.mpg-rte .tt-img+.tt-title{border-top:0;padding-top:0}
+.mpg-rte iframe{max-width:100%;border-radius:2rem}
+.mpg-rte p:empty,.mpg-rte blockquote:empty{display:none}
+/* reveal on scroll */
+.mpg-js .mpg-rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.mpg-js .mpg-rv.is-in{opacity:1;transform:none}
+/* chapter chips */
+.mpg-chaps{position:sticky;top:var(--mim-sticky-top,0);z-index:3;background:rgba(250,247,242,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(20,39,43,.08)}
+.mpg-chaps__row{display:flex;gap:.8rem;overflow-x:auto;padding-block:1.2rem;scrollbar-width:none}
+.mpg-chaps__row::-webkit-scrollbar{display:none}
+.mpg-chaps a{flex:none;padding:.7rem 1.4rem;border-radius:99px;background:#fff;border:1px solid rgba(20,39,43,.12);color:#14272B;font-size:1.35rem;text-decoration:none;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.mpg-chaps a.is-on{background:#008F9D;border-color:#008F9D;color:#fff}
+/* FAQ */
+.mpg-search{display:flex;align-items:center;gap:1rem;max-width:56rem;margin-top:2.4rem;padding:0 1.6rem;height:5.2rem;border-radius:99px;background:#fff;border:1px solid rgba(20,39,43,.12);color:#00737E;animation:mpgUp .8s .1s cubic-bezier(.2,.7,.2,1) both}
+.mpg-search:focus-within{border-color:#008F9D;box-shadow:0 0 0 4px rgba(0,143,157,.12)}
+.mpg-search input{flex:1;min-width:0;border:0;outline:0;background:none;font:inherit;font-size:1.6rem;color:#14272B}
+.mpg-faq{max-width:84rem;margin-inline:auto}
+.mpg-h{font-family:var(--font-heading-family);font-weight:500;font-size:2.4rem;color:#14272B;margin:0 0 1.6rem}
+.mpg-facts{margin-bottom:4.8rem}
+.mpg-facts ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(22rem,1fr));gap:1.2rem}
+.mpg-facts li{display:grid;grid-template-columns:auto 1fr;column-gap:1.2rem;align-items:start;padding:1.6rem;border-radius:1.6rem;background:#EEF6F7}
+.mpg-facts svg{grid-row:span 2;width:2.4rem;height:2.4rem;fill:none;stroke:#008F9D;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mpg-facts b{font-size:1.5rem;color:#14272B;font-weight:600}
+.mpg-facts span{font-size:1.35rem;line-height:1.5;color:rgba(20,39,43,.75)}
+.mpg-acc{border-bottom:1px solid rgba(20,39,43,.12)}
+.mpg-acc summary{display:flex;align-items:center;justify-content:space-between;gap:1.6rem;padding:2rem 0;cursor:pointer;list-style:none;font-family:var(--font-heading-family);font-size:1.9rem;font-weight:500;color:#14272B}
+.mpg-acc summary::-webkit-details-marker{display:none}
+.mpg-acc summary i{position:relative;flex:none;width:3.2rem;height:3.2rem;border-radius:50%;background:#F3ECE2;transition:background .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.mpg-acc summary i:before,.mpg-acc summary i:after{content:"";position:absolute;inset:50% auto auto 50%;width:1.2rem;height:1.5px;margin:-.75px 0 0 -.6rem;background:#14272B;transition:transform .4s cubic-bezier(.2,.7,.2,1),background .3s}
+.mpg-acc summary i:after{transform:rotate(90deg)}
+.mpg-acc[open] summary i{background:#008F9D;transform:rotate(180deg)}
+.mpg-acc[open] summary i:before,.mpg-acc[open] summary i:after{background:#fff}
+.mpg-acc[open] summary i:after{transform:rotate(0)}
+.mpg-acc summary:hover span{color:#00737E}
+.mpg-acc__body{overflow:hidden}
+.mpg-acc__body .rte{padding:0 0 2.2rem;font-size:1.55rem;line-height:1.75;color:rgba(20,39,43,.8)}
+.mpg-acc__body ul{margin:0;padding:0;list-style:none}
+.mpg-acc__body ul ul{padding:0}
+.mpg-acc__body p{margin:0 0 1rem}
+.mpg-acc__body a{color:#008F9D}
+.mpg-acc__body h1,.mpg-acc__body h2,.mpg-acc__body h6:empty,.mpg-acc__body p:empty{display:none}
+.mpg-acc.is-hidden{display:none}
+.mpg-acc mark{background:rgba(0,143,157,.16);color:inherit;border-radius:.3rem}
+.mpg-none{margin:2.4rem 0;padding:2rem;border-radius:1.6rem;background:#F3ECE2;font-size:1.5rem}
+.mpg-help{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.6rem;margin-top:4.8rem;padding:2.4rem;border-radius:2rem;background:#14272B;color:#fff}
+.mpg-help div{display:flex;flex-direction:column;gap:.4rem}
+.mpg-help b{font-family:var(--font-heading-family);font-size:2.1rem;font-weight:500}
+.mpg-help span{font-size:1.4rem;opacity:.8}
+.mpg-help p{display:flex;flex-wrap:wrap;gap:1rem;margin:0}
+.mpg-btn{display:inline-flex;align-items:center;min-height:4.4rem;padding:0 2rem;border-radius:99px;background:#25D366;color:#0B2E1A;font-size:1.45rem;font-weight:600;text-decoration:none;transition:transform .2s}
+.mpg-btn:hover{transform:translateY(-2px)}
+.mpg-btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+@media (prefers-reduced-motion:reduce){.mpg-js .mpg-rv{opacity:1;transform:none;transition:none}.mpg-title,.mpg-search{animation:none}.mpg-rte img{transition:none}}
+</style>
+<script>
+(function(){
+var root=document.currentScript.previousElementSibling.previousElementSibling;if(!root||!root.hasAttribute('data-mpg'))root=document.querySelector('[data-mpg]');if(!root)return;
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var rte=root.querySelector('[data-mpg-rte]');
+/* content pages: mark blocks for reveal + chapter chips */
+if(rte){
+  rte.querySelectorAll('.tt-box-thumb,.row>div>*,p,h2,h5,h6,.tt-title,img,ul,ol,table,iframe').forEach(function(el){if(!el.closest('.mpg-rv'))el.classList.add('mpg-rv');});
+  var heads=[].slice.call(rte.querySelectorAll('h2,h5,h6,.tt-title')).filter(function(h){return h.textContent.trim().length>1;});
+  var nav=root.querySelector('[data-chaps]');
+  if(nav&&heads.length>=3){
+    var row=nav.querySelector('.mpg-chaps__row');
+    heads.forEach(function(h,i){h.id=h.id||'ch-'+(i+1);var a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent.trim();row.appendChild(a);
+      a.addEventListener('click',function(e){e.preventDefault();h.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});history.replaceState(null,'','#'+h.id);});});
+    nav.hidden=false;
+    var links=row.querySelectorAll('a');
+    if('IntersectionObserver' in window){var spy=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){var i=heads.indexOf(e.target);links.forEach(function(l,j){l.classList.toggle('is-on',j===i);});var on=links[i];if(on)row.scrollTo({left:on.offsetLeft-row.clientWidth/2+on.offsetWidth/2,behavior:reduce?'auto':'smooth'});}});},{rootMargin:'-20% 0px -70% 0px'});heads.forEach(function(h){spy.observe(h);});}
+  }
+}
+/* reveal */
+if(!reduce&&'IntersectionObserver' in window){
+  root.classList.add('mpg-js');
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+  root.querySelectorAll('.mpg-rv').forEach(function(el,i){el.style.transitionDelay=Math.min(i%6,5)*60+'ms';io.observe(el);});
+}
+/* FAQ: fold text that sat under an empty heading into the question above it */
+var list=root.querySelector('[data-faq-list]');
+if(list){
+  list.querySelectorAll('[data-faq-more]').forEach(function(m){var prev=m.previousElementSibling;while(prev&&!prev.matches('details'))prev=prev.previousElementSibling;if(prev){prev.querySelector('.mpg-acc__body').appendChild(m.firstElementChild);}m.remove();});
+  /* smooth open/close (one open at a time) */
+  var all=list.querySelectorAll('details');
+  function anim(d,open){var b=d.querySelector('.mpg-acc__body');if(reduce||!b.animate){d.open=open;return;}
+    if(open){d.open=true;var h=b.scrollHeight;b.animate([{height:'0px',opacity:0},{height:h+'px',opacity:1}],{duration:380,easing:'cubic-bezier(.2,.7,.2,1)'});}
+    else{var h2=b.scrollHeight;var a=b.animate([{height:h2+'px',opacity:1},{height:'0px',opacity:0}],{duration:300,easing:'ease-in'});a.onfinish=function(){d.open=false;};}}
+  all.forEach(function(d){d.querySelector('summary').addEventListener('click',function(e){e.preventDefault();var open=!d.open;if(open)all.forEach(function(o){if(o!==d&&o.open)anim(o,false);});anim(d,open);});});
+  /* search */
+  var qi=root.querySelector('[data-faq-q]'),none=root.querySelector('[data-faq-none]');
+  if(qi){qi.addEventListener('input',function(){var q=qi.value.trim().toLowerCase(),shown=0;
+    all.forEach(function(d){var hit=!q||d.textContent.toLowerCase().indexOf(q)>-1;d.classList.toggle('is-hidden',!hit);if(hit){shown++;d.classList.add('is-in');}});
+    none.hidden=shown>0;if(q&&shown){var f=[].find.call(all,function(d){return !d.classList.contains('is-hidden');});if(f&&!f.open){all.forEach(function(o){o.open=false;});f.open=true;}}});}
+  if(location.hash){var t=document.getElementById(location.hash.slice(1));if(t&&t.matches('details'))t.open=true;}
+}
+})();
+</script>
+{%- endif -%}
+{% schema %}
+{
+"name": "MIM Page content",
+"tag": "section",
+"class": "section-mim-page",
+"settings": [
+{ "type": "text", "id": "skip_handle", "label": "Hide on page (handle)", "default": "our-story" }
+]
+}
+{% endschema %}

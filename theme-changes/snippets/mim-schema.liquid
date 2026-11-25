@@ -190,8 +190,8 @@ MIM structured data (JSON-LD), rendered once from layout/theme.liquid <head>. Al
 {%- endif -%}
 {%- if template.name == 'page' and page.handle == 'faqs' and page.content != blank -%}
 {%- liquid
-  assign mim_body = page.content | replace: '<p class="tt-title">', '<h6 class="tt-title">'
-  assign mim_parts = mim_body | split: '<h6 class="tt-title">'
+  assign mim_body = page.content | replace: '<p class="tt-title">', '§Q§' | replace: '<h6 class="tt-title">', '§Q§' | replace: '<h3>', '§Q§' | replace: '<h6>', '§Q§'
+  assign mim_parts = mim_body | split: '§Q§'
   assign mim_q = ''
   assign mim_a = ''
   assign mim_faq = ''
