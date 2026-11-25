@@ -38,6 +38,16 @@ When a product or image is added (or found missing these), fill in:
 9. **Colour option** named `Color` with plain colour names (e.g. `Cobalt Blue`, `Off White`) so swatches,
    colour dots and cross-sell colour matching work. Unknown names still get a multicolour swatch.
 
+10. **Google Merchant**: vendor `MIM Creative Wear`; Shopify taxonomy `category` set (Dresses aa-1-4, Tops aa-1-13,
+    Blouses aa-1-13-1, Pants aa-1-12, Kimono jackets aa-1-23-1-2, Ponchos aa-1-10-2-8, Vests aa-1-10-6, Coats & jackets
+    aa-1-10-2, Scarves aa-2-26, Tote bags lb-13, Crossbody aa-5-4-7, Shoulder bags aa-5-4-19, Handbags aa-5-4,
+    Laptop sleeves el-7-8-2-4, Tablet sleeves el-7-8-4-3, Pencil cases os-3-16, Pouches lb-3, Cushion covers hg-3-14);
+    metafields `mm-google-shopping.gender` (female; unisex for pouches/sleeves/home), `age_group` adult, `condition` new,
+    `custom_product` true (boolean, handmade, no GTIN).
+11. **Alt text template** (no style codes): first photo `{Name} – {print} {type}, handmade in Egypt by MIM Creative Wear`,
+    others `{Name} – {print} {type} by MIM Creative Wear, view N of M`.
+12. Empty collections and the Wishlist page carry `seo.hidden = 1` (noindex); remove it when a collection gets products.
+
 Never overwrite a field the owner already filled in by hand.
 
 ## Hand-printed only
