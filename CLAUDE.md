@@ -126,7 +126,10 @@ upload has no print at all, tell the owner instead of featuring it; don't change
 - Description: Shop hand-printed dresses, kimonos, tops, scarves & bags made in Egypt with cyanotype, eco & block prints. Sizes XS–3XL. Cash on delivery & worldwide shipping.
 
 ## Shipping (set 25 Nov 2026)
-- Egypt: Standard 85 EGP (2–5 days); free Standard over 2,999 EGP in Cairo & Giza only (incl. 6th of October, Helwan); Express 120 EGP (1–2 days). Local pickup off.
+- Egypt Standard (2–5 days): Cairo & Giza 85 EGP (incl. 6th of October, Helwan), free over 2,999 EGP in Cairo & Giza only;
+  Alexandria 120 EGP; rest of Egypt 150 EGP. Express 120 EGP (1–2 days) in Cairo & Giza only. Local pickup off.
+  Set in both delivery profiles that cover Egypt ("General profile" zones 1–7 and "Eu"). Keep the shipping policy, FAQ and the FAQ
+  quick facts (`mim-page`, a1) in line, in 4 languages.
 - Worldwide (all other countries): 1,200 EGP up to 4,000 EGP order, 3,200 EGP above. Charged in EGP (payment gateway is single-currency).
   International prices are +40% (Global market price list). Theme free-shipping bar (`mim-ship-bar`) must match 2,999.
 

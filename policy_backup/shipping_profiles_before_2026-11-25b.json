@@ -1,0 +1,3168 @@
+{
+ "data": {
+  "deliveryProfiles": {
+   "nodes": [
+    {
+     "id": "gid://shopify/DeliveryProfile/19146801255",
+     "name": "General profile",
+     "default": true,
+     "profileLocationGroups": [
+      {
+       "locationGroup": {
+        "id": "gid://shopify/DeliveryLocationGroup/19149029479"
+       },
+       "locationGroupZones": {
+        "nodes": [
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/38479134823",
+           "name": "Rest of world",
+           "countries": [
+            {
+             "code": {
+              "countryCode": null
+             },
+             "provinces": []
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918498574644",
+             "name": "International Shipping",
+             "active": true,
+             "description": null,
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849771823412",
+              "price": {
+               "amount": "1200.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "0.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              },
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "4000.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "LESS_THAN_OR_EQUAL_TO"
+              }
+             ]
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918498607412",
+             "name": "International Shipping",
+             "active": true,
+             "description": null,
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849771856180",
+              "price": {
+               "amount": "3200.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "4000.01",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              }
+             ]
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/38478970983",
+           "name": "Zone 1",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "EG"
+             },
+             "provinces": [
+              {
+               "name": "Cairo",
+               "code": "C"
+              },
+              {
+               "name": "Giza",
+               "code": "GZ"
+              },
+              {
+               "name": "6th of October",
+               "code": "SU"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918498967860",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772085556",
+              "price": {
+               "amount": "85.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "0.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              },
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "2999.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "LESS_THAN_OR_EQUAL_TO"
+              }
+             ]
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499000628",
+             "name": "Free Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772118324",
+              "price": {
+               "amount": "0.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "2999.01",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              }
+             ]
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499033396",
+             "name": "Express Shipping",
+             "active": true,
+             "description": "1–2 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772151092",
+              "price": {
+               "amount": "120.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/78800748647",
+           "name": "Zone 2",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "EG"
+             },
+             "provinces": [
+              {
+               "name": "Helwan",
+               "code": "HU"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499066164",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772183860",
+              "price": {
+               "amount": "85.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "0.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              },
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "2999.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "LESS_THAN_OR_EQUAL_TO"
+              }
+             ]
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499098932",
+             "name": "Free Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772216628",
+              "price": {
+               "amount": "0.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "2999.01",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              }
+             ]
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499131700",
+             "name": "Express Shipping",
+             "active": true,
+             "description": "1–2 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772249396",
+              "price": {
+               "amount": "120.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/78800814183",
+           "name": "Zone 3",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "EG"
+             },
+             "provinces": [
+              {
+               "name": "Alexandria",
+               "code": "ALX"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499230004",
+             "name": "Express Shipping",
+             "active": true,
+             "description": "1–2 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772347700",
+              "price": {
+               "amount": "120.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499754292",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772871988",
+              "price": {
+               "amount": "85.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/78800945255",
+           "name": "Zone 4",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "EG"
+             },
+             "provinces": [
+              {
+               "name": "Ismailia",
+               "code": "IS"
+              },
+              {
+               "name": "Port Said",
+               "code": "PTS"
+              },
+              {
+               "name": "Suez",
+               "code": "SUZ"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499328308",
+             "name": "Express Shipping",
+             "active": true,
+             "description": "1–2 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772446004",
+              "price": {
+               "amount": "120.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499787060",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772904756",
+              "price": {
+               "amount": "85.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/78801010791",
+           "name": "Zone 5",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "EG"
+             },
+             "provinces": [
+              {
+               "name": "Al Sharqia",
+               "code": "SHR"
+              },
+              {
+               "name": "Beheira",
+               "code": "BH"
+              },
+              {
+               "name": "Beni Suef",
+               "code": "BNS"
+              },
+              {
+               "name": "Dakahlia",
+               "code": "DK"
+              },
+              {
+               "name": "Damietta",
+               "code": "DT"
+              },
+              {
+               "name": "Gharbia",
+               "code": "GH"
+              },
+              {
+               "name": "Kafr el-Sheikh",
+               "code": "KFS"
+              },
+              {
+               "name": "Monufia",
+               "code": "MNF"
+              },
+              {
+               "name": "Qalyubia",
+               "code": "KB"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499426612",
+             "name": "Express Shipping",
+             "active": true,
+             "description": "1–2 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772544308",
+              "price": {
+               "amount": "120.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499819828",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772937524",
+              "price": {
+               "amount": "85.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/78801043559",
+           "name": "Zone 6",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "EG"
+             },
+             "provinces": [
+              {
+               "name": "Asyut",
+               "code": "AST"
+              },
+              {
+               "name": "Faiyum",
+               "code": "FYM"
+              },
+              {
+               "name": "Minya",
+               "code": "MN"
+              },
+              {
+               "name": "New Valley",
+               "code": "WAD"
+              },
+              {
+               "name": "Sohag",
+               "code": "SHG"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499524916",
+             "name": "Express Shipping",
+             "active": true,
+             "description": "1–2 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772642612",
+              "price": {
+               "amount": "120.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499852596",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772970292",
+              "price": {
+               "amount": "85.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/78801076327",
+           "name": "Zone 7",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "EG"
+             },
+             "provinces": [
+              {
+               "name": "Aswan",
+               "code": "ASN"
+              },
+              {
+               "name": "Luxor",
+               "code": "LX"
+              },
+              {
+               "name": "Matrouh",
+               "code": "MT"
+              },
+              {
+               "name": "Red Sea",
+               "code": "BA"
+              },
+              {
+               "name": "Qena",
+               "code": "KN"
+              },
+              {
+               "name": "North Sinai",
+               "code": "SIN"
+              },
+              {
+               "name": "South Sinai",
+               "code": "JS"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499623220",
+             "name": "Express Shipping",
+             "active": true,
+             "description": "1–2 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849772740916",
+              "price": {
+               "amount": "120.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499885364",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849773003060",
+              "price": {
+               "amount": "85.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/DeliveryProfile/77391069287",
+     "name": "international",
+     "default": false,
+     "profileLocationGroups": [
+      {
+       "locationGroup": {
+        "id": "gid://shopify/DeliveryLocationGroup/77997604967"
+       },
+       "locationGroupZones": {
+        "nodes": [
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/262153404519",
+           "name": "USA",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "US"
+             },
+             "provinces": [
+              {
+               "name": "Alabama",
+               "code": "AL"
+              },
+              {
+               "name": "Alaska",
+               "code": "AK"
+              },
+              {
+               "name": "American Samoa",
+               "code": "AS"
+              },
+              {
+               "name": "Arizona",
+               "code": "AZ"
+              },
+              {
+               "name": "Arkansas",
+               "code": "AR"
+              },
+              {
+               "name": "Armed Forces Americas",
+               "code": "AA"
+              },
+              {
+               "name": "Armed Forces Europe",
+               "code": "AE"
+              },
+              {
+               "name": "Armed Forces Pacific",
+               "code": "AP"
+              },
+              {
+               "name": "California",
+               "code": "CA"
+              },
+              {
+               "name": "Colorado",
+               "code": "CO"
+              },
+              {
+               "name": "Connecticut",
+               "code": "CT"
+              },
+              {
+               "name": "Delaware",
+               "code": "DE"
+              },
+              {
+               "name": "District of Columbia",
+               "code": "DC"
+              },
+              {
+               "name": "Federated States of Micronesia",
+               "code": "FM"
+              },
+              {
+               "name": "Florida",
+               "code": "FL"
+              },
+              {
+               "name": "Georgia",
+               "code": "GA"
+              },
+              {
+               "name": "Guam",
+               "code": "GU"
+              },
+              {
+               "name": "Hawaii",
+               "code": "HI"
+              },
+              {
+               "name": "Idaho",
+               "code": "ID"
+              },
+              {
+               "name": "Illinois",
+               "code": "IL"
+              },
+              {
+               "name": "Indiana",
+               "code": "IN"
+              },
+              {
+               "name": "Iowa",
+               "code": "IA"
+              },
+              {
+               "name": "Kansas",
+               "code": "KS"
+              },
+              {
+               "name": "Kentucky",
+               "code": "KY"
+              },
+              {
+               "name": "Louisiana",
+               "code": "LA"
+              },
+              {
+               "name": "Maine",
+               "code": "ME"
+              },
+              {
+               "name": "Marshall Islands",
+               "code": "MH"
+              },
+              {
+               "name": "Maryland",
+               "code": "MD"
+              },
+              {
+               "name": "Massachusetts",
+               "code": "MA"
+              },
+              {
+               "name": "Michigan",
+               "code": "MI"
+              },
+              {
+               "name": "Minnesota",
+               "code": "MN"
+              },
+              {
+               "name": "Mississippi",
+               "code": "MS"
+              },
+              {
+               "name": "Missouri",
+               "code": "MO"
+              },
+              {
+               "name": "Montana",
+               "code": "MT"
+              },
+              {
+               "name": "Nebraska",
+               "code": "NE"
+              },
+              {
+               "name": "Nevada",
+               "code": "NV"
+              },
+              {
+               "name": "New Hampshire",
+               "code": "NH"
+              },
+              {
+               "name": "New Jersey",
+               "code": "NJ"
+              },
+              {
+               "name": "New Mexico",
+               "code": "NM"
+              },
+              {
+               "name": "New York",
+               "code": "NY"
+              },
+              {
+               "name": "North Carolina",
+               "code": "NC"
+              },
+              {
+               "name": "North Dakota",
+               "code": "ND"
+              },
+              {
+               "name": "Northern Mariana Islands",
+               "code": "MP"
+              },
+              {
+               "name": "Ohio",
+               "code": "OH"
+              },
+              {
+               "name": "Oklahoma",
+               "code": "OK"
+              },
+              {
+               "name": "Oregon",
+               "code": "OR"
+              },
+              {
+               "name": "Palau",
+               "code": "PW"
+              },
+              {
+               "name": "Pennsylvania",
+               "code": "PA"
+              },
+              {
+               "name": "Puerto Rico",
+               "code": "PR"
+              },
+              {
+               "name": "Rhode Island",
+               "code": "RI"
+              },
+              {
+               "name": "South Carolina",
+               "code": "SC"
+              },
+              {
+               "name": "South Dakota",
+               "code": "SD"
+              },
+              {
+               "name": "Tennessee",
+               "code": "TN"
+              },
+              {
+               "name": "Texas",
+               "code": "TX"
+              },
+              {
+               "name": "Utah",
+               "code": "UT"
+              },
+              {
+               "name": "Vermont",
+               "code": "VT"
+              },
+              {
+               "name": "Virgin Islands",
+               "code": "VI"
+              },
+              {
+               "name": "Virginia",
+               "code": "VA"
+              },
+              {
+               "name": "Washington",
+               "code": "WA"
+              },
+              {
+               "name": "West Virginia",
+               "code": "WV"
+              },
+              {
+               "name": "Wisconsin",
+               "code": "WI"
+              },
+              {
+               "name": "Wyoming",
+               "code": "WY"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/413329031271",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": null,
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/361912172647",
+              "price": {
+               "amount": "900.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/DeliveryProfile/99936633140",
+     "name": "Eu",
+     "default": false,
+     "profileLocationGroups": [
+      {
+       "locationGroup": {
+        "id": "gid://shopify/DeliveryLocationGroup/101101076788"
+       },
+       "locationGroupZones": {
+        "nodes": [
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/526264598836",
+           "name": "Cairo & Giza",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "EG"
+             },
+             "provinces": [
+              {
+               "name": "6th of October",
+               "code": "SU"
+              },
+              {
+               "name": "Cairo",
+               "code": "C"
+              },
+              {
+               "name": "Giza",
+               "code": "GZ"
+              },
+              {
+               "name": "Helwan",
+               "code": "HU"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499983668",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849773101364",
+              "price": {
+               "amount": "85.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "0.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              },
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "2999.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "LESS_THAN_OR_EQUAL_TO"
+              }
+             ]
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918500016436",
+             "name": "Free Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849773134132",
+              "price": {
+               "amount": "0.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "2999.01",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              }
+             ]
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918500049204",
+             "name": "Express Shipping",
+             "active": true,
+             "description": "1–2 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849773166900",
+              "price": {
+               "amount": "120.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/526264566068",
+           "name": "Egypt other",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "EG"
+             },
+             "provinces": [
+              {
+               "name": "Al Sharqia",
+               "code": "SHR"
+              },
+              {
+               "name": "Alexandria",
+               "code": "ALX"
+              },
+              {
+               "name": "Aswan",
+               "code": "ASN"
+              },
+              {
+               "name": "Asyut",
+               "code": "AST"
+              },
+              {
+               "name": "Beheira",
+               "code": "BH"
+              },
+              {
+               "name": "Beni Suef",
+               "code": "BNS"
+              },
+              {
+               "name": "Dakahlia",
+               "code": "DK"
+              },
+              {
+               "name": "Damietta",
+               "code": "DT"
+              },
+              {
+               "name": "Faiyum",
+               "code": "FYM"
+              },
+              {
+               "name": "Gharbia",
+               "code": "GH"
+              },
+              {
+               "name": "Ismailia",
+               "code": "IS"
+              },
+              {
+               "name": "Kafr el-Sheikh",
+               "code": "KFS"
+              },
+              {
+               "name": "Luxor",
+               "code": "LX"
+              },
+              {
+               "name": "Matrouh",
+               "code": "MT"
+              },
+              {
+               "name": "Minya",
+               "code": "MN"
+              },
+              {
+               "name": "Monufia",
+               "code": "MNF"
+              },
+              {
+               "name": "New Valley",
+               "code": "WAD"
+              },
+              {
+               "name": "North Sinai",
+               "code": "SIN"
+              },
+              {
+               "name": "Port Said",
+               "code": "PTS"
+              },
+              {
+               "name": "Qalyubia",
+               "code": "KB"
+              },
+              {
+               "name": "Qena",
+               "code": "KN"
+              },
+              {
+               "name": "Red Sea",
+               "code": "BA"
+              },
+              {
+               "name": "Sohag",
+               "code": "SHG"
+              },
+              {
+               "name": "South Sinai",
+               "code": "JS"
+              },
+              {
+               "name": "Suez",
+               "code": "SUZ"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499918132",
+             "name": "Standard Shipping",
+             "active": true,
+             "description": "2–5 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849773035828",
+              "price": {
+               "amount": "85.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918499950900",
+             "name": "Express Shipping",
+             "active": true,
+             "description": "1–2 business days",
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849773068596",
+              "price": {
+               "amount": "120.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": []
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/452901142836",
+           "name": "Euro",
+           "countries": [
+            {
+             "code": {
+              "countryCode": "AR"
+             },
+             "provinces": [
+              {
+               "name": "Buenos Aires",
+               "code": "B"
+              },
+              {
+               "name": "Catamarca",
+               "code": "K"
+              },
+              {
+               "name": "Chaco",
+               "code": "H"
+              },
+              {
+               "name": "Chubut",
+               "code": "U"
+              },
+              {
+               "name": "Ciudad Autónoma de Buenos Aires",
+               "code": "C"
+              },
+              {
+               "name": "Córdoba",
+               "code": "X"
+              },
+              {
+               "name": "Corrientes",
+               "code": "W"
+              },
+              {
+               "name": "Entre Ríos",
+               "code": "E"
+              },
+              {
+               "name": "Formosa",
+               "code": "P"
+              },
+              {
+               "name": "Jujuy",
+               "code": "Y"
+              },
+              {
+               "name": "La Pampa",
+               "code": "L"
+              },
+              {
+               "name": "La Rioja",
+               "code": "F"
+              },
+              {
+               "name": "Mendoza",
+               "code": "M"
+              },
+              {
+               "name": "Misiones",
+               "code": "N"
+              },
+              {
+               "name": "Neuquén",
+               "code": "Q"
+              },
+              {
+               "name": "Río Negro",
+               "code": "R"
+              },
+              {
+               "name": "Salta",
+               "code": "A"
+              },
+              {
+               "name": "San Juan",
+               "code": "J"
+              },
+              {
+               "name": "San Luis",
+               "code": "D"
+              },
+              {
+               "name": "Santa Cruz",
+               "code": "Z"
+              },
+              {
+               "name": "Santa Fe",
+               "code": "S"
+              },
+              {
+               "name": "Santiago Del Estero",
+               "code": "G"
+              },
+              {
+               "name": "Tierra Del Fuego",
+               "code": "V"
+              },
+              {
+               "name": "Tucumán",
+               "code": "T"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "AM"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "CA"
+             },
+             "provinces": [
+              {
+               "name": "Alberta",
+               "code": "AB"
+              },
+              {
+               "name": "British Columbia",
+               "code": "BC"
+              },
+              {
+               "name": "Manitoba",
+               "code": "MB"
+              },
+              {
+               "name": "New Brunswick",
+               "code": "NB"
+              },
+              {
+               "name": "Newfoundland and Labrador",
+               "code": "NL"
+              },
+              {
+               "name": "Northwest Territories",
+               "code": "NT"
+              },
+              {
+               "name": "Nova Scotia",
+               "code": "NS"
+              },
+              {
+               "name": "Nunavut",
+               "code": "NU"
+              },
+              {
+               "name": "Ontario",
+               "code": "ON"
+              },
+              {
+               "name": "Prince Edward Island",
+               "code": "PE"
+              },
+              {
+               "name": "Quebec",
+               "code": "QC"
+              },
+              {
+               "name": "Saskatchewan",
+               "code": "SK"
+              },
+              {
+               "name": "Yukon",
+               "code": "YT"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "BQ"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "DK"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "FI"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "FR"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "GE"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "DE"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "GR"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "GL"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "HU"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "IS"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "IE"
+             },
+             "provinces": [
+              {
+               "name": "Carlow",
+               "code": "CW"
+              },
+              {
+               "name": "Cavan",
+               "code": "CN"
+              },
+              {
+               "name": "Clare",
+               "code": "CE"
+              },
+              {
+               "name": "Cork",
+               "code": "CO"
+              },
+              {
+               "name": "Donegal",
+               "code": "DL"
+              },
+              {
+               "name": "Dublin",
+               "code": "D"
+              },
+              {
+               "name": "Galway",
+               "code": "G"
+              },
+              {
+               "name": "Kerry",
+               "code": "KY"
+              },
+              {
+               "name": "Kildare",
+               "code": "KE"
+              },
+              {
+               "name": "Kilkenny",
+               "code": "KK"
+              },
+              {
+               "name": "Laois",
+               "code": "LS"
+              },
+              {
+               "name": "Leitrim",
+               "code": "LM"
+              },
+              {
+               "name": "Limerick",
+               "code": "LK"
+              },
+              {
+               "name": "Longford",
+               "code": "LD"
+              },
+              {
+               "name": "Louth",
+               "code": "LH"
+              },
+              {
+               "name": "Mayo",
+               "code": "MO"
+              },
+              {
+               "name": "Meath",
+               "code": "MH"
+              },
+              {
+               "name": "Monaghan",
+               "code": "MN"
+              },
+              {
+               "name": "Offaly",
+               "code": "OY"
+              },
+              {
+               "name": "Roscommon",
+               "code": "RN"
+              },
+              {
+               "name": "Sligo",
+               "code": "SO"
+              },
+              {
+               "name": "Tipperary",
+               "code": "TA"
+              },
+              {
+               "name": "Waterford",
+               "code": "WD"
+              },
+              {
+               "name": "Westmeath",
+               "code": "WH"
+              },
+              {
+               "name": "Wexford",
+               "code": "WX"
+              },
+              {
+               "name": "Wicklow",
+               "code": "WW"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "IM"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "IT"
+             },
+             "provinces": [
+              {
+               "name": "Agrigento",
+               "code": "AG"
+              },
+              {
+               "name": "Alessandria",
+               "code": "AL"
+              },
+              {
+               "name": "Ancona",
+               "code": "AN"
+              },
+              {
+               "name": "Aosta",
+               "code": "AO"
+              },
+              {
+               "name": "Arezzo",
+               "code": "AR"
+              },
+              {
+               "name": "Ascoli Piceno",
+               "code": "AP"
+              },
+              {
+               "name": "Asti",
+               "code": "AT"
+              },
+              {
+               "name": "Avellino",
+               "code": "AV"
+              },
+              {
+               "name": "Bari",
+               "code": "BA"
+              },
+              {
+               "name": "Barletta-Andria-Trani",
+               "code": "BT"
+              },
+              {
+               "name": "Belluno",
+               "code": "BL"
+              },
+              {
+               "name": "Benevento",
+               "code": "BN"
+              },
+              {
+               "name": "Bergamo",
+               "code": "BG"
+              },
+              {
+               "name": "Biella",
+               "code": "BI"
+              },
+              {
+               "name": "Bologna",
+               "code": "BO"
+              },
+              {
+               "name": "Bolzano",
+               "code": "BZ"
+              },
+              {
+               "name": "Brescia",
+               "code": "BS"
+              },
+              {
+               "name": "Brindisi",
+               "code": "BR"
+              },
+              {
+               "name": "Cagliari",
+               "code": "CA"
+              },
+              {
+               "name": "Caltanissetta",
+               "code": "CL"
+              },
+              {
+               "name": "Campobasso",
+               "code": "CB"
+              },
+              {
+               "name": "Carbonia-Iglesias",
+               "code": "CI"
+              },
+              {
+               "name": "Caserta",
+               "code": "CE"
+              },
+              {
+               "name": "Catania",
+               "code": "CT"
+              },
+              {
+               "name": "Catanzaro",
+               "code": "CZ"
+              },
+              {
+               "name": "Chieti",
+               "code": "CH"
+              },
+              {
+               "name": "Como",
+               "code": "CO"
+              },
+              {
+               "name": "Cosenza",
+               "code": "CS"
+              },
+              {
+               "name": "Cremona",
+               "code": "CR"
+              },
+              {
+               "name": "Crotone",
+               "code": "KR"
+              },
+              {
+               "name": "Cuneo",
+               "code": "CN"
+              },
+              {
+               "name": "Enna",
+               "code": "EN"
+              },
+              {
+               "name": "Fermo",
+               "code": "FM"
+              },
+              {
+               "name": "Ferrara",
+               "code": "FE"
+              },
+              {
+               "name": "Firenze",
+               "code": "FI"
+              },
+              {
+               "name": "Foggia",
+               "code": "FG"
+              },
+              {
+               "name": "Forlì-Cesena",
+               "code": "FC"
+              },
+              {
+               "name": "Frosinone",
+               "code": "FR"
+              },
+              {
+               "name": "Genova",
+               "code": "GE"
+              },
+              {
+               "name": "Gorizia",
+               "code": "GO"
+              },
+              {
+               "name": "Grosseto",
+               "code": "GR"
+              },
+              {
+               "name": "Imperia",
+               "code": "IM"
+              },
+              {
+               "name": "Isernia",
+               "code": "IS"
+              },
+              {
+               "name": "L'Aquila",
+               "code": "AQ"
+              },
+              {
+               "name": "La Spezia",
+               "code": "SP"
+              },
+              {
+               "name": "Latina",
+               "code": "LT"
+              },
+              {
+               "name": "Lecce",
+               "code": "LE"
+              },
+              {
+               "name": "Lecco",
+               "code": "LC"
+              },
+              {
+               "name": "Livorno",
+               "code": "LI"
+              },
+              {
+               "name": "Lodi",
+               "code": "LO"
+              },
+              {
+               "name": "Lucca",
+               "code": "LU"
+              },
+              {
+               "name": "Macerata",
+               "code": "MC"
+              },
+              {
+               "name": "Mantova",
+               "code": "MN"
+              },
+              {
+               "name": "Massa-Carrara",
+               "code": "MS"
+              },
+              {
+               "name": "Matera",
+               "code": "MT"
+              },
+              {
+               "name": "Medio Campidano",
+               "code": "VS"
+              },
+              {
+               "name": "Messina",
+               "code": "ME"
+              },
+              {
+               "name": "Milano",
+               "code": "MI"
+              },
+              {
+               "name": "Modena",
+               "code": "MO"
+              },
+              {
+               "name": "Monza e Brianza",
+               "code": "MB"
+              },
+              {
+               "name": "Napoli",
+               "code": "NA"
+              },
+              {
+               "name": "Novara",
+               "code": "NO"
+              },
+              {
+               "name": "Nuoro",
+               "code": "NU"
+              },
+              {
+               "name": "Ogliastra",
+               "code": "OG"
+              },
+              {
+               "name": "Olbia-Tempio",
+               "code": "OT"
+              },
+              {
+               "name": "Oristano",
+               "code": "OR"
+              },
+              {
+               "name": "Padova",
+               "code": "PD"
+              },
+              {
+               "name": "Palermo",
+               "code": "PA"
+              },
+              {
+               "name": "Parma",
+               "code": "PR"
+              },
+              {
+               "name": "Pavia",
+               "code": "PV"
+              },
+              {
+               "name": "Perugia",
+               "code": "PG"
+              },
+              {
+               "name": "Pesaro e Urbino",
+               "code": "PU"
+              },
+              {
+               "name": "Pescara",
+               "code": "PE"
+              },
+              {
+               "name": "Piacenza",
+               "code": "PC"
+              },
+              {
+               "name": "Pisa",
+               "code": "PI"
+              },
+              {
+               "name": "Pistoia",
+               "code": "PT"
+              },
+              {
+               "name": "Pordenone",
+               "code": "PN"
+              },
+              {
+               "name": "Potenza",
+               "code": "PZ"
+              },
+              {
+               "name": "Prato",
+               "code": "PO"
+              },
+              {
+               "name": "Ragusa",
+               "code": "RG"
+              },
+              {
+               "name": "Ravenna",
+               "code": "RA"
+              },
+              {
+               "name": "Reggio Calabria",
+               "code": "RC"
+              },
+              {
+               "name": "Reggio Emilia",
+               "code": "RE"
+              },
+              {
+               "name": "Rieti",
+               "code": "RI"
+              },
+              {
+               "name": "Rimini",
+               "code": "RN"
+              },
+              {
+               "name": "Roma",
+               "code": "RM"
+              },
+              {
+               "name": "Rovigo",
+               "code": "RO"
+              },
+              {
+               "name": "Salerno",
+               "code": "SA"
+              },
+              {
+               "name": "Sassari",
+               "code": "SS"
+              },
+              {
+               "name": "Savona",
+               "code": "SV"
+              },
+              {
+               "name": "Siena",
+               "code": "SI"
+              },
+              {
+               "name": "Siracusa",
+               "code": "SR"
+              },
+              {
+               "name": "Sondrio",
+               "code": "SO"
+              },
+              {
+               "name": "Taranto",
+               "code": "TA"
+              },
+              {
+               "name": "Teramo",
+               "code": "TE"
+              },
+              {
+               "name": "Terni",
+               "code": "TR"
+              },
+              {
+               "name": "Torino",
+               "code": "TO"
+              },
+              {
+               "name": "Trapani",
+               "code": "TP"
+              },
+              {
+               "name": "Trento",
+               "code": "TN"
+              },
+              {
+               "name": "Treviso",
+               "code": "TV"
+              },
+              {
+               "name": "Trieste",
+               "code": "TS"
+              },
+              {
+               "name": "Udine",
+               "code": "UD"
+              },
+              {
+               "name": "Varese",
+               "code": "VA"
+              },
+              {
+               "name": "Venezia",
+               "code": "VE"
+              },
+              {
+               "name": "Verbano-Cusio-Ossola",
+               "code": "VB"
+              },
+              {
+               "name": "Vercelli",
+               "code": "VC"
+              },
+              {
+               "name": "Verona",
+               "code": "VR"
+              },
+              {
+               "name": "Vibo Valentia",
+               "code": "VV"
+              },
+              {
+               "name": "Vicenza",
+               "code": "VI"
+              },
+              {
+               "name": "Viterbo",
+               "code": "VT"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "JM"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "MT"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "MQ"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "YT"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "MX"
+             },
+             "provinces": [
+              {
+               "name": "Aguascalientes",
+               "code": "AGS"
+              },
+              {
+               "name": "Baja California",
+               "code": "BC"
+              },
+              {
+               "name": "Baja California Sur",
+               "code": "BCS"
+              },
+              {
+               "name": "Campeche",
+               "code": "CAMP"
+              },
+              {
+               "name": "Chiapas",
+               "code": "CHIS"
+              },
+              {
+               "name": "Chihuahua",
+               "code": "CHIH"
+              },
+              {
+               "name": "Ciudad de México",
+               "code": "DF"
+              },
+              {
+               "name": "Coahuila",
+               "code": "COAH"
+              },
+              {
+               "name": "Colima",
+               "code": "COL"
+              },
+              {
+               "name": "Durango",
+               "code": "DGO"
+              },
+              {
+               "name": "Guanajuato",
+               "code": "GTO"
+              },
+              {
+               "name": "Guerrero",
+               "code": "GRO"
+              },
+              {
+               "name": "Hidalgo",
+               "code": "HGO"
+              },
+              {
+               "name": "Jalisco",
+               "code": "JAL"
+              },
+              {
+               "name": "México",
+               "code": "MEX"
+              },
+              {
+               "name": "Michoacán",
+               "code": "MICH"
+              },
+              {
+               "name": "Morelos",
+               "code": "MOR"
+              },
+              {
+               "name": "Nayarit",
+               "code": "NAY"
+              },
+              {
+               "name": "Nuevo León",
+               "code": "NL"
+              },
+              {
+               "name": "Oaxaca",
+               "code": "OAX"
+              },
+              {
+               "name": "Puebla",
+               "code": "PUE"
+              },
+              {
+               "name": "Querétaro",
+               "code": "QRO"
+              },
+              {
+               "name": "Quintana Roo",
+               "code": "Q ROO"
+              },
+              {
+               "name": "San Luis Potosí",
+               "code": "SLP"
+              },
+              {
+               "name": "Sinaloa",
+               "code": "SIN"
+              },
+              {
+               "name": "Sonora",
+               "code": "SON"
+              },
+              {
+               "name": "Tabasco",
+               "code": "TAB"
+              },
+              {
+               "name": "Tamaulipas",
+               "code": "TAMPS"
+              },
+              {
+               "name": "Tlaxcala",
+               "code": "TLAX"
+              },
+              {
+               "name": "Veracruz",
+               "code": "VER"
+              },
+              {
+               "name": "Yucatán",
+               "code": "YUC"
+              },
+              {
+               "name": "Zacatecas",
+               "code": "ZAC"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "NL"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "MK"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "PA"
+             },
+             "provinces": [
+              {
+               "name": "Bocas del Toro",
+               "code": "PA-1"
+              },
+              {
+               "name": "Chiriquí",
+               "code": "PA-4"
+              },
+              {
+               "name": "Coclé",
+               "code": "PA-2"
+              },
+              {
+               "name": "Colón",
+               "code": "PA-3"
+              },
+              {
+               "name": "Darién",
+               "code": "PA-5"
+              },
+              {
+               "name": "Emberá",
+               "code": "PA-EM"
+              },
+              {
+               "name": "Herrera",
+               "code": "PA-6"
+              },
+              {
+               "name": "Kuna Yala",
+               "code": "PA-KY"
+              },
+              {
+               "name": "Los Santos",
+               "code": "PA-7"
+              },
+              {
+               "name": "Ngöbe-Buglé",
+               "code": "PA-NB"
+              },
+              {
+               "name": "Panamá",
+               "code": "PA-8"
+              },
+              {
+               "name": "Panamá Oeste",
+               "code": "PA-10"
+              },
+              {
+               "name": "Veraguas",
+               "code": "PA-9"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "PG"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "PY"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "PE"
+             },
+             "provinces": [
+              {
+               "name": "Amazonas",
+               "code": "PE-AMA"
+              },
+              {
+               "name": "Áncash",
+               "code": "PE-ANC"
+              },
+              {
+               "name": "Apurímac",
+               "code": "PE-APU"
+              },
+              {
+               "name": "Arequipa",
+               "code": "PE-ARE"
+              },
+              {
+               "name": "Ayacucho",
+               "code": "PE-AYA"
+              },
+              {
+               "name": "Cajamarca",
+               "code": "PE-CAJ"
+              },
+              {
+               "name": "Callao",
+               "code": "PE-CAL"
+              },
+              {
+               "name": "Cuzco",
+               "code": "PE-CUS"
+              },
+              {
+               "name": "Huancavelica",
+               "code": "PE-HUV"
+              },
+              {
+               "name": "Huánuco",
+               "code": "PE-HUC"
+              },
+              {
+               "name": "Ica",
+               "code": "PE-ICA"
+              },
+              {
+               "name": "Junín",
+               "code": "PE-JUN"
+              },
+              {
+               "name": "La Libertad",
+               "code": "PE-LAL"
+              },
+              {
+               "name": "Lambayeque",
+               "code": "PE-LAM"
+              },
+              {
+               "name": "Lima (departamento)",
+               "code": "PE-LIM"
+              },
+              {
+               "name": "Lima (provincia)",
+               "code": "PE-LMA"
+              },
+              {
+               "name": "Loreto",
+               "code": "PE-LOR"
+              },
+              {
+               "name": "Madre de Dios",
+               "code": "PE-MDD"
+              },
+              {
+               "name": "Moquegua",
+               "code": "PE-MOQ"
+              },
+              {
+               "name": "Pasco",
+               "code": "PE-PAS"
+              },
+              {
+               "name": "Piura",
+               "code": "PE-PIU"
+              },
+              {
+               "name": "Puno",
+               "code": "PE-PUN"
+              },
+              {
+               "name": "San Martín",
+               "code": "PE-SAM"
+              },
+              {
+               "name": "Tacna",
+               "code": "PE-TAC"
+              },
+              {
+               "name": "Tumbes",
+               "code": "PE-TUM"
+              },
+              {
+               "name": "Ucayali",
+               "code": "PE-UCA"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "PL"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "PT"
+             },
+             "provinces": [
+              {
+               "name": "Açores",
+               "code": "PT-20"
+              },
+              {
+               "name": "Aveiro",
+               "code": "PT-01"
+              },
+              {
+               "name": "Beja",
+               "code": "PT-02"
+              },
+              {
+               "name": "Braga",
+               "code": "PT-03"
+              },
+              {
+               "name": "Bragança",
+               "code": "PT-04"
+              },
+              {
+               "name": "Castelo Branco",
+               "code": "PT-05"
+              },
+              {
+               "name": "Coimbra",
+               "code": "PT-06"
+              },
+              {
+               "name": "Évora",
+               "code": "PT-07"
+              },
+              {
+               "name": "Faro",
+               "code": "PT-08"
+              },
+              {
+               "name": "Guarda",
+               "code": "PT-09"
+              },
+              {
+               "name": "Leiria",
+               "code": "PT-10"
+              },
+              {
+               "name": "Lisboa",
+               "code": "PT-11"
+              },
+              {
+               "name": "Madeira",
+               "code": "PT-30"
+              },
+              {
+               "name": "Portalegre",
+               "code": "PT-12"
+              },
+              {
+               "name": "Porto",
+               "code": "PT-13"
+              },
+              {
+               "name": "Santarém",
+               "code": "PT-14"
+              },
+              {
+               "name": "Setúbal",
+               "code": "PT-15"
+              },
+              {
+               "name": "Viana do Castelo",
+               "code": "PT-16"
+              },
+              {
+               "name": "Vila Real",
+               "code": "PT-17"
+              },
+              {
+               "name": "Viseu",
+               "code": "PT-18"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "GS"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "ES"
+             },
+             "provinces": [
+              {
+               "name": "A Coruña",
+               "code": "C"
+              },
+              {
+               "name": "Álava",
+               "code": "VI"
+              },
+              {
+               "name": "Albacete",
+               "code": "AB"
+              },
+              {
+               "name": "Alicante",
+               "code": "A"
+              },
+              {
+               "name": "Almería",
+               "code": "AL"
+              },
+              {
+               "name": "Asturias",
+               "code": "O"
+              },
+              {
+               "name": "Ávila",
+               "code": "AV"
+              },
+              {
+               "name": "Badajoz",
+               "code": "BA"
+              },
+              {
+               "name": "Balears",
+               "code": "PM"
+              },
+              {
+               "name": "Barcelona",
+               "code": "B"
+              },
+              {
+               "name": "Burgos",
+               "code": "BU"
+              },
+              {
+               "name": "Cáceres",
+               "code": "CC"
+              },
+              {
+               "name": "Cádiz",
+               "code": "CA"
+              },
+              {
+               "name": "Cantabria",
+               "code": "S"
+              },
+              {
+               "name": "Castellón",
+               "code": "CS"
+              },
+              {
+               "name": "Ceuta",
+               "code": "CE"
+              },
+              {
+               "name": "Ciudad Real",
+               "code": "CR"
+              },
+              {
+               "name": "Córdoba",
+               "code": "CO"
+              },
+              {
+               "name": "Cuenca",
+               "code": "CU"
+              },
+              {
+               "name": "Girona",
+               "code": "GI"
+              },
+              {
+               "name": "Granada",
+               "code": "GR"
+              },
+              {
+               "name": "Guadalajara",
+               "code": "GU"
+              },
+              {
+               "name": "Guipúzcoa",
+               "code": "SS"
+              },
+              {
+               "name": "Huelva",
+               "code": "H"
+              },
+              {
+               "name": "Huesca",
+               "code": "HU"
+              },
+              {
+               "name": "Jaén",
+               "code": "J"
+              },
+              {
+               "name": "La Rioja",
+               "code": "LO"
+              },
+              {
+               "name": "Las Palmas",
+               "code": "GC"
+              },
+              {
+               "name": "León",
+               "code": "LE"
+              },
+              {
+               "name": "Lleida",
+               "code": "L"
+              },
+              {
+               "name": "Lugo",
+               "code": "LU"
+              },
+              {
+               "name": "Madrid",
+               "code": "M"
+              },
+              {
+               "name": "Málaga",
+               "code": "MA"
+              },
+              {
+               "name": "Melilla",
+               "code": "ML"
+              },
+              {
+               "name": "Murcia",
+               "code": "MU"
+              },
+              {
+               "name": "Navarra",
+               "code": "NA"
+              },
+              {
+               "name": "Ourense",
+               "code": "OR"
+              },
+              {
+               "name": "Palencia",
+               "code": "P"
+              },
+              {
+               "name": "Pontevedra",
+               "code": "PO"
+              },
+              {
+               "name": "Salamanca",
+               "code": "SA"
+              },
+              {
+               "name": "Santa Cruz de Tenerife",
+               "code": "TF"
+              },
+              {
+               "name": "Segovia",
+               "code": "SG"
+              },
+              {
+               "name": "Sevilla",
+               "code": "SE"
+              },
+              {
+               "name": "Soria",
+               "code": "SO"
+              },
+              {
+               "name": "Tarragona",
+               "code": "T"
+              },
+              {
+               "name": "Teruel",
+               "code": "TE"
+              },
+              {
+               "name": "Toledo",
+               "code": "TO"
+              },
+              {
+               "name": "Valencia",
+               "code": "V"
+              },
+              {
+               "name": "Valladolid",
+               "code": "VA"
+              },
+              {
+               "name": "Vizcaya",
+               "code": "BI"
+              },
+              {
+               "name": "Zamora",
+               "code": "ZA"
+              },
+              {
+               "name": "Zaragoza",
+               "code": "Z"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "SE"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "CH"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "TR"
+             },
+             "provinces": [
+              {
+               "name": "Adana",
+               "code": "TR-01"
+              },
+              {
+               "name": "Adıyaman",
+               "code": "TR-02"
+              },
+              {
+               "name": "Afyonkarahisar",
+               "code": "TR-03"
+              },
+              {
+               "name": "Ağrı",
+               "code": "TR-04"
+              },
+              {
+               "name": "Aksaray",
+               "code": "TR-68"
+              },
+              {
+               "name": "Amasya",
+               "code": "TR-05"
+              },
+              {
+               "name": "Ankara",
+               "code": "TR-06"
+              },
+              {
+               "name": "Antalya",
+               "code": "TR-07"
+              },
+              {
+               "name": "Ardahan",
+               "code": "TR-75"
+              },
+              {
+               "name": "Artvin",
+               "code": "TR-08"
+              },
+              {
+               "name": "Aydın",
+               "code": "TR-09"
+              },
+              {
+               "name": "Balıkesir",
+               "code": "TR-10"
+              },
+              {
+               "name": "Bartın",
+               "code": "TR-74"
+              },
+              {
+               "name": "Batman",
+               "code": "TR-72"
+              },
+              {
+               "name": "Bayburt",
+               "code": "TR-69"
+              },
+              {
+               "name": "Bilecik",
+               "code": "TR-11"
+              },
+              {
+               "name": "Bingöl",
+               "code": "TR-12"
+              },
+              {
+               "name": "Bitlis",
+               "code": "TR-13"
+              },
+              {
+               "name": "Bolu",
+               "code": "TR-14"
+              },
+              {
+               "name": "Burdur",
+               "code": "TR-15"
+              },
+              {
+               "name": "Bursa",
+               "code": "TR-16"
+              },
+              {
+               "name": "Çanakkale",
+               "code": "TR-17"
+              },
+              {
+               "name": "Çankırı",
+               "code": "TR-18"
+              },
+              {
+               "name": "Çorum",
+               "code": "TR-19"
+              },
+              {
+               "name": "Denizli",
+               "code": "TR-20"
+              },
+              {
+               "name": "Diyarbakır",
+               "code": "TR-21"
+              },
+              {
+               "name": "Düzce",
+               "code": "TR-81"
+              },
+              {
+               "name": "Edirne",
+               "code": "TR-22"
+              },
+              {
+               "name": "Elazığ",
+               "code": "TR-23"
+              },
+              {
+               "name": "Erzincan",
+               "code": "TR-24"
+              },
+              {
+               "name": "Erzurum",
+               "code": "TR-25"
+              },
+              {
+               "name": "Eskişehir",
+               "code": "TR-26"
+              },
+              {
+               "name": "Gaziantep",
+               "code": "TR-27"
+              },
+              {
+               "name": "Giresun",
+               "code": "TR-28"
+              },
+              {
+               "name": "Gümüşhane",
+               "code": "TR-29"
+              },
+              {
+               "name": "Hakkâri",
+               "code": "TR-30"
+              },
+              {
+               "name": "Hatay",
+               "code": "TR-31"
+              },
+              {
+               "name": "Iğdır",
+               "code": "TR-76"
+              },
+              {
+               "name": "Isparta",
+               "code": "TR-32"
+              },
+              {
+               "name": "Istanbul",
+               "code": "TR-34"
+              },
+              {
+               "name": "Izmir",
+               "code": "TR-35"
+              },
+              {
+               "name": "Kahramanmaraş",
+               "code": "TR-46"
+              },
+              {
+               "name": "Karabük",
+               "code": "TR-78"
+              },
+              {
+               "name": "Karaman",
+               "code": "TR-70"
+              },
+              {
+               "name": "Kars",
+               "code": "TR-36"
+              },
+              {
+               "name": "Kastamonu",
+               "code": "TR-37"
+              },
+              {
+               "name": "Kayseri",
+               "code": "TR-38"
+              },
+              {
+               "name": "Kilis",
+               "code": "TR-79"
+              },
+              {
+               "name": "Kırıkkale",
+               "code": "TR-71"
+              },
+              {
+               "name": "Kırklareli",
+               "code": "TR-39"
+              },
+              {
+               "name": "Kırşehir",
+               "code": "TR-40"
+              },
+              {
+               "name": "Kocaeli",
+               "code": "TR-41"
+              },
+              {
+               "name": "Konya",
+               "code": "TR-42"
+              },
+              {
+               "name": "Kütahya",
+               "code": "TR-43"
+              },
+              {
+               "name": "Malatya",
+               "code": "TR-44"
+              },
+              {
+               "name": "Manisa",
+               "code": "TR-45"
+              },
+              {
+               "name": "Mardin",
+               "code": "TR-47"
+              },
+              {
+               "name": "Mersin",
+               "code": "TR-33"
+              },
+              {
+               "name": "Muğla",
+               "code": "TR-48"
+              },
+              {
+               "name": "Muş",
+               "code": "TR-49"
+              },
+              {
+               "name": "Nevşehir",
+               "code": "TR-50"
+              },
+              {
+               "name": "Niğde",
+               "code": "TR-51"
+              },
+              {
+               "name": "Ordu",
+               "code": "TR-52"
+              },
+              {
+               "name": "Osmaniye",
+               "code": "TR-80"
+              },
+              {
+               "name": "Rize",
+               "code": "TR-53"
+              },
+              {
+               "name": "Sakarya",
+               "code": "TR-54"
+              },
+              {
+               "name": "Samsun",
+               "code": "TR-55"
+              },
+              {
+               "name": "Şanlıurfa",
+               "code": "TR-63"
+              },
+              {
+               "name": "Siirt",
+               "code": "TR-56"
+              },
+              {
+               "name": "Sinop",
+               "code": "TR-57"
+              },
+              {
+               "name": "Şırnak",
+               "code": "TR-73"
+              },
+              {
+               "name": "Sivas",
+               "code": "TR-58"
+              },
+              {
+               "name": "Tekirdağ",
+               "code": "TR-59"
+              },
+              {
+               "name": "Tokat",
+               "code": "TR-60"
+              },
+              {
+               "name": "Trabzon",
+               "code": "TR-61"
+              },
+              {
+               "name": "Tunceli",
+               "code": "TR-62"
+              },
+              {
+               "name": "Uşak",
+               "code": "TR-64"
+              },
+              {
+               "name": "Van",
+               "code": "TR-65"
+              },
+              {
+               "name": "Yalova",
+               "code": "TR-77"
+              },
+              {
+               "name": "Yozgat",
+               "code": "TR-66"
+              },
+              {
+               "name": "Zonguldak",
+               "code": "TR-67"
+              }
+             ]
+            },
+            {
+             "code": {
+              "countryCode": "LU"
+             },
+             "provinces": []
+            },
+            {
+             "code": {
+              "countryCode": "GB"
+             },
+             "provinces": [
+              {
+               "name": "British Forces",
+               "code": "BFP"
+              },
+              {
+               "name": "England",
+               "code": "ENG"
+              },
+              {
+               "name": "Northern Ireland",
+               "code": "NIR"
+              },
+              {
+               "name": "Scotland",
+               "code": "SCT"
+              },
+              {
+               "name": "Wales",
+               "code": "WLS"
+              }
+             ]
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918498640180",
+             "name": "International Shipping",
+             "active": true,
+             "description": null,
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849771888948",
+              "price": {
+               "amount": "1200.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "0.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              },
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "4000.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "LESS_THAN_OR_EQUAL_TO"
+              }
+             ]
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918498672948",
+             "name": "International Shipping",
+             "active": true,
+             "description": null,
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849771921716",
+              "price": {
+               "amount": "3200.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "4000.01",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              }
+             ]
+            }
+           ]
+          }
+         },
+         {
+          "zone": {
+           "id": "gid://shopify/DeliveryZone/526264434996",
+           "name": "Rest of world",
+           "countries": [
+            {
+             "code": {
+              "countryCode": null
+             },
+             "provinces": []
+            }
+           ]
+          },
+          "methodDefinitions": {
+           "nodes": [
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918498705716",
+             "name": "International Shipping",
+             "active": true,
+             "description": null,
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849771954484",
+              "price": {
+               "amount": "1200.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "0.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              },
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "4000.0",
+                "currencyCode": "EGP"
+               },
+               "operator": "LESS_THAN_OR_EQUAL_TO"
+              }
+             ]
+            },
+            {
+             "id": "gid://shopify/DeliveryMethodDefinition/918498738484",
+             "name": "International Shipping",
+             "active": true,
+             "description": null,
+             "rateProvider": {
+              "id": "gid://shopify/DeliveryRateDefinition/849771987252",
+              "price": {
+               "amount": "3200.0",
+               "currencyCode": "EGP"
+              }
+             },
+             "methodConditions": [
+              {
+               "field": "TOTAL_PRICE",
+               "conditionCriteria": {
+                "amount": "4000.01",
+                "currencyCode": "EGP"
+               },
+               "operator": "GREATER_THAN_OR_EQUAL_TO"
+              }
+             ]
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "extensions": {
+  "cost": {
+   "requestedQueryCost": 670,
+   "actualQueryCost": 15,
+   "throttleStatus": {
+    "maximumAvailable": 2000.0,
+    "currentlyAvailable": 1985,
+    "restoreRate": 100.0
+   }
+  }
+ }
+}
