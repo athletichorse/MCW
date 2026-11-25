@@ -123,6 +123,10 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   recommended row highlighted from the finder's `mim:size` event. Animated how-to-measure steps; the old image sits in a fold.
 - **Policy pages** (`snippets/mim-policy.liquid`, only when `request.page_type == 'policy'`): MIM header and accordion sections built from
   the policy's own headings (h1–h6, bold-only paragraphs, bare `<strong>`), with Open all / Close all.
+- **Fabric box (rule, 25 Nov 2026)**: every product page shows the fabric under the price in a light-teal rounded box
+  (`snippets/mim-fabric.liquid`, rendered in the price block of `main-product`), label "Fabric" + value in the visitor's language.
+  The value comes from metafield `custom.fabric`, read from the product description (see rule 13); hidden when empty.
+  Keep it when editing the product page, and keep every fabric label translated in FR/NL/AR.
 - **Product page**: one-photo slider with arrows and "1 / N" counter; Judge.me star badge under the title and
   review widget below the product; gold stars (#D4AF37).
 
