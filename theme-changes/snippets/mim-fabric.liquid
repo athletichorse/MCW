@@ -1,0 +1,135 @@
+{%- comment -%}
+Fabric highlight on the product page (under the price). Value: product metafield custom.fabric (English, read from the
+description; edit it in admin → product → Metafields → Fabric). Shown in the visitor's language through the map below;
+an unknown value shows as entered. Hidden when the metafield is empty. No images, no requests.
+{%- endcomment -%}
+{%- assign fab = product.metafields.custom.fabric.value | strip -%}
+{%- if fab != blank -%}
+{%- liquid
+  assign key = fab | downcase
+  assign out = fab
+  case request.locale.iso_code
+    when 'fr'
+      assign label = 'Tissu'
+      case key
+        when '100% cotton'
+          assign out = '100 % coton'
+        when 'cotton'
+          assign out = 'Coton'
+        when 'cotton & natural viscose'
+          assign out = 'Coton et viscose naturelle'
+        when 'cotton voile'
+          assign out = 'Voile de coton'
+        when 'cotton canvas'
+          assign out = 'Toile de coton'
+        when 'cotton cashmere'
+          assign out = 'Coton cachemire'
+        when 'cotton & linen'
+          assign out = 'Coton et lin'
+        when 'linen'
+          assign out = 'Lin'
+        when 'hand-loomed linen'
+          assign out = 'Lin tissé à la main'
+        when 'linen with cotton lining'
+          assign out = 'Lin, doublure en coton'
+        when 'canvas'
+          assign out = 'Toile'
+        when 'canvas with cotton lining'
+          assign out = 'Toile, doublure en coton'
+        when 'canvas & cotton'
+          assign out = 'Toile et coton'
+        when 'silk'
+          assign out = 'Soie'
+        when 'knit'
+          assign out = 'Maille'
+        when 'knit, with a hand-woven scarf'
+          assign out = 'Maille, avec une écharpe tissée à la main'
+      endcase
+    when 'nl'
+      assign label = 'Stof'
+      case key
+        when '100% cotton'
+          assign out = '100% katoen'
+        when 'cotton'
+          assign out = 'Katoen'
+        when 'cotton & natural viscose'
+          assign out = 'Katoen en natuurlijke viscose'
+        when 'cotton voile'
+          assign out = 'Katoenvoile'
+        when 'cotton canvas'
+          assign out = 'Katoenen canvas'
+        when 'cotton cashmere'
+          assign out = 'Katoen-kasjmier'
+        when 'cotton & linen'
+          assign out = 'Katoen en linnen'
+        when 'linen'
+          assign out = 'Linnen'
+        when 'hand-loomed linen'
+          assign out = 'Handgeweven linnen'
+        when 'linen with cotton lining'
+          assign out = 'Linnen, katoenen voering'
+        when 'canvas'
+          assign out = 'Canvas'
+        when 'canvas with cotton lining'
+          assign out = 'Canvas, katoenen voering'
+        when 'canvas & cotton'
+          assign out = 'Canvas en katoen'
+        when 'silk'
+          assign out = 'Zijde'
+        when 'knit'
+          assign out = 'Gebreid'
+        when 'knit, with a hand-woven scarf'
+          assign out = 'Gebreid, met een handgeweven sjaal'
+      endcase
+    when 'ar'
+      assign label = 'الخامة'
+      case key
+        when '100% cotton'
+          assign out = 'قطن 100%'
+        when 'cotton'
+          assign out = 'قطن'
+        when 'cotton & natural viscose'
+          assign out = 'قطن وفيسكوز طبيعي'
+        when 'cotton voile'
+          assign out = 'فوال قطني'
+        when 'cotton canvas'
+          assign out = 'كانفاس قطني'
+        when 'cotton cashmere'
+          assign out = 'قطن كشمير'
+        when 'cotton & linen'
+          assign out = 'قطن وكتان'
+        when 'linen'
+          assign out = 'كتان'
+        when 'hand-loomed linen'
+          assign out = 'كتان منسوج يدويًا'
+        when 'linen with cotton lining'
+          assign out = 'كتان مع بطانة قطنية'
+        when 'canvas'
+          assign out = 'كانفاس'
+        when 'canvas with cotton lining'
+          assign out = 'كانفاس مع بطانة قطنية'
+        when 'canvas & cotton'
+          assign out = 'كانفاس وقطن'
+        when 'silk'
+          assign out = 'حرير'
+        when 'knit'
+          assign out = 'تريكو'
+        when 'knit, with a hand-woven scarf'
+          assign out = 'تريكو مع وشاح منسوج يدويًا'
+      endcase
+    else
+      assign label = 'Fabric'
+  endcase
+-%}
+<div class="mim-fab">
+<span class="mim-fab__ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c4-1 6-4 8-8s4-7 8-8"/><path d="M4 14c3 0 5-1 7-3M10 20c1-3 3-5 6-6"/><circle cx="19" cy="5" r="1.6"/></svg></span>
+<span class="mim-fab__txt"><small>{{ label }}</small><b>{{ out }}</b></span>
+</div>
+<style>
+.mim-fab{display:inline-flex;align-items:center;gap:1rem;margin:1.2rem 0 .4rem;padding:.9rem 1.6rem .9rem 1rem;border-radius:1.6rem;background:#EEF6F7;border:1px solid rgba(0,143,157,.14);color:#14272B;max-width:100%}
+.mim-fab__ico{flex:none;display:grid;place-items:center;width:3.4rem;height:3.4rem;border-radius:50%;background:#fff;color:#008F9D}
+.mim-fab__txt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.mim-fab__txt small{font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;color:#00737E}
+.mim-fab__txt b{font-size:1.5rem;font-weight:500}
+</style>
+{%- endif -%}

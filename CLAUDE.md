@@ -46,6 +46,11 @@ When a product or image is added (or found missing these), fill in:
     `custom_product` true (boolean, handmade, no GTIN).
 11. **Alt text template** (no style codes): first photo `{Name} – {print} {type}, handmade in Egypt by MIM Creative Wear`,
     others `{Name} – {print} {type} by MIM Creative Wear, view N of M`.
+13. **Fabric** (metafield `custom.fabric`, English): read it from the description ("Fabric Composition:", "Fabric:", "Material:" or the text)
+    and use one of the standard labels: `Cotton & natural viscose`, `Cotton voile`, `100% cotton`, `Cotton`, `Linen`, `Hand-loomed linen`,
+    `Linen with cotton lining`, `Canvas`, `Canvas with cotton lining`, `Canvas & cotton`, `Cotton canvas`, `Cotton cashmere`,
+    `Cotton & linen`, `Silk`, `Knit`. Leave it empty if the description doesn't say. A new label needs FR/NL/AR added in `snippets/mim-fabric.liquid`.
+    The product page shows it in a light-teal rounded box under the price (`mim-fabric`). List as of 25 Nov 2026: `content/product_fabrics.json`.
 12. Empty collections and the Wishlist page carry `seo.hidden = 1` (noindex); remove it when a collection gets products.
 
 Never overwrite a field the owner already filled in by hand.
