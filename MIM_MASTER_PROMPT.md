@@ -26,7 +26,7 @@ CURRENT STATE (as of 2026-11-25)
 4. Audience signal: women 25+, Luxury Shoppers, Luxury Fashion Buyers, Fashionistas, Luxury Travelers, Fine Jewelry, plus customer lists.
 5. Ad strength was "Poor" during review; the main missing piece is a YouTube video. Add one when I send a link.
 6. Theme "MIM v3.9.7 (Arabic product fixes)": How to measure link fixed for ar/fr/nl and published. 11 URL redirects added for deleted products, old collections and /pages/about.
-7. Shipping (live): Cairo and Giza Standard 85 EGP (2 to 5 days), free over 2,999; Express 120 (1 to 2 days). Rest of Egypt Standard 85, Express 120. Outside Egypt 1,200 up to 4,000, 3,200 above. Leftover: the "international" profile still charges 900 EGP to the USA.
+7. Shipping (live): Cairo and Giza Standard 85 EGP (2 to 5 days), free over 2,999; Express 120 (1 to 2 days, Cairo and Giza only). Alexandria Standard 120. Rest of Egypt Standard 150. Outside Egypt 1,200 up to 4,000, 3,200 above. Leftover: the "international" profile still charges 900 EGP to the USA.
 
 PENDING (check each, finish what you can, ask me for the rest)
 1. Store policies: new Shipping, Refund, Privacy and Terms are in policy_backup/new_policies.json and new_policies.html (originals in original_policies.md). Confirm I pasted them in Shopify, or apply them with my app token. Contact information stays as is.
