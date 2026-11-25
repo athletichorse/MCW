@@ -4,6 +4,7 @@ Usage:
   python3 mim_ads/daily.py report
   python3 mim_ads/daily.py refresh products.json          # dry run
   python3 mim_ads/daily.py refresh products.json --apply  # make changes
+  python3 mim_ads/daily.py rebuild-state products.json    # new machine: recreate .secrets/state.json
 
 products.json: list of Shopify products, newest first:
   [{"handle", "title", "inStock": bool, "images": [{"url","width","height"}]}]
@@ -254,10 +255,65 @@ def refresh(products_path, apply):
     print('Applied.')
 
 
+# ---------------------------------------------------------------- rebuild state
+CAMPAIGN_NAME = 'MIM | PMax | Sales | EG+IT+DE'
+OLD_LANDSCAPES = {  # first build, named by theme
+    'ls_craft': ['bashera-tree-bo2ga', 'bashera-tree-jacket', 'inside-out-vest'],
+    'ls_elite': ['bashera-tree-jacket', 'tunic-dress-hand-stitching', 'scarf-poncho'],
+    'ls_new': ['scarf-poncho', 'cozy-collar', 'inside-out-vest'],
+    'ls_back': ['scarf-poncho', 'bashera-tree-bo2ga', 'cozy-collar'],
+    'ls_intl': ['scarf-poncho', 'tunic-dress-hand-stitching', 'bashera-tree-jacket']}
+
+
+def rebuild_state(products_path):
+    import os, re
+    from ads import STATE_PATH, ROOT
+    cust, login = os.environ.get('GOOGLE_ADS_CUSTOMER_ID'), os.environ.get('GOOGLE_ADS_LOGIN_CUSTOMER_ID')
+    if not (cust and login):
+        raise SystemExit('Set GOOGLE_ADS_CUSTOMER_ID and GOOGLE_ADS_LOGIN_CUSTOMER_ID first.')
+    os.makedirs(os.path.dirname(STATE_PATH), exist_ok=True)
+    json.dump({'customer': cust, 'login': login, 'campaign': '', 'groups': {}, 'assets': {}}, open(STATE_PATH, 'w'))
+    camp = q(f"SELECT campaign.id FROM campaign WHERE campaign.name = '{CAMPAIGN_NAME}' AND campaign.status != 'REMOVED'")[0]['campaign']['id']
+    products = json.load(open(products_path))
+    stems = {}
+    for p in products:
+        stems[p['handle']] = p['handle']
+        for i in p.get('images', []):
+            stems[re.sub(r'\.(jpe?g|png|webp)$', '', i['url'].split('/')[-1].split('?')[0])] = p['handle']
+    rows = q(f"SELECT asset_group.resource_name, asset_group.name, asset.resource_name, asset.name, asset.type, "
+             f"asset.text_asset.text, asset_group_asset.field_type FROM asset_group_asset "
+             f"WHERE campaign.id = {camp} AND asset_group_asset.status != 'REMOVED'")
+    groups, assets = {}, {}
+    for x in rows:
+        groups[x['assetGroup']['name']] = x['assetGroup']['resourceName']
+        a = x['asset']; rn = a['resourceName']
+        if a['type'] == 'TEXT':
+            if x['assetGroup']['name'] != NEW_GROUP:
+                continue
+            t = a['textAsset']['text'].lower()
+            hs = [p['handle'] for p in products if p['title'].lower() in t]
+            if hs:
+                assets[rn] = {'kind': 'text', 'handles': hs, 'text': a['textAsset']['text']}
+            continue
+        nm = a.get('name', '').replace('MIM ', '')
+        if nm in OLD_LANDSCAPES:
+            assets[rn] = {'kind': 'landscape', 'handles': OLD_LANDSCAPES[nm], 'name': nm}
+        elif nm.startswith('ls '):
+            assets[rn] = {'kind': 'landscape', 'handles': nm[3:].split(','), 'name': nm}
+        else:
+            key = re.sub(r'^(p45|sq)[_ ]', '', nm)
+            if key in stems:
+                assets[rn] = {'kind': 'image', 'handles': [stems[key]], 'name': nm}
+    save_state({'customer': cust, 'login': login, 'campaign': camp, 'groups': groups, 'assets': assets})
+    print(f'State rebuilt: {len(groups)} asset groups, {len(assets)} mapped assets.')
+
+
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv) > 1 else 'report'
     if cmd == 'report':
         report()
+    elif cmd == 'rebuild-state':
+        rebuild_state(sys.argv[2])
     elif cmd == 'refresh':
         refresh(sys.argv[2], '--apply' in sys.argv)
     else:
