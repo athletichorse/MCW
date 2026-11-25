@@ -1,6 +1,7 @@
 {%- comment -%}
 MIM Find My Size v2 — interactive 3-step female fit finder.
 Usage: {% render 'mim-size-finder', product: product %}
+Page mode (size guide page, no product): {% render 'mim-size-finder-core', page_mode: true, garment: 'dress' %}
 {%- endcomment -%}
 {%- liquid
 assign size_option = null
@@ -36,6 +37,11 @@ assign sf_mode = 'guide'
 endunless
 assign sf_opt_name = ''
 assign sf_opt_label = 'Size'
+if page_mode
+assign sf_mode = 'page'
+assign garment = garment_in | default: 'dress'
+assign uid = 'page'
+endif
 if sf_mode == 'sized'
 assign sf_opt_name = size_option.name
 assign sf_opt_label = size_option.name
@@ -46,38 +52,42 @@ when 'ar'
 assign g_select = 'تم، مقاسك [size]'
 assign g_selected = 'مقاسك المعتاد [size]، وهذه القطعة تناسبك'
 assign g_note = 'هذه القطعة بمقاس واحد وقصة مريحة، فهي تناسب مقاسك. المقاس الظاهر هو مقاسك المعتاد للمرجع فقط.'
+assign p_selected = 'مقاسك في ميم: [size]'
 when 'fr'
 assign g_select = 'Terminé, votre taille [size]'
 assign g_selected = 'Votre taille habituelle : [size]. Cette pièce vous va'
 assign g_note = 'Cette pièce est en taille unique, coupe ample : elle vous va. La taille affichée est votre taille habituelle, à titre indicatif.'
+assign p_selected = 'Votre taille MIM : [size]'
 when 'nl'
 assign g_select = 'Klaar, jouw maat [size]'
 assign g_selected = 'Jouw gewone maat: [size]. Dit stuk past je'
 assign g_note = 'Dit stuk is one size met een ruime pasvorm, dus het past je. De getoonde maat is je gebruikelijke maat, ter referentie.'
+assign p_selected = 'Jouw MIM-maat: [size]'
 else
 assign g_select = 'Done, your size is [size]'
 assign g_selected = 'Your usual size: [size]. This piece fits you'
 assign g_note = 'This piece is one size with a relaxed cut, so it fits you. The size shown is your usual size, for reference.'
+assign p_selected = 'Your MIM size: [size]'
 endcase
 -%}
 {%- comment -%} v3.9.1 rule: the finder only shows when the product has real sizes to choose between (XS–3XL or 1–4). Free size, one size or no size option = no finder. {%- endcomment -%}
-{%- if sf_mode == 'sized' -%}
+{%- if sf_mode == 'sized' or sf_mode == 'page' -%}
 {{ 'mim-size-finder.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'mim-size-finder.js' | asset_url }}" defer="defer"></script>
-<mim-size-finder class="mim-sf" data-option-name="{{ sf_opt_name | escape }}" data-mode="{{ sf_mode }}" data-garment="{{ garment }}">
-<script type="application/json" data-mim-sizes>{%- if sf_mode == 'sized' -%}{{ size_option.values | json }}{%- else -%}["XS","S","M","L","XL","XXL"]{%- endif -%}</script>
+<mim-size-finder class="mim-sf" data-option-name="{{ sf_opt_name | escape }}" data-mode="{{ sf_mode }}"{% if sf_mode == 'page' %} id="MimSfPage"{% endif %} data-garment="{{ garment }}">
+<script type="application/json" data-mim-sizes>{%- if sf_mode == 'sized' -%}{{ size_option.values | json }}{%- elsif sf_mode == 'page' -%}["XS","S","M","L","XL","XXL","3XL","4XL"]{%- else -%}["XS","S","M","L","XL","XXL"]{%- endif -%}</script>
 <script type="application/json" data-mim-i18n>
 {
 "your_size": {{ 'mim.sf.your_size' | t | json }},
 "match": {{ 'mim.sf.match' | t | json }},
 "confident": {{ 'mim.sf.confident' | t | json }},
 "close_match": {{ 'mim.sf.close_match' | t | json }},
-"note_true": {%- if sf_mode == 'sized' -%}{{ 'mim.sf.note_true' | t | json }}{%- else -%}{{ g_note | json }}{%- endif -%},
-"note_between_up": {%- if sf_mode == 'sized' -%}{{ 'mim.sf.note_between_up' | t | json }}{%- else -%}{{ g_note | json }}{%- endif -%},
-"note_between_down": {%- if sf_mode == 'sized' -%}{{ 'mim.sf.note_between_down' | t | json }}{%- else -%}{{ g_note | json }}{%- endif -%},
-"note_unavail": {%- if sf_mode == 'sized' -%}{{ 'mim.sf.note_unavail' | t | json }}{%- else -%}{{ g_note | json }}{%- endif -%},
+"note_true": {%- if sf_mode == 'sized' or sf_mode == 'page' -%}{{ 'mim.sf.note_true' | t | json }}{%- else -%}{{ g_note | json }}{%- endif -%},
+"note_between_up": {%- if sf_mode == 'sized' or sf_mode == 'page' -%}{{ 'mim.sf.note_between_up' | t | json }}{%- else -%}{{ g_note | json }}{%- endif -%},
+"note_between_down": {%- if sf_mode == 'sized' or sf_mode == 'page' -%}{{ 'mim.sf.note_between_down' | t | json }}{%- else -%}{{ g_note | json }}{%- endif -%},
+"note_unavail": {%- if sf_mode == 'sized' or sf_mode == 'page' -%}{{ 'mim.sf.note_unavail' | t | json }}{%- else -%}{{ g_note | json }}{%- endif -%},
 "select_size": {%- if sf_mode == 'sized' -%}{{ 'mim.sf.select_size' | t | json }}{%- else -%}{{ g_select | json }}{%- endif -%},
-"selected": {%- if sf_mode == 'sized' -%}{{ 'mim.sf.selected' | t | json }}{%- else -%}{{ g_selected | json }}{%- endif -%},
+"selected": {%- if sf_mode == 'sized' -%}{{ 'mim.sf.selected' | t | json }}{%- elsif sf_mode == 'page' -%}{{ p_selected | json }}{%- else -%}{{ g_selected | json }}{%- endif -%},
 "see_result": {{ 'mim.sf.see_result' | t | json }},
 "continue": {{ 'mim.sf.continue' | t | json }}
 }
@@ -106,6 +116,7 @@ endcase
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
 </button>
 </div>
+{%- if product -%}
 <div class="mim-sf__product">
 {%- if product.featured_image -%}
 <img src="{{ product.featured_image | image_url: width: 160 }}" alt="" width="48" height="60" loading="lazy" class="mim-sf__product-img">
@@ -115,6 +126,7 @@ endcase
 <p class="mim-sf__product-price">{{ product.price | money_without_trailing_zeros }}</p>
 </div>
 </div>
+{%- endif -%}
 <div class="mim-sf__progress" aria-hidden="true"><span data-mim-bar="1"></span><span data-mim-bar="2"></span><span data-mim-bar="3"></span></div>
 <div class="mim-sf__body">
 <section class="mim-sf__step" data-mim-step="1">

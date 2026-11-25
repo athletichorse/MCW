@@ -7,7 +7,9 @@ MIM page content (v3.9.8). Content still comes from the page body in admin (and 
   3+ headings get a sticky "chapter" chip bar that follows the reading position.
 No extra requests: CSS and JS are inline and only on pages using this section. Motion is off for prefers-reduced-motion.
 {%- endcomment -%}
-{%- if page != blank and page.handle != section.settings.skip_handle -%}
+{%- if page != blank and page.handle == 'how-to-measure' -%}
+{% render 'mim-size-guide' %}
+{%- elsif page != blank and page.handle != section.settings.skip_handle -%}
 {%- liquid
   assign is_faq = false
   if page.handle == 'faqs' or page.content contains 'tt-box-faq'

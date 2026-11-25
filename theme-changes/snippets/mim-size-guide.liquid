@@ -1,0 +1,296 @@
+{%- comment -%}
+MIM size guide page (/pages/how-to-measure, rendered by sections/mim-page.liquid).
+Built on our own Find My Size model (snippets/mim-size-finder-core in page mode + assets/mim-size-finder.js):
+1. Garment tabs (dress / top / pants) feed the finder's garment model; the big "Find my size" card opens the same 3-step finder.
+2. Size chart drawn from the finder's own body chart (bust / waist / hips per size, same numbers the model uses), cm/in toggle,
+   relaxed sizes 1–4 mapped the way the model maps them; the recommended size row lights up (event `mim:size`).
+3. How to measure: 4 animated steps; tapping a step highlights the matching line on the figure.
+The page body (the old measuring image) stays available in a fold at the end. No extra requests beyond the finder's own files.
+{%- endcomment -%}
+{%- liquid
+  case request.locale.iso_code
+    when 'ar'
+      assign t_eyebrow = 'دليل المقاسات'
+      assign t_lead = 'جاوبي على 3 أسئلة سريعة ويقترح نموذج المقاسات الخاص بميم مقاسك، أو استخدمي الجدول وخطوات القياس.'
+      assign t_for = 'أبحث عن مقاس'
+      assign t_dress = 'فستان'
+      assign t_top = 'توب / جاكيت'
+      assign t_pants = 'بنطلون / جيبة'
+      assign t_chart = 'جدول المقاسات'
+      assign t_chart_sub = 'مقاسات الجسم بالسنتيمتر. نفس الأرقام التي يستخدمها نموذج «اعرفي مقاسك».'
+      assign t_size = 'المقاس'
+      assign t_relaxed = 'المقاس الواسع'
+      assign t_relaxed_note = 'القطع ذات المقاسات 1–4 قصّتها واسعة: 1 ≈ S–M، 2 ≈ L–XL، 3 ≈ XXL–3XL، 4 ≈ 4XL.'
+      assign t_yours = 'مقاسك'
+      assign t_how = 'كيف تقيسين'
+      assign t_how_sub = 'استخدمي شريط قياس مرن، والبسي ملابس خفيفة، وقفي بشكل مستقيم.'
+      assign s1 = 'الصدر'
+      assign d1 = 'لفي الشريط تحت الإبطين عند أعرض جزء من الصدر، مع إبقائه أفقيًا.'
+      assign s2 = 'الخصر'
+      assign d2 = 'ابدئي من أعلى عظمة الحوض ولفي الشريط حول أضيق جزء من الخصر.'
+      assign s3 = 'الأرداف'
+      assign d3 = 'ضمي القدمين وقيسي حول أعرض جزء من الأرداف.'
+      assign s4 = 'الأكمام'
+      assign d4 = 'قيسي من منتصف خلف الرقبة (عند العمود الفقري) مرورًا بالكتف حتى الرسغ.'
+      assign t_help = 'بين مقاسين أو غير متأكدة؟'
+      assign t_help_d = 'راسلينا بطولك ووزنك والقطعة التي تعجبك، وسنساعدك على اختيار المقاس.'
+      assign t_wa = 'اسألينا على واتساب'
+      assign t_shop = 'تسوقي الآن'
+      assign t_sheet = 'ورقة القياس للطباعة'
+    when 'fr'
+      assign t_eyebrow = 'Guide des tailles'
+      assign t_lead = 'Répondez à 3 questions rapides et notre modèle de tailles MIM vous propose votre taille, ou utilisez le tableau et les étapes de mesure.'
+      assign t_for = 'Je cherche une taille pour'
+      assign t_dress = 'Robe'
+      assign t_top = 'Haut / veste'
+      assign t_pants = 'Pantalon / jupe'
+      assign t_chart = 'Tableau des tailles'
+      assign t_chart_sub = 'Mesures du corps. Les mêmes chiffres que ceux du modèle « Trouver ma taille ».'
+      assign t_size = 'Taille'
+      assign t_relaxed = 'Taille ample'
+      assign t_relaxed_note = 'Les pièces en tailles 1–4 ont une coupe ample : 1 ≈ S–M, 2 ≈ L–XL, 3 ≈ XXL–3XL, 4 ≈ 4XL.'
+      assign t_yours = 'Votre taille'
+      assign t_how = 'Comment se mesurer'
+      assign t_how_sub = 'Utilisez un mètre ruban souple, portez des vêtements fins et tenez-vous droite.'
+      assign s1 = 'Poitrine'
+      assign d1 = 'Passez le mètre sous les aisselles, à l’endroit le plus fort de la poitrine, bien à l’horizontale.'
+      assign s2 = 'Taille'
+      assign d2 = 'Partez du haut de l’os de la hanche et faites le tour de la taille à l’endroit le plus fin.'
+      assign s3 = 'Hanches'
+      assign d3 = 'Pieds joints, mesurez le tour à l’endroit le plus fort des hanches.'
+      assign s4 = 'Manches'
+      assign d4 = 'Mesurez du milieu de la nuque (sur la colonne) jusqu’à l’épaule puis jusqu’au poignet.'
+      assign t_help = 'Entre deux tailles ou pas sûre ?'
+      assign t_help_d = 'Envoyez-nous votre taille, votre poids et la pièce qui vous plaît, nous vous aidons à choisir.'
+      assign t_wa = 'Demander sur WhatsApp'
+      assign t_shop = 'Voir la boutique'
+      assign t_sheet = 'Fiche de mesures à imprimer'
+    when 'nl'
+      assign t_eyebrow = 'Maatgids'
+      assign t_lead = 'Beantwoord 3 korte vragen en ons eigen MIM-maatmodel stelt je maat voor, of gebruik de tabel en de meetstappen.'
+      assign t_for = 'Ik zoek een maat voor'
+      assign t_dress = 'Jurk'
+      assign t_top = 'Top / jasje'
+      assign t_pants = 'Broek / rok'
+      assign t_chart = 'Maattabel'
+      assign t_chart_sub = 'Lichaamsmaten. Dezelfde cijfers die het model "Vind mijn maat" gebruikt.'
+      assign t_size = 'Maat'
+      assign t_relaxed = 'Ruime maat'
+      assign t_relaxed_note = 'Stukken in maat 1–4 hebben een ruime pasvorm: 1 ≈ S–M, 2 ≈ L–XL, 3 ≈ XXL–3XL, 4 ≈ 4XL.'
+      assign t_yours = 'Jouw maat'
+      assign t_how = 'Zo meet je'
+      assign t_how_sub = 'Gebruik een zacht meetlint, draag dunne kleding en sta rechtop.'
+      assign s1 = 'Borst'
+      assign d1 = 'Leg het lint onder je oksels om het breedste deel van je borst, mooi horizontaal.'
+      assign s2 = 'Taille'
+      assign d2 = 'Begin boven op je heupbot en meet rond het smalste deel van je taille.'
+      assign s3 = 'Heupen'
+      assign d3 = 'Voeten tegen elkaar, meet rond het breedste deel van je heupen.'
+      assign s4 = 'Mouwen'
+      assign d4 = 'Meet van het midden achter in je nek (op de ruggengraat) over de schouder tot je pols.'
+      assign t_help = 'Tussen twee maten of twijfel je?'
+      assign t_help_d = 'Stuur ons je lengte, gewicht en het stuk dat je mooi vindt, dan helpen we je kiezen.'
+      assign t_wa = 'Vraag het via WhatsApp'
+      assign t_shop = 'Naar de winkel'
+      assign t_sheet = 'Meetblad om te printen'
+    else
+      assign t_eyebrow = 'Size guide'
+      assign t_lead = 'Answer 3 quick questions and our own MIM size model suggests your size, or use the chart and the measuring steps.'
+      assign t_for = 'I’m sizing a'
+      assign t_dress = 'Dress'
+      assign t_top = 'Top / jacket'
+      assign t_pants = 'Pants / skirt'
+      assign t_chart = 'Size chart'
+      assign t_chart_sub = 'Body measurements. The same numbers our Find My Size model uses.'
+      assign t_size = 'Size'
+      assign t_relaxed = 'Relaxed size'
+      assign t_relaxed_note = 'Pieces sized 1–4 have a relaxed cut: 1 ≈ S–M, 2 ≈ L–XL, 3 ≈ XXL–3XL, 4 ≈ 4XL.'
+      assign t_yours = 'Your size'
+      assign t_how = 'How to measure'
+      assign t_how_sub = 'Use a soft tape measure, wear thin clothes and stand straight.'
+      assign s1 = 'Chest'
+      assign d1 = 'Wrap the tape under your armpits around the fullest part of your chest, keeping it level.'
+      assign s2 = 'Waist'
+      assign d2 = 'Start at the top of your hip bone and bring the tape around the narrowest part of your waist.'
+      assign s3 = 'Hips'
+      assign d3 = 'Feet together, measure around the fullest part of your hips.'
+      assign s4 = 'Sleeves'
+      assign d4 = 'Measure from the centre back of your neck (at the spine) over the shoulder to your wrist.'
+      assign t_help = 'Between sizes or not sure?'
+      assign t_help_d = 'Send us your height, weight and the piece you like, and we’ll help you choose.'
+      assign t_wa = 'Ask us on WhatsApp'
+      assign t_shop = 'Shop now'
+      assign t_sheet = 'Printable measuring sheet'
+  endcase
+  assign l_cm = 'mim.sf.cm' | t
+-%}
+<div class="msg" data-msg>
+<header class="msg-hero">
+<div class="page-width msg-hero__in">
+<p class="msg-eyebrow">{{ t_eyebrow }}</p>
+<h1 class="msg-title">{{ page.title | escape }}</h1>
+<p class="msg-lead">{{ t_lead }}</p>
+</div>
+</header>
+
+<section class="page-width msg-finder">
+<div class="msg-card">
+<p class="msg-label">{{ t_for }}</p>
+<div class="msg-tabs" role="tablist">
+<button type="button" role="tab" class="is-on" aria-selected="true" data-g="dress"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6l-1 5 5 13H5l5-13z"/></svg>{{ t_dress }}</button>
+<button type="button" role="tab" aria-selected="false" data-g="top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3l-5 3 2 5 3-1v11h8V10l3 1 2-5-5-3c-1 2-2.5 3-4 3S9 5 8 3z"/></svg>{{ t_top }}</button>
+<button type="button" role="tab" aria-selected="false" data-g="bottom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12l1 18h-5l-2-11-2 11H5z"/></svg>{{ t_pants }}</button>
+</div>
+{% render 'mim-size-finder-core', page_mode: true, garment_in: 'dress' %}
+</div>
+</section>
+
+<section class="page-width msg-sec msg-rv" aria-labelledby="MsgChart">
+<div class="msg-sec__head">
+<div>
+<h2 id="MsgChart" class="msg-h">{{ t_chart }}</h2>
+<p class="msg-sub">{{ t_chart_sub }}</p>
+</div>
+<div class="msg-units" role="group"><button type="button" class="is-on" data-u="cm">{{ l_cm }}</button><button type="button" data-u="in">in</button></div>
+</div>
+<div class="msg-table-wrap">
+<table class="msg-table">
+<thead><tr><th scope="col">{{ t_size }}</th><th scope="col">{{ 'mim.sf.bust' | t }}</th><th scope="col">{{ 'mim.sf.waist' | t }}</th><th scope="col">{{ 'mim.sf.hips' | t }}</th><th scope="col">{{ t_relaxed }}</th></tr></thead>
+<tbody data-msg-rows></tbody>
+</table>
+</div>
+<p class="msg-note">{{ t_relaxed_note }}</p>
+</section>
+
+<section class="page-width msg-sec msg-rv" aria-labelledby="MsgHow">
+<h2 id="MsgHow" class="msg-h">{{ t_how }}</h2>
+<p class="msg-sub">{{ t_how_sub }}</p>
+<div class="msg-how">
+<div class="msg-fig" aria-hidden="true">
+<svg viewBox="0 0 120 300">
+<g class="msg-body"><circle cx="60" cy="26" r="15"/><rect x="54" y="39" width="12" height="13" rx="4"/><path d="M42 50h36c7 0 12 5 14 12l9 40c2 6-6 8-7 2l-9-33-2 23c11 16 16 36 16 57H86l-6 140H68l-6-104-6 104H44l-6-140H25c0-21 5-41 16-57l-2-23-9 33c-1 6-9 4-7-2l9-40c2-7 7-12 14-12z"/></g>
+<g class="msg-line" data-line="1"><ellipse cx="60" cy="80" rx="27" ry="5"/></g>
+<g class="msg-line" data-line="2"><ellipse cx="60" cy="112" rx="21" ry="4.5"/></g>
+<g class="msg-line" data-line="3"><ellipse cx="60" cy="148" rx="30" ry="5.5"/></g>
+<g class="msg-line" data-line="4"><path d="M60 47 L80 54 L100 108"/></g>
+</svg>
+</div>
+<ol class="msg-steps">
+<li class="is-on" data-step="1"><button type="button"><i>1</i><b>{{ s1 }}</b></button><p>{{ d1 }}</p></li>
+<li data-step="2"><button type="button"><i>2</i><b>{{ s2 }}</b></button><p>{{ d2 }}</p></li>
+<li data-step="3"><button type="button"><i>3</i><b>{{ s3 }}</b></button><p>{{ d3 }}</p></li>
+<li data-step="4"><button type="button"><i>4</i><b>{{ s4 }}</b></button><p>{{ d4 }}</p></li>
+</ol>
+</div>
+</section>
+
+<section class="page-width msg-sec msg-rv">
+<div class="msg-help">
+<div><b>{{ t_help }}</b><span>{{ t_help_d }}</span></div>
+<p><a class="msg-btn msg-btn--wa" href="https://wa.me/201222116237" target="_blank" rel="noopener">{{ t_wa }}</a><a class="msg-btn msg-btn--ghost" href="{{ routes.all_products_collection_url }}">{{ t_shop }}</a></p>
+</div>
+{%- if page.content != blank -%}
+<details class="msg-sheet"><summary>{{ t_sheet }}</summary><div class="rte">{{ page.content }}</div></details>
+{%- endif -%}
+</section>
+</div>
+<style>
+.msg-hero{background:#F3ECE2;padding-block:clamp(4.4rem,7vw,8rem)}
+.msg-eyebrow{margin:0 0 1.2rem;font-size:1.25rem;letter-spacing:.18em;text-transform:uppercase;color:#00737E;animation:msgUp .7s both}
+.msg-title{margin:0;font-family:var(--font-heading-family);font-weight:500;font-size:clamp(3.6rem,6vw,7.2rem);line-height:1;letter-spacing:-.03em;color:#14272B;animation:msgUp .8s .05s cubic-bezier(.2,.7,.2,1) both}
+.msg-lead{max-width:60rem;margin:1.6rem 0 0;font-size:1.6rem;line-height:1.6;color:rgba(20,39,43,.75);animation:msgUp .8s .12s cubic-bezier(.2,.7,.2,1) both}
+@keyframes msgUp{from{opacity:0;transform:translateY(22px)}}
+.msg-finder{margin-top:-2.4rem;position:relative;z-index:1}
+.msg-card{max-width:72rem;padding:2rem;border-radius:2.4rem;background:#fff;box-shadow:0 20px 50px -30px rgba(20,39,43,.35);animation:msgUp .8s .18s cubic-bezier(.2,.7,.2,1) both}
+.msg-label{margin:0 0 1rem;font-size:1.3rem;color:rgba(20,39,43,.65)}
+.msg-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.2rem}
+.msg-tabs button{display:flex;flex-direction:column;align-items:center;gap:.6rem;padding:1.2rem .6rem;border:1px solid rgba(20,39,43,.12);border-radius:1.6rem;background:#FAF7F2;color:#14272B;font:inherit;font-size:1.3rem;line-height:1.25;cursor:pointer;transition:background .25s,border-color .25s,color .25s,transform .2s}
+.msg-tabs button:active{transform:scale(.97)}
+.msg-tabs svg{width:2.4rem;height:2.4rem;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
+.msg-tabs button.is-on{background:#EEF6F7;border-color:#008F9D;color:#00737E}
+.msg-card .mim-sf{margin:0}
+.msg-sec{padding-block:clamp(4rem,6vw,7rem) 0}
+.msg-sec:last-child{padding-bottom:clamp(4rem,6vw,7rem)}
+.msg-sec__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.6rem;margin-bottom:2rem}
+.msg-h{margin:0;font-family:var(--font-heading-family);font-weight:500;font-size:clamp(2.6rem,4vw,3.6rem);letter-spacing:-.02em;color:#14272B}
+.msg-sub{margin:.6rem 0 0;font-size:1.45rem;color:rgba(20,39,43,.7)}
+.msg-units{display:inline-flex;padding:.3rem;border-radius:99px;background:#F3ECE2}
+.msg-units button{min-width:4.8rem;height:3.6rem;border:0;border-radius:99px;background:none;font:inherit;font-size:1.35rem;color:#14272B;cursor:pointer;transition:background .25s,color .25s}
+.msg-units button.is-on{background:#14272B;color:#fff}
+.msg-table-wrap{overflow-x:auto;border-radius:1.8rem;border:1px solid rgba(20,39,43,.1)}
+.msg-table{width:100%;border-collapse:collapse;font-size:1.45rem;text-align:center;min-width:44rem}
+.msg-table th{padding:1.2rem .8rem;background:#14272B;color:#fff;font-weight:500;font-size:1.3rem}
+.msg-table td{padding:1.2rem .8rem;border-top:1px solid rgba(20,39,43,.08);color:#14272B;transition:background .4s,color .4s}
+.msg-table td:first-child{font-weight:600}
+.msg-table tbody tr:nth-child(even) td{background:#FAF7F2}
+.msg-table tr.is-you td{background:#008F9D!important;color:#fff}
+.msg-table tr.is-you td:first-child:after{content:attr(data-you);display:block;font-size:1.05rem;font-weight:400;opacity:.85}
+.msg-table .msg-num{display:inline-block;transition:opacity .25s}
+.msg-table.is-swap .msg-num{opacity:0}
+.msg-note{margin:1.2rem 0 0;font-size:1.3rem;color:rgba(20,39,43,.65)}
+.msg-how{display:grid;grid-template-columns:minmax(0,9.5rem) 1fr;gap:1.6rem;align-items:center;margin-top:2.4rem}
+.msg-fig svg{width:100%;height:auto;max-height:34rem}
+.msg-body{fill:#E6DCCD}
+.msg-line{fill:none;stroke:#C9BBA6;stroke-width:2;stroke-dasharray:4 4;transition:stroke .35s,stroke-width .35s}
+.msg-line.is-on{stroke:#008F9D;stroke-width:3;stroke-dasharray:none;animation:msgDraw .9s ease both}
+@keyframes msgDraw{from{stroke-dasharray:0 400}to{stroke-dasharray:400 0}}
+.msg-steps{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.msg-steps li{border-radius:1.6rem;background:#FAF7F2;border:1px solid transparent;transition:background .3s,border-color .3s}
+.msg-steps li.is-on{background:#fff;border-color:rgba(0,143,157,.35);box-shadow:0 12px 30px -22px rgba(20,39,43,.4)}
+.msg-steps button{display:flex;align-items:center;gap:1.2rem;width:100%;padding:1.4rem 1.6rem;border:0;background:none;font:inherit;text-align:start;cursor:pointer;color:#14272B}
+.msg-steps i{display:grid;place-items:center;flex:none;width:3.2rem;height:3.2rem;border-radius:50%;background:#E6DCCD;font-style:normal;font-size:1.35rem;font-weight:600;transition:background .3s,color .3s}
+.msg-steps li.is-on i{background:#008F9D;color:#fff}
+.msg-steps b{font-size:1.6rem;font-weight:500}
+.msg-steps p{display:grid;grid-template-rows:0fr;margin:0;padding:0 1.4rem 0 1.6rem;font-size:1.45rem;line-height:1.6;color:rgba(20,39,43,.75);overflow:hidden;max-height:0;transition:max-height .45s cubic-bezier(.2,.7,.2,1),padding .45s}
+.msg-steps li.is-on p{max-height:16rem;padding-bottom:1.6rem}
+.msg-help{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.6rem;padding:2.4rem;border-radius:2rem;background:#14272B;color:#fff}
+.msg-help div{display:flex;flex-direction:column;gap:.4rem;max-width:52rem}
+.msg-help b{font-family:var(--font-heading-family);font-size:2.1rem;font-weight:500}
+.msg-help span{font-size:1.4rem;opacity:.8}
+.msg-help p{display:flex;flex-wrap:wrap;gap:1rem;margin:0}
+.msg-btn{display:inline-flex;align-items:center;min-height:4.4rem;padding:0 2rem;border-radius:99px;font-size:1.45rem;font-weight:600;text-decoration:none;transition:transform .2s}
+.msg-btn:hover{transform:translateY(-2px)}
+.msg-btn--wa{background:#25D366;color:#0B2E1A}
+.msg-btn--ghost{color:#fff;border:1px solid rgba(255,255,255,.4)}
+.msg-sheet{margin-top:2rem;border-top:1px solid rgba(20,39,43,.12)}
+.msg-sheet summary{padding:1.6rem 0;cursor:pointer;font-size:1.5rem;color:#00737E}
+.msg-sheet img{max-width:100%;height:auto;border-radius:1.6rem}
+.msg-sheet h1{display:none}
+.msg-js .msg-rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.msg-js .msg-rv.is-in{opacity:1;transform:none}
+@media (min-width:750px){.msg-card{padding:2.8rem}.msg-steps p{padding-inline-start:6rem}.msg-how{grid-template-columns:minmax(0,22rem) 1fr;gap:5rem}}
+@media (prefers-reduced-motion:reduce){.msg-eyebrow,.msg-title,.msg-lead,.msg-card{animation:none}.msg-js .msg-rv{opacity:1;transform:none;transition:none}.msg-line.is-on{animation:none}}
+</style>
+<script>
+(function(){
+var root=document.querySelector('[data-msg]');if(!root)return;
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* chart = the finder model's own body chart (assets/mim-size-finder.js CHART) */
+var SIZES=['XS','S','M','L','XL','XXL','3XL','4XL'],BUST=[82,86,91,97,103,109,115,121],WAIST=[64,68,73,79,85,91,97,103],HIPS=[90,94,99,105,111,117,123,129],REL=['','1','1','2','2','3','3','4'];
+var ALIAS={XXXL:'3XL','2XL':'XXL',XXXXL:'4XL'};
+var tbody=root.querySelector('[data-msg-rows]'),table=root.querySelector('.msg-table'),unit='cm',yours=null,youTxt={{ t_yours | json }};
+function n(v){return unit==='cm'?v:(v/2.54).toFixed(1).replace(/\.0$/,'');}
+function rows(){tbody.innerHTML=SIZES.map(function(s,i){return '<tr data-size="'+s+'"'+(s===yours?' class="is-you"':'')+'><td'+(s===yours?' data-you="'+youTxt+'"':'')+'>'+s+'</td><td><span class="msg-num">'+n(BUST[i])+'</span></td><td><span class="msg-num">'+n(WAIST[i])+'</span></td><td><span class="msg-num">'+n(HIPS[i])+'</span></td><td>'+(REL[i]||'–')+'</td></tr>';}).join('');}
+rows();
+root.querySelectorAll('[data-u]').forEach(function(b){b.addEventListener('click',function(){if(unit===b.dataset.u)return;unit=b.dataset.u;root.querySelectorAll('[data-u]').forEach(function(x){x.classList.toggle('is-on',x===b);});
+  if(reduce){rows();return;}table.classList.add('is-swap');setTimeout(function(){rows();table.classList.remove('is-swap');},220);});});
+/* the finder tells us the size (on load when a profile is saved, and after each run) */
+document.addEventListener('mim:size',function(e){var v=String(e.detail.value||'').toUpperCase();yours=ALIAS[v]||v;rows();});
+/* garment tabs drive the model */
+var tabs=root.querySelectorAll('[data-g]');
+tabs.forEach(function(b){b.addEventListener('click',function(){tabs.forEach(function(x){x.classList.toggle('is-on',x===b);x.setAttribute('aria-selected',x===b?'true':'false');});
+  var f=document.getElementById('MimSfPage');if(!f)return;f.dataset.garment=b.dataset.g;if(f.setGarment)f.setGarment(b.dataset.g);});});
+/* measuring steps <-> figure lines */
+var steps=root.querySelectorAll('.msg-steps li'),lines=root.querySelectorAll('.msg-line'),cur=1,timer;
+function show(i){cur=i;steps.forEach(function(li){li.classList.toggle('is-on',+li.dataset.step===i);});lines.forEach(function(l){l.classList.remove('is-on');if(+l.dataset.line===i){void l.getBoundingClientRect();l.classList.add('is-on');}});}
+steps.forEach(function(li){li.querySelector('button').addEventListener('click',function(){clearInterval(timer);show(+li.dataset.step);});});
+show(1);
+/* reveal + gentle auto-play of the steps while visible */
+if(!reduce&&'IntersectionObserver' in window){root.classList.add('msg-js');
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+  root.querySelectorAll('.msg-rv').forEach(function(el){io.observe(el);});
+  var how=root.querySelector('.msg-how');var playing=false;
+  new IntersectionObserver(function(en){var vis=en[0].isIntersecting;if(vis&&!playing){playing=true;timer=setInterval(function(){show(cur%4+1);},3800);}else if(!vis&&playing){playing=false;clearInterval(timer);}},{threshold:.4}).observe(how);
+}
+})();
+</script>

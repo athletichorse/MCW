@@ -112,6 +112,10 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   `p.tt-title`, `h3` or `h6`), with search, quick facts (shipping/free delivery/exchanges/payment, 4 languages, keep in line with Shipping
   below), and a WhatsApp help card. Other pages get scroll-reveal and a sticky chapter chip bar when they have 3+ headings.
   FAQPage JSON-LD (`mim-schema`) reads the same questions.
+- **Size guide page** (`/pages/how-to-measure`, `snippets/mim-size-guide.liquid`, rendered by `mim-page`): runs our own Find My Size
+  model in page mode (`mim-size-finder-core` with `page_mode: true, garment_in:`), garment tabs (dress/top/pants → `setGarment`),
+  a size chart drawn from the model's CHART in `mim-size-finder.js` (keep both in sync), cm/in toggle, relaxed 1–4 mapping, and the
+  recommended row highlighted from the finder's `mim:size` event. Animated how-to-measure steps; the old image sits in a fold.
 - **Policy pages** (`snippets/mim-policy.liquid`, only when `request.page_type == 'policy'`): MIM header and accordion sections built from
   the policy's own headings (h1–h6, bold-only paragraphs, bare `<strong>`), with Open all / Close all.
 - **Product page**: one-photo slider with arrows and "1 / N" counter; Judge.me star badge under the title and

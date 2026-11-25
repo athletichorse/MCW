@@ -112,7 +112,7 @@ endcase
 {%- endif -%}
 <div>
 <p class="mim-sf__product-title">{{ product.title }}</p>
-<p class="mim-sf__product-price">{{ product.price | money }}</p>
+<p class="mim-sf__product-price">{{ product.price | money_without_trailing_zeros }}</p>
 </div>
 </div>
 <div class="mim-sf__progress" aria-hidden="true"><span data-mim-bar="1"></span><span data-mim-bar="2"></span><span data-mim-bar="3"></span></div>
