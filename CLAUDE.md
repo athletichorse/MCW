@@ -11,9 +11,11 @@ Every ad, creative and catalog product set in an active ad set must fit the curr
 | Autumn | Oct | Mid-season jackets, kimonos, scarves, long-sleeve dresses, bags | Swimwear, beach sets |
 
 How to apply:
-- Catalog ads use product set `1138358438822594` ("MCW – In stock – In season (…)") in catalog `1556470569917729`. Its filter is name-based: Meta product-set filters can't match descriptions, so exclude by name keywords and add specific product names when a description reveals a summer fabric (linen, cotton voile, sleeveless).
-- Before creating or editing any ad, check the post/video and caption: no summer pieces as the hero item.
-- At each season change, update the product set filter and its name, and pause off-season ads.
+- **Match on NAME + DESCRIPTION, never the name alone.** Many summer items (e.g. "MIM Signature Dress", "Tree of Life Cyano Dress") only reveal sleeveless/linen/voile in the description. Meta product-set filters can't search descriptions, so use the script:
+  - `python3 scripts/seasonal_check.py catalog` reads all products in catalog `1556470569917729`, flags off-season items, and with `--apply` writes them into product set `1138358438822594` as a `retailer_id` exclusion list (and renames the set to the season).
+  - `python3 scripts/seasonal_check.py ads` checks every active ad's body, title and IG caption, and prints thumbnails. Text can't show the garment, so **always look at each thumbnail/video frame too**.
+  - Keywords, exemptions (scarves, layering jackets), year-round types (bags, pouches) and "in season" overrides (knit, mid-season) are in `scripts/seasons.json`. Add new keywords or `force_include/exclude_retailer_ids` there instead of hand-editing the filter.
+- Run both checks: before creating or editing any ad, at every scheduled campaign check, after new products are added, and at each season change (Mar 1, May 1, Oct 1, Nov 1). Then pause off-season ads.
 
 ## Account basics
 - Business `319567885242190`, ad account `act_2414102409349593` (EGP, Africa/Cairo), Page `562565533754895`, Instagram `17841403780813879` (@mimcreativewear), pixel `942389988869614`.

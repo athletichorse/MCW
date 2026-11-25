@@ -1,0 +1,137 @@
+{
+  "catalog_id": "1556470569917729",
+  "product_set_id": "1138358438822594",
+  "ad_account": "act_2414102409349593",
+  "seasons": {
+    "winter": {
+      "months": [
+        11,
+        12,
+        1,
+        2
+      ],
+      "off_season": [
+        "summer",
+        "sleeveless",
+        "linen",
+        "voile",
+        "maillot",
+        "swim",
+        "bikini",
+        "beach",
+        "kaftan",
+        "shorts",
+        "tank top",
+        "sandal",
+        "keep you cool",
+        "hot days",
+        "صيف",
+        "كتان",
+        "شاطئ",
+        "مايوه",
+        "بدون أكمام"
+      ],
+      "exempt_types": {
+        "linen": [
+          "Scarves & Shawls",
+          "Jackets & Kimonos"
+        ],
+        "voile": [
+          "Scarves & Shawls"
+        ],
+        "summer": [
+          "Scarves & Shawls"
+        ],
+        "beach": [
+          "Scarves & Shawls"
+        ]
+      },
+      "in_season": [
+        "knit",
+        "wool",
+        "winter",
+        "chili season",
+        "cozy",
+        "mid season",
+        "mid-season",
+        "transitional"
+      ]
+    },
+    "spring": {
+      "months": [
+        3,
+        4
+      ],
+      "off_season": [
+        "knit",
+        "wool",
+        "winter",
+        "swim",
+        "bikini",
+        "maillot",
+        "شتوي",
+        "صوف"
+      ],
+      "exempt_types": {
+        "knit": [
+          "Bags",
+          "Pouches & Sleeves"
+        ]
+      },
+      "in_season": []
+    },
+    "summer": {
+      "months": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "off_season": [
+        "knit",
+        "wool",
+        "winter",
+        "poncho",
+        "cozy",
+        "chili season",
+        "cardigan",
+        "شتوي",
+        "صوف"
+      ],
+      "exempt_types": {
+        "knit": [
+          "Bags",
+          "Pouches & Sleeves"
+        ]
+      },
+      "in_season": [
+        "linen",
+        "voile",
+        "breathable",
+        "summer"
+      ]
+    },
+    "autumn": {
+      "months": [
+        10
+      ],
+      "off_season": [
+        "swim",
+        "bikini",
+        "maillot",
+        "beach",
+        "مايوه",
+        "شاطئ"
+      ],
+      "exempt_types": {},
+      "in_season": []
+    }
+  },
+  "force_include_retailer_ids": [],
+  "force_exclude_retailer_ids": [],
+  "year_round_types": [
+    "Bags",
+    "Pouches & Sleeves"
+  ]
+}
