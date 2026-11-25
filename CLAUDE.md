@@ -130,6 +130,15 @@ upload has no print at all, tell the owner instead of featuring it; don't change
 - Worldwide (all other countries): 1,200 EGP up to 4,000 EGP order, 3,200 EGP above. Charged in EGP (payment gateway is single-currency).
   International prices are +40% (Global market price list). Theme free-shipping bar (`mim-ship-bar`) must match 2,999.
 
+## Policies, FAQ and blog (25 Nov 2026)
+- The 4 store policies (shipping, refund, privacy, terms) were published from `content/policies_en.json`, with FR/NL/AR
+  translations from `content/policy_translations_fr_nl_ar.py`. If a policy changes, update all 4 languages (h3 headings feed the accordions).
+- The FAQ page body (EN) and its FR/NL/AR translations come from `content/faq_en_fr_nl_ar.py` (h3 questions). Keep it in line with
+  Shipping above and the policies.
+- The only blog post ("How To Measure ?") is unpublished; `/blogs/news/how-to-measure` 301-redirects to `/pages/how-to-measure`,
+  and the empty blog carries `seo.hidden = 1`. Remove that if posts are added.
+- Backups of everything replaced are in `policy_backup/`.
+
 ## Stores (used on the contact page map and the "Find our stores" buttons)
 - MIM Creative Wear Office — Ghoneim St., 2nd floor, apt. 2, off El Gameya St., opposite Mamlouk, Fustat, Cairo. 012 22116237. Google Maps: "Mim Creative Wear Office".
 - MIM Creative Wear (CSA Maadi) — 4 Road 21, CSA, Maadi, Cairo. 011 02220008. Google Maps: "Mim creative wear (CSA Maadi)".
