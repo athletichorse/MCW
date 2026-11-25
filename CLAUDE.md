@@ -110,6 +110,11 @@ upload has no print at all, tell the owner instead of featuring it; don't change
 - Title: Hand-Printed Women's Clothing Made in Egypt | MIM Creative Wear
 - Description: Shop hand-printed dresses, kimonos, tops, scarves & bags made in Egypt with cyanotype, eco & block prints. Sizes XS–3XL. Cash on delivery & worldwide shipping.
 
+## Shipping (set 25 Nov 2026)
+- Egypt: Standard 85 EGP (2–5 days), free over 2,999 EGP; Express 120 EGP (1–2 days). Local pickup off.
+- Worldwide (all other countries): 1,200 EGP up to 4,000 EGP order, 3,200 EGP above. Charged in EGP (payment gateway is single-currency).
+  International prices are +40% (Global market price list). Theme free-shipping bar (`mim-ship-bar`) must match 2,999.
+
 ## Stores (used on the contact page map and the "Find our stores" buttons)
 - MIM Creative Wear Office — Ghoneim St., 2nd floor, apt. 2, off El Gameya St., opposite Mamlouk, Fustat, Cairo. 012 22116237. Google Maps: "Mim Creative Wear Office".
 - MIM Creative Wear (CSA Maadi) — 4 Road 21, CSA, Maadi, Cairo. 011 02220008. Google Maps: "Mim creative wear (CSA Maadi)".
