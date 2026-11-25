@@ -1,0 +1,227 @@
+{%- comment -%}
+MIM structured data (JSON-LD), rendered once from layout/theme.liquid <head>. All inline, no extra requests.
+- Every page: Organization + WebSite (SearchAction /search?q=).
+- Product pages: one complete Product (replaces Shopify's `product | structured_data` ProductGroup in main-product).
+  BreadcrumbList for product + collection pages comes from sections/mim-breadcrumbs.liquid.
+- /pages/contact-us and /pages/store-locator: the two ClothingStore entries (CLAUDE.md "Stores").
+- /pages/faqs: FAQPage built from the page's own headings/answers (so it always matches what is shown).
+{%- endcomment -%}
+{%- liquid
+  assign mim_origin = request.origin
+  assign mim_root = mim_origin | append: routes.root_url
+  if settings.logo
+    assign mim_logo = settings.logo | image_url: width: 500 | prepend: 'https:'
+  endif
+  assign mim_search = mim_origin | append: routes.search_url | append: '?q={search_term_string}'
+-%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": {{ mim_origin | append: '/#organization' | json }},
+  "name": "MIM Creative Wear",
+  "url": {{ mim_origin | append: '/' | json }},
+  {%- if mim_logo %}"logo": {{ mim_logo | json }},{% endif %}
+  "email": "mim@mimcreativewear.com",
+  "sameAs": [
+    {%- assign mim_sep = '' -%}
+    {%- assign mim_socials = settings.social_facebook_link | append: '|' | append: settings.social_instagram_link | append: '|' | append: settings.social_tiktok_link | append: '|' | append: settings.social_pinterest_link | append: '|' | append: settings.social_youtube_link | append: '|' | append: settings.social_twitter_link | split: '|' -%}
+    {%- for s in mim_socials -%}{%- if s != blank -%}{{ mim_sep }}{{ s | json }}{%- assign mim_sep = ',' -%}{%- endif -%}{%- endfor -%}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": {{ mim_origin | append: '/#website' | json }},
+  "name": "MIM Creative Wear",
+  "url": {{ mim_root | json }},
+  "inLanguage": {{ request.locale.iso_code | json }},
+  "publisher": {"@id": {{ mim_origin | append: '/#organization' | json }}},
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {"@type": "EntryPoint", "urlTemplate": {{ mim_search | json }}},
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{%- if template.name == 'product' and product -%}
+{%- liquid
+  assign mim_purl = mim_origin | append: product.url
+  assign mim_type_d = product.type | downcase
+  assign mim_apparel = true
+  if mim_type_d == 'bags' or mim_type_d == 'pouches & sleeves' or mim_type_d == 'home'
+    assign mim_apparel = false
+  endif
+  assign mim_mat = ''
+  for t in product.tags
+    assign td = t | downcase | strip
+    case td
+      when 'linen'
+        assign mim_mat = mim_mat | append: '|Linen'
+      when 'cotton'
+        assign mim_mat = mim_mat | append: '|Cotton'
+      when 'viscose'
+        assign mim_mat = mim_mat | append: '|Viscose'
+      when 'canvas'
+        assign mim_mat = mim_mat | append: '|Canvas'
+      when 'knit'
+        assign mim_mat = mim_mat | append: '|Knit'
+    endcase
+  endfor
+  assign mim_mat = mim_mat | remove_first: '|' | split: '|' | uniq | join: ', '
+  assign mim_color = ''
+  assign mim_color_opt = product.options_by_name['Color']
+  if mim_color_opt
+    assign mim_color = mim_color_opt.values | join: ', '
+  endif
+  assign mim_rcount = product.metafields.reviews.rating_count.value | plus: 0
+  assign mim_desc = product.description | strip_html | strip
+  if mim_desc == blank
+    assign mim_desc = product.title | append: ' – handmade in Egypt by MIM Creative Wear.'
+  endif
+-%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": {{ mim_purl | append: '#product' | json }},
+  "name": {{ product.title | json }},
+  "url": {{ mim_purl | json }},
+  "description": {{ mim_desc | json }},
+  "productID": {{ product.id | append: '' | json }},
+  "sku": {{ product.selected_or_first_available_variant.sku | default: product.selected_or_first_available_variant.id | append: '' | json }},
+  "image": [
+    {%- for img in product.images -%}{{ img | image_url: width: 1920 | prepend: 'https:' | json }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}
+  ],
+  "brand": {"@type": "Brand", "name": "MIM Creative Wear"},
+  {%- if mim_mat != blank %}"material": {{ mim_mat | json }},{% endif %}
+  {%- if mim_color != blank %}"color": {{ mim_color | json }},{% endif %}
+  {%- if product.type != blank %}"category": {{ product.type | json }},{% endif %}
+  {%- if mim_apparel %}
+  "audience": {"@type": "PeopleAudience", "suggestedGender": "female", "suggestedMinAge": 13},
+  {%- endif %}
+  {%- if mim_rcount > 0 %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ product.metafields.reviews.rating.value.rating | json }},
+    "bestRating": {{ product.metafields.reviews.rating.value.scale_max | default: 5 | json }},
+    "ratingCount": {{ mim_rcount }}
+  },
+  {%- endif %}
+  "offers": [
+    {%- for v in product.variants -%}
+    {
+      "@type": "Offer",
+      "url": {{ mim_purl | append: '?variant=' | append: v.id | json }},
+      "sku": {{ v.sku | default: v.id | append: '' | json }},
+      {%- if v.title != 'Default Title' %}"name": {{ product.title | append: ' - ' | append: v.title | json }},{% endif %}
+      "price": {{ v.price | divided_by: 100.0 | round: 2 | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "availability": "https://schema.org/{% if v.available %}InStock{% else %}OutOfStock{% endif %}",
+      "itemCondition": "https://schema.org/NewCondition",
+      "seller": {"@id": {{ mim_origin | append: '/#organization' | json }}, "@type": "Organization", "name": "MIM Creative Wear"},
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {"@type": "MonetaryAmount", "value": 85, "currency": "EGP"},
+        "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "EG"},
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY"},
+          "transitTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "DAY"}
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "EG",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 2,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+      }
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
+{%- if template.name == 'page' and page.handle == 'contact-us' or template.name == 'page' and page.handle == 'store-locator' -%}
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "@id": {{ mim_origin | append: '/pages/store-locator#office' | json }},
+    "name": "MIM Creative Wear Office",
+    "url": {{ mim_origin | append: '/pages/store-locator' | json }},
+    {%- if mim_logo %}"image": {{ mim_logo | json }},{% endif %}
+    "telephone": "+20 12 22116237",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Ghoneim St., 2nd floor, apt. 2, off El Gameya St., opposite Mamlouk, Fustat",
+      "addressLocality": "Cairo",
+      "addressRegion": "Cairo",
+      "addressCountry": "EG"
+    },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Mim+Creative+Wear+Office",
+    "parentOrganization": {"@id": {{ mim_origin | append: '/#organization' | json }}}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "@id": {{ mim_origin | append: '/pages/store-locator#maadi' | json }},
+    "name": "MIM Creative Wear (CSA Maadi)",
+    "url": {{ mim_origin | append: '/pages/store-locator' | json }},
+    {%- if mim_logo %}"image": {{ mim_logo | json }},{% endif %}
+    "telephone": "+20 11 02220008",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4 Road 21, CSA, Maadi",
+      "addressLocality": "Cairo",
+      "addressRegion": "Cairo",
+      "addressCountry": "EG"
+    },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Mim+creative+wear+(CSA+Maadi)",
+    "parentOrganization": {"@id": {{ mim_origin | append: '/#organization' | json }}}
+  }
+]
+</script>
+{%- endif -%}
+{%- if template.name == 'page' and page.handle == 'faqs' and page.content != blank -%}
+{%- liquid
+  assign mim_body = page.content | replace: '<p class="tt-title">', '<h6 class="tt-title">'
+  assign mim_parts = mim_body | split: '<h6 class="tt-title">'
+  assign mim_q = ''
+  assign mim_a = ''
+  assign mim_faq = ''
+  for part in mim_parts
+    if forloop.first
+      continue
+    endif
+    assign head = part | split: '</' | first
+    assign q = head | strip_html | replace: '&amp;', '&' | replace: '&nbsp;', ' ' | strip
+    assign a_raw = part | remove_first: head
+    assign a = a_raw | replace: '<', ' <' | strip_html | replace: '&amp;', '&' | replace: '&nbsp;', ' ' | strip_newlines | strip
+    if q != blank
+      if mim_q != blank and mim_a != blank
+        assign mim_faq = mim_faq | append: '{"@type":"Question","name":' | append: mim_q | append: ',"acceptedAnswer":{"@type":"Answer","text":' | append: mim_a_json | append: '}},'
+      endif
+      assign mim_q = q | json
+      assign mim_a = a
+    else
+      assign mim_a = mim_a | append: ' ' | append: a | strip
+    endif
+    assign mim_a_json = mim_a | json
+  endfor
+  if mim_q != blank and mim_a != blank
+    assign mim_faq = mim_faq | append: '{"@type":"Question","name":' | append: mim_q | append: ',"acceptedAnswer":{"@type":"Answer","text":' | append: mim_a_json | append: '}},'
+  endif
+  assign mim_faq = mim_faq | remove_last: ','
+-%}
+{%- if mim_faq != blank -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{{ mim_faq }}]}
+</script>
+{%- endif -%}
+{%- endif -%}

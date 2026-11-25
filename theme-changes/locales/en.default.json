@@ -1,0 +1,951 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter store using password:",
+      "login_password_button": "Enter using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_error": "Wrong password!",
+      "login_form_submit": "Enter",
+      "admin_link_html": "Are you the store owner? <a href=\"/admin\" class=\"link underlined-link\">Log in here</a>",
+      "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
+    },
+    "social": {
+      "alt_text": {
+        "share_on_facebook": "Share on Facebook",
+        "share_on_twitter": "Share on X",
+        "share_on_pinterest": "Pin on Pinterest"
+      },
+      "links": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "pinterest": "Pinterest",
+        "instagram": "Instagram",
+        "tumblr": "Tumblr",
+        "snapchat": "Snapchat",
+        "youtube": "YouTube",
+        "vimeo": "Vimeo",
+        "tiktok": "TikTok"
+      }
+    },
+    "continue_shopping": "Continue shopping",
+    "pagination": {
+      "label": "Pagination",
+      "page": "Page {{ number }}",
+      "next": "Next page",
+      "previous": "Previous page"
+    },
+    "search": {
+      "search": "Search",
+      "reset": "Clear search term"
+    },
+    "cart": {
+      "view": "View cart ({{ count }})",
+      "view_empty_cart": "View cart",
+      "item_added": "Item added to your cart"
+    },
+    "share": {
+      "close": "Close share",
+      "copy_to_clipboard": "Copy link",
+      "share_url": "Link",
+      "success_message": "Link copied to clipboard"
+    },
+    "slider": {
+      "of": "of",
+      "next_slide": "Slide right",
+      "previous_slide": "Slide left",
+      "name": "Slider"
+    }
+  },
+  "newsletter": {
+    "label": "Email",
+    "success": "Thanks for subscribing",
+    "button_label": "Subscribe"
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "skip_to_product_info": "Skip to product information",
+    "close": "Close",
+    "unit_price_separator": "per",
+    "vendor": "Vendor:",
+    "error": "Error",
+    "refresh_page": "Choosing a selection results in a full page refresh.",
+    "link_messages": {
+      "new_window": "Opens in a new window.",
+      "external": "Opens external website."
+    },
+    "loading": "Loading...",
+    "total_reviews": "total reviews",
+    "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars",
+    "collapsible_content_title": "Collapsible content",
+    "complementary_products": "Complementary products"
+  },
+  "blogs": {
+    "article": {
+      "blog": "Blog",
+      "read_more_title": "Read more: {{ title }}",
+      "comments": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      },
+      "moderated": "Please note, comments need to be approved before they are published.",
+      "comment_form_title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Comment",
+      "post": "Post comment",
+      "back_to_blog": "Back to blog",
+      "share": "Share this article",
+      "success": "Your comment was posted successfully! Thank you!",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated."
+    }
+  },
+  "onboarding": {
+    "product_title": "Example product title",
+    "collection_title": "Your collection's name"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "choose_options": "Choose options",
+      "choose_product_options": "Choose options for {{ product_name }}",
+      "description": "Description",
+      "inventory_in_stock": "In stock",
+      "inventory_in_stock_show_count": "{{ quantity }} in stock",
+      "inventory_low_stock": "Low stock",
+      "inventory_low_stock_show_count": "Low stock: {{ quantity }} left",
+      "inventory_out_of_stock": "Out of stock",
+      "inventory_out_of_stock_continue_selling": "In stock",
+      "sku": "SKU",
+      "on_sale": "Sale",
+      "product_variants": "Product variants",
+      "media": {
+        "gallery_viewer": "Gallery Viewer",
+        "load_image": "Load image {{ index }} in gallery view",
+        "load_model": "Load 3D Model {{ index }} in gallery view",
+        "load_video": "Play video {{ index }} in gallery view",
+        "image_available": "Image {{ index }} is now available in gallery view",
+        "open_media": "Open media {{ index }} in modal",
+        "play_model": "Play 3D Viewer",
+        "play_video": "Play video"
+      },
+      "nested_label": "{{ title }} for {{ parent_title }}",
+      "quantity": {
+        "label": "Quantity",
+        "input_label": "Quantity for {{ product }}",
+        "increase": "Increase quantity for {{ product }}",
+        "decrease": "Decrease quantity for {{ product }}",
+        "minimum_of": "Minimum of {{ quantity }}",
+        "maximum_of": "Maximum of {{ quantity }}",
+        "multiples_of": "Increments of {{ quantity }}",
+        "min_of": "Min {{ quantity }}",
+        "max_of": "Max {{ quantity }}",
+        "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}</span> in cart",
+        "in_cart_aria_label": "Quantity ({{ quantity }} in cart)",
+        "note": "View quantity rules"
+      },
+      "volume_pricing": {
+        "title": "Volume Pricing",
+        "note": "Volume pricing available",
+        "minimum": "{{ quantity }}+",
+        "price_at_each_html": "at {{ price }}/ea",
+        "price_range": "{{ minimum }} - {{ maximum }}"
+      },
+      "pickup_availability": {
+        "view_store_info": "View store information",
+        "check_other_stores": "Check availability at other stores",
+        "pick_up_available": "Pickup available",
+        "pick_up_available_at_html": "Pickup available at <span class=\"color-foreground\">{{ location_name }}</span>",
+        "pick_up_unavailable_at_html": "Pickup currently unavailable at <span class=\"color-foreground\">{{ location_name }}</span>",
+        "unavailable": "Couldn't load pickup availability",
+        "refresh": "Refresh"
+      },
+      "price": {
+        "from_price_html": "From {{ price }}",
+        "regular_price": "Regular price",
+        "sale_price": "Sale price",
+        "unit_price": "Unit price"
+      },
+      "share": "Share this product",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "vendor": "Vendor",
+      "value_unavailable": "{{ option_value }} - Unavailable",
+      "variant_sold_out_or_unavailable": "Variant sold out or unavailable",
+      "video_exit_message": "{{ title }} opens full screen video in same window.",
+      "view_full_details": "View full details",
+      "xr_button": "View in your space",
+      "xr_button_label": "View in your space, loads item in augmented reality window",
+      "taxes_included": "",
+      "duties_included": "Duties included.",
+      "duties_and_taxes_included": "",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
+    },
+    "modal": {
+      "label": "Media gallery"
+    },
+    "facets": {
+      "filter_and_operator_subtitle": "Match all",
+      "apply": "Apply",
+      "clear": "Clear",
+      "clear_all": "Remove all",
+      "from": "From",
+      "filter_and_sort": "Filter and sort",
+      "filter_by_label": "Filter:",
+      "filter_button": "Filter",
+      "filters_selected": {
+        "one": "{{ count }} selected",
+        "other": "{{ count }} selected"
+      },
+      "filter_selected_accessibility": "{{ type }} ({{ count }} filters selected)",
+      "show_more": "Show more",
+      "show_less": "Show less",
+      "max_price": "The highest price is {{ price }}",
+      "product_count": {
+        "one": "{{ product_count }} of {{ count }} product",
+        "other": "{{ product_count }} of {{ count }} products"
+      },
+      "product_count_simple": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
+      "reset": "Reset",
+      "sort_button": "Sort",
+      "sort_by_label": "Sort by:",
+      "to": "To",
+      "clear_filter": "Remove filter"
+    }
+  },
+  "templates": {
+    "search": {
+      "no_results": "No results found for “{{ terms }}”. Check the spelling or use a different word or phrase.",
+      "page": "Page",
+      "products": "Products",
+      "results_pages_with_count": {
+        "one": "{{ count }} page",
+        "other": "{{ count }} pages"
+      },
+      "results_suggestions_with_count": {
+        "one": "{{ count }} suggestion",
+        "other": "{{ count }} suggestions"
+      },
+      "results_products_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
+      "results_with_count": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
+      "results_with_count_and_term": {
+        "one": "{{ count }} result found for “{{ terms }}”",
+        "other": "{{ count }} results found for “{{ terms }}”"
+      },
+      "title": "Search results",
+      "search_for": "Search for “{{ terms }}”",
+      "suggestions": "Suggestions",
+      "pages": "Pages"
+    },
+    "cart": {
+      "cart": "Cart"
+    },
+    "contact": {
+      "form": {
+        "title": "Contact form",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone number",
+        "comment": "Comment",
+        "send": "Send",
+        "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
+        "error_heading": "Please adjust the following:"
+      }
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "404"
+    }
+  },
+  "sections": {
+    "announcements": {
+      "previous_announcement": "Previous announcement",
+      "next_announcement": "Next announcement",
+      "carousel": "Carousel",
+      "announcement": "Announcement",
+      "announcement_bar": "Announcement bar"
+    },
+    "header": {
+      "announcement": "Announcement",
+      "menu": "Menu",
+      "cart_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
+    "cart": {
+      "title": "Your cart",
+      "caption": "Cart items",
+      "remove_title": "Remove {{ title }}",
+      "estimated_total": "Estimated total",
+      "new_estimated_total": "New estimated total",
+      "note": "Order special instructions",
+      "checkout": "Check out",
+      "empty": "Your cart is empty",
+      "product_disclosure": "Product disclosure",
+      "product_disclosures": "Product disclosures",
+      "cart_error": "There was an error while updating your cart. Please try again.",
+      "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
+      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
+      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Discounts and shipping calculated at checkout.",
+      "taxes_included_shipping_at_checkout_with_policy_html": "Discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
+      "taxes_included_shipping_at_checkout_without_policy": "Discounts and shipping calculated at checkout.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Discounts and shipping calculated at checkout.",
+      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
+      "taxes_at_checkout_shipping_at_checkout_without_policy": "Discounts and shipping calculated at checkout.",
+      "headings": {
+        "product": "Product",
+        "price": "Price",
+        "total": "Total",
+        "quantity": "Quantity",
+        "image": "Product image"
+      },
+      "update": "Update",
+      "login": {
+        "title": "Have an account?",
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in</a> to check out faster."
+      }
+    },
+    "footer": {
+      "payment": "Payment methods"
+    },
+    "featured_blog": {
+      "view_all": "View all",
+      "onboarding_title": "Blog post",
+      "onboarding_content": "Give your customers a summary of your blog post"
+    },
+    "featured_collection": {
+      "view_all": "View all",
+      "view_all_label": "View all products in the {{ collection_name }} collection"
+    },
+    "collection_list": {
+      "view_all": "View all"
+    },
+    "collection_template": {
+      "empty": "No products found",
+      "title": "Collection",
+      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">remove all</a>"
+    },
+    "video": {
+      "load_video": "Load video: {{ description }}"
+    },
+    "slideshow": {
+      "load_slide": "Load slide",
+      "previous_slideshow": "Previous slide",
+      "next_slideshow": "Next slide",
+      "pause_slideshow": "Pause slideshow",
+      "play_slideshow": "Play slideshow",
+      "carousel": "Carousel",
+      "slide": "Slide"
+    },
+    "page": {
+      "title": "Page title"
+    },
+    "quick_order_list": {
+      "product_total": "Product subtotal",
+      "view_cart": "View cart",
+      "each": "{{ money }}/ea",
+      "product": "Product",
+      "variant": "Variant",
+      "variant_total": "Variant total",
+      "items_added": {
+        "one": "{{ quantity }} item added",
+        "other": "{{ quantity }} items added"
+      },
+      "items_removed": {
+        "one": "{{ quantity }} item removed",
+        "other": "{{ quantity }} items removed"
+      },
+      "product_variants": "Product variants",
+      "total_items": "Total items",
+      "remove_all_single_item_confirmation": "Remove 1 item from your cart?",
+      "remove_all_items_confirmation": "Remove all {{ quantity }} items from your cart?",
+      "remove_all": "Remove all",
+      "cancel": "Cancel",
+      "min_error": "This item has a minimum of {{ min }}",
+      "max_error": "This item has a maximum of {{ max }}",
+      "step_error": "You can only add this item in increments of {{ step }}"
+    }
+  },
+  "localization": {
+    "country_label": "Country/region",
+    "language_label": "Language",
+    "update_language": "Update language",
+    "update_country": "Update country/region",
+    "search": "Search",
+    "popular_countries_regions": "Popular countries/regions",
+    "country_results_count": "{{ count }} countries/regions found"
+  },
+  "customer": {
+    "account": {
+      "title": "Account",
+      "details": "Account details",
+      "view_addresses": "View addresses",
+      "return": "Return to Account details"
+    },
+    "activate_account": {
+      "title": "Activate account",
+      "subtext": "Create your password to activate your account.",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Activate account",
+      "cancel": "Decline invitation"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "default": "Default",
+      "add_new": "Add a new address",
+      "edit_address": "Edit address",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "country": "Country/region",
+      "province": "Province",
+      "zip": "Postal/ZIP code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "add": "Add address",
+      "update": "Update address",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?"
+    },
+    "log_in": "Log in",
+    "log_out": "Log out",
+    "login_page": {
+      "cancel": "Cancel",
+      "create_account": "Create account",
+      "email": "Email",
+      "forgot_password": "Forgot your password?",
+      "guest_continue": "Continue",
+      "guest_title": "Continue as a guest",
+      "password": "Password",
+      "title": "Login",
+      "sign_in": "Sign in",
+      "submit": "Submit",
+      "alternate_provider_separator": "or"
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date_html": "Placed on {{ date }}",
+      "cancelled_html": "Order Cancelled on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "billing_address": "Billing Address",
+      "payment_status": "Payment Status",
+      "shipping_address": "Shipping Address",
+      "fulfillment_status": "Fulfillment Status",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "total_refunded": "Refunded",
+      "fulfilled_at_html": "Fulfilled {{ date }}",
+      "track_shipment": "Track shipment",
+      "tracking_url": "Tracking link",
+      "tracking_company": "Carrier",
+      "tracking_number": "Tracking number",
+      "subtotal": "Subtotal",
+      "total_duties": "Duties"
+    },
+    "orders": {
+      "title": "Order history",
+      "order_number": "Order",
+      "order_number_link": "Order number {{ number }}",
+      "date": "Date",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status",
+      "total": "Total",
+      "none": "You haven't placed any orders yet."
+    },
+    "recover_password": {
+      "title": "Reset your password",
+      "subtext": "We will send you an email to reset your password",
+      "success": "We've sent you an email with a link to update your password."
+    },
+    "register": {
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create"
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "subtext": "Enter a new password",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Reset password"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "how_to_use_gift_card": "Use the gift card code online or QR code in-store",
+      "title": "Here's your {{ value }} gift card balance for {{ shop }}!",
+      "subtext": "Your gift card",
+      "gift_card_code": "Gift card code",
+      "shop_link": "Visit online store",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "qr_image_alt": "QR code — scan to redeem gift card",
+      "copy_code": "Copy gift card code",
+      "expiration_date": "Expires {{ expires_on }}",
+      "copy_code_success": "Code copied successfully",
+      "expired": "Expired"
+    }
+  },
+  "recipient": {
+    "form": {
+      "checkbox": "I want to send this as a gift",
+      "expanded": "Gift card recipient form expanded",
+      "collapsed": "Gift card recipient form collapsed",
+      "email_label": "Recipient email",
+      "email_label_optional_for_no_js_behavior": "Recipient email (optional)",
+      "email": "Email",
+      "name_label": "Recipient name (optional)",
+      "name": "Name",
+      "message_label": "Message (optional)",
+      "message": "Message",
+      "max_characters": "{{ max_chars }} characters max",
+      "send_on": "YYYY-MM-DD",
+      "send_on_label": "Send on (optional)"
+    }
+  },
+  "mim": {
+    "sf": {
+      "find_my_size": "Find my size",
+      "your_size": "Your size",
+      "match": "match",
+      "selected": "Size [size] selected",
+      "title": "Find your perfect size",
+      "close": "Close",
+      "back": "Back",
+      "continue": "Continue",
+      "see_result": "See my size",
+      "start_over": "Start over",
+      "s1_title": "Let's find your fit",
+      "s1_sub": "Two measurements are all it takes. Drag to adjust.",
+      "height": "Height",
+      "weight": "Weight",
+      "cm": "cm",
+      "ftin": "ft/in",
+      "kg": "kg",
+      "lbs": "lbs",
+      "live_estimate": "Live estimate",
+      "refined": "Refined in the next steps",
+      "privacy": "Saved privately on this device, so every piece shows your size.",
+      "s2_title": "Your shape",
+      "s2_sub": "Clothes fit bodies, not numbers. Not sure? Leave it at average.",
+      "bust": "Bust",
+      "stomach": "Stomach",
+      "hips": "Hips",
+      "waist": "Waist",
+      "length": "Length",
+      "smaller": "Smaller",
+      "average": "Average",
+      "fuller": "Fuller",
+      "flatter": "Flatter",
+      "rounder": "Rounder",
+      "narrower": "Narrower",
+      "curvier": "Curvier",
+      "s3_title": "How do you like it to fit?",
+      "s3_sub": "Pick the feel you reach for most.",
+      "fit_fitted": "Fitted",
+      "fit_fitted_d": "Close to the body",
+      "fit_regular": "Regular",
+      "fit_regular_d": "Skims the body",
+      "fit_relaxed": "Relaxed",
+      "fit_relaxed_d": "Easy and flowy",
+      "best_match": "Best match",
+      "fit_match": "fit match",
+      "confident": "A confident match for your measurements.",
+      "close_match": "A close match — your fit preference decides.",
+      "tap_size": "Tap a size to see how it would fit.",
+      "snug": "Snug",
+      "ideal": "Ideal",
+      "roomy": "Roomy",
+      "shorter": "Shorter",
+      "longer": "Longer",
+      "fit_note": "Fit note",
+      "note_true": "Against your measurements this piece fits true to size.",
+      "note_between_up": "You're between sizes — we went one up for comfort. Size down for a closer fit.",
+      "note_between_down": "You're between sizes — this one skims the body. Size up for a looser feel.",
+      "note_unavail": "Your ideal size isn't offered in this piece, so we picked the closest one.",
+      "disclaimer": "This is a general recommendation. Individual fit may vary by style and preference.",
+      "select_size": "Select size [size]",
+      "teaser": "3 quick questions · 30 seconds"
+    },
+    "home": {
+      "announce": {
+        "items": "Free delivery on orders over 2,999 EGP in Cairo & Giza|We ship worldwide|Hand-printed in Egypt, one piece at a time|Find your size in 3 steps on every piece"
+      },
+      "hero": {
+        "eyebrow": "New season · 2026",
+        "heading_html": "<p>Wear what <em>grows</em> on you</p>",
+        "text_html": "<p>Botanical prints and easy everyday basics, made to move with you — from XS to 3XL.</p>",
+        "button_label": "Shop new arrivals",
+        "button_label_2": "Explore dresses",
+        "footnote": "",
+        "badge": "Hand printed in Egypt · One of a kind · ",
+        "h1": "MIM Creative Wear — hand-printed women's clothing",
+        "new": "New arrivals"
+      },
+      "marquee": {
+        "items": "Cyano print|Eco print|Botanical|Block print|Hand printed"
+      },
+      "cats": {
+        "eyebrow": "Shop by category",
+        "heading_html": "Find your next favourite",
+        "link_label": "All collections"
+      },
+      "arrivals": {
+        "eyebrow": "Just landed",
+        "heading_html": "New arrivals",
+        "link_label": "Shop all"
+      },
+      "edit": {
+        "eyebrow": "The botanical edit",
+        "heading_html": "<p>Prints that feel like a <em>garden</em> walk</p>",
+        "text_html": "<p>Leaves, ferns and petals on soft, breathable pieces — made for long days and warm evenings.</p>",
+        "button_label": "Shop the edit"
+      },
+      "basics": {
+        "eyebrow": "Comfort zone",
+        "heading_html": "Basic Element essentials",
+        "link_label": "Shop basics"
+      },
+      "bags": {
+        "eyebrow": "Bags & more",
+        "heading_html": "<p>Canvas bags with a <em>botanical</em> soul</p>",
+        "text_html": "<p>Totes, cross bags, pouches and laptop sleeves in printed canvas — the finishing touch for every look.</p>",
+        "button_label": "Shop bags & more"
+      },
+      "values": {
+        "heading_html": "Made for real bodies, every day",
+        "item1_title": "Sizes XS – 3XL",
+        "item1_text": "Most pieces come in a wide size range, so the whole circle can wear them.",
+        "item2_title": "Find your size",
+        "item2_text": "Answer three quick questions on any product and we'll suggest the size that fits you best.",
+        "item3_title": "Original prints",
+        "item3_text": "Botanical and natural motifs you won't find anywhere else."
+      },
+      "related": {
+        "eyebrow": "Complete the look",
+        "heading_html": "You may also like",
+        "link_label": ""
+      },
+      "newsletter": {
+        "heading_html": "Join the <em>MIM</em> circle",
+        "text": "New drops, restocks and private offers — straight to your inbox."
+      },
+      "prints": {
+        "eyebrow": "Our signature",
+        "heading_html": "Shop by <em>print</em>"
+      },
+      "latest": {
+        "eyebrow": "Just dropped",
+        "heading_html": "Latest <em>drops</em>",
+        "link_label": "Shop latest"
+      },
+      "sale": {
+        "eyebrow": "Limited time",
+        "heading_html": "On <em>sale</em> now",
+        "link_label": "Shop the sale",
+        "badge": "Sale",
+        "pop_title": "The sale is on",
+        "pop_text": "Hand-printed favourites at special prices — while stock lasts.",
+        "pop_cta": "Shop the sale",
+        "close": "Close",
+        "off": "off"
+      },
+      "best": {
+        "eyebrow": "Most loved",
+        "heading_html": "Best <em>sellers</em>",
+        "link_label": "Shop best sellers"
+      }
+    },
+    "ui": {
+      "prev": "Previous",
+      "next": "Next",
+      "home": "Home",
+      "pieces": "pieces",
+      "pref_lead": "Find MIM faster on Google",
+      "pref_cta": "Add as a preferred source"
+    },
+    "print": {
+      "shop": "Shop the print",
+      "explore": "Explore",
+      "unique": "Hand printed — every piece is one of a kind.",
+      "cyano": {
+        "name": "Cyano print",
+        "tagline": "Printed by the sun",
+        "story": "Real leaves are laid on light-sensitive fabric and left in the sun. Where the light touches, the cloth turns deep Prussian blue — where the leaves rest, their silhouettes stay.",
+        "s1": "Coat",
+        "d1": "Fabric is treated with a light-sensitive solution.",
+        "s2": "Expose",
+        "d2": "Leaves are arranged and left under the sun.",
+        "s3": "Rinse",
+        "d3": "Water fixes the blue and reveals the print.",
+        "headline": "Printed by the sun",
+        "lead": "Real leaves, Egyptian sunlight and deep Prussian blue. Every cyanotype piece is one of a kind."
+      },
+      "eco": {
+        "name": "Eco print",
+        "tagline": "Leaves, steam & time",
+        "story": "Fresh leaves are bundled tightly against the fabric and steamed, so their natural pigments transfer straight onto the cloth — every leaf leaves its own mark.",
+        "s1": "Gather",
+        "d1": "Leaves and petals are collected from nature.",
+        "s2": "Bundle & steam",
+        "d2": "Rolled tightly into the fabric and steamed.",
+        "s3": "Reveal",
+        "d3": "Unrolled to show a one-of-a-kind print.",
+        "headline": "Coloured by leaves",
+        "lead": "Fresh leaves steamed into the cloth leave their natural colour behind. No dyes, no repeats."
+      },
+      "botanical": {
+        "name": "Botanical",
+        "tagline": "Nature-inspired prints",
+        "story": "Ferns, leaves and petals turned into soft, wearable prints — on dresses, tops and canvas bags that mix easily with your basics.",
+        "s1": "Inspired",
+        "d1": "Motifs drawn from leaves, ferns and flowers.",
+        "s2": "Printed",
+        "d2": "Applied to soft, breathable pieces and canvas.",
+        "s3": "Styled",
+        "d3": "Made to pair with everyday basics.",
+        "headline": "Nature, made wearable",
+        "lead": "Ferns, petals and leaves turned into easy prints you will reach for every day."
+      },
+      "block": {
+        "name": "Block print",
+        "tagline": "Stamped by hand",
+        "story": "Hand-carved blocks are inked and pressed onto the fabric one by one, so every repeat carries the rhythm of the maker's hand.",
+        "s1": "Carve",
+        "d1": "A pattern is carved into a wooden block.",
+        "s2": "Ink",
+        "d2": "The block is loaded with colour.",
+        "s3": "Stamp",
+        "d3": "Pressed by hand, repeat after repeat.",
+        "headline": "Stamped by hand",
+        "lead": "Hand-carved blocks pressed one by one, so every repeat carries the maker’s rhythm."
+      },
+      "hand": {
+        "name": "Hand printed",
+        "tagline": "One of a kind",
+        "story": "All our hand prints are made with leaves from nature, so every print varies in size and form — no two pieces are exactly alike.",
+        "s1": "Nature",
+        "d1": "Real leaves are the printing tool.",
+        "s2": "Hand",
+        "d2": "Every piece is printed by hand.",
+        "s3": "Unique",
+        "d3": "Each print turns out slightly different.",
+        "headline": "One piece, one story",
+        "lead": "Printed by hand in Egypt with leaves from nature, so no two pieces are ever the same."
+      }
+    },
+    "acc": {
+      "description": "Description",
+      "print": "Print & technique",
+      "fit": "Size & fit",
+      "fit_html": "Not sure about your size? Tap <b>Find my size</b> above for a personal recommendation in 30 seconds. Every piece is cut and printed by hand, so measurements can vary by 1–2 cm.",
+      "measure": "How to measure",
+      "delivery": "Delivery & returns",
+      "delivery_html": "<ul><li>Delivery within 2 working days to Cairo, Giza & Alexandria, and up to 5 working days elsewhere in Egypt.</li><li>Free delivery on orders over 2,999 EGP in Cairo & Giza.</li><li>We ship worldwide.</li><li>Pay cash on delivery or by card.</li><li>Exchange unworn items within 2 days of delivery (LE 50 exchange fee).</li></ul>",
+      "care": "Care",
+      "care_html": "<ul><li>Hand wash cold or on a gentle cycle, inside out.</li><li>Mild detergent, no bleach.</li><li>Dry in the shade to protect the print.</li><li>Iron on the reverse side.</li><li>Natural prints soften beautifully with time — small variations are part of the handmade charm.</li></ul>"
+    },
+    "fbt": {
+      "heading": "Frequently bought together",
+      "total": "Total",
+      "add": "Add selected to cart",
+      "this": "This item",
+      "added": "Added to cart",
+      "error": "Couldn't add — please try again"
+    },
+    "ctl": {
+      "eyebrow": "Style it with",
+      "heading_html": "Complete the <em>look</em>"
+    },
+    "latest": {
+      "eyebrow": "Just dropped",
+      "heading_html": "Latest <em>drops</em>",
+      "link_label": "Shop latest"
+    },
+    "sale": {
+      "eyebrow": "Limited time",
+      "heading_html": "On <em>sale</em> now",
+      "link_label": "Shop the sale",
+      "badge": "Sale",
+      "pop_title": "The sale is on",
+      "pop_text": "Hand-printed favourites at special prices — while stock lasts.",
+      "pop_cta": "Shop the sale",
+      "close": "Close",
+      "off": "off"
+    },
+    "ship": {
+      "remaining_html": "You're <b>{{ amount }}</b> away from <b>free shipping</b>",
+      "unlocked_html": "You've unlocked <b>free shipping</b>",
+      "note": "(Cairo & Giza only)"
+    },
+    "trust": {
+      "t1": "Free delivery over 2,999 EGP",
+      "d1": "Cairo & Giza",
+      "t2": "We ship worldwide",
+      "d2": "Delivered to your door",
+      "t3": "Cash on delivery or card",
+      "d3": "Secure checkout",
+      "t4": "Easy exchange",
+      "d4": "Within 2 days of delivery"
+    },
+    "qa": {
+      "add": "Quick add",
+      "choose": "Choose your size",
+      "added": "Added to cart",
+      "error": "Could not add, please try again",
+      "add_one": "Add to cart"
+    },
+    "wa": "Chat with us on WhatsApp",
+    "about": {
+      "t01": "Our story",
+      "t02": "MIM is an Egyptian label that hand prints every piece with real leaves, sunlight and carved wooden blocks, so each one is as unique as the person who wears it.",
+      "t03": "Read the story",
+      "t04": "We return to our roots and revive ancient hand printing techniques. We celebrate the diversity and individuality of every customer. A piece of our soul is in everything we make, and no two pieces are ever the same.",
+      "t05": "May Esayed · Founder & designer",
+      "t06": "About the designer",
+      "t07": "A love of leaves that started in childhood",
+      "t08": "Our techniques",
+      "t09": "Five ways we print nature onto fabric",
+      "t10": "Shop this print",
+      "t11": "From the collection",
+      "t12": "Our team",
+      "t13": "The hands behind every piece",
+      "t14": "Our dedicated team is behind every single step of production, putting passion and care into making every MIM piece stand out.",
+      "t15": "Find your one-of-a-kind piece",
+      "t16": "Shop new in",
+      "t17": "Contact us",
+      "t18": "Egyptian roots|Printed by hand|One of a kind|Made for every woman",
+      "t19": "The symbols and rich history of ancient Egypt are our first source of inspiration.|Real leaves, carved wooden blocks and Egyptian sun. No machine prints.|Every leaf leaves its own mark, so no two pieces are ever alike.|Easy shapes and free sizes that celebrate every body and every style.",
+      "t20": "Leaf printing|Eco printing|Block printing|Sun printing|Textile art",
+      "t21": "Every leaf has its own character and story, leaving a beautiful individual print that makes each piece as unique as its wearer.|Leaves, flowers and bark are rolled tightly into the fabric and steamed, so their natural pigments and shapes transfer onto it. Each print is shaped by the plant, the season and the water.|Carved wooden and linoleum blocks with motifs drawn from our rich heritage give our pieces a timeless, vintage feel.|A photographic process first discovered in 1842. The fabric is prepared in a darkroom, then laid out under the sun with real leaves, revealing each one in deep Prussian blue.|Fabric is sprayed with dye through stencils and ornaments inspired by our culture, building rhythm, symmetry and layers that turn each dress into a piece of textile art.",
+      "t22": "The MIM studio",
+      "t23": "Cutting, printing & finishing",
+      "h1a": "Nature.",
+      "h1b": "History.",
+      "h1c": "Fashion.",
+      "f1": "May has a lasting fascination with nature and energy. Her passion began as a child and grew during a visit to Germany, where she took long walks in the forest and collected every new leaf shape she found. Her host family gave her a botanical encyclopedia, and her first herbarium was born.",
+      "f2": "She later worked as a tour guide for years, finding peace among Egypt's historical sites and a deep connection with its ancient symbols. Bringing her love of nature and history together, she began using ancient hand printing techniques to print natural leaf patterns on her pieces.",
+      "quote": "\"Pieces that bring joy and balance into people's lives.\"",
+      "f3": "With her studies in holistic healing and colour therapy, every collection is an expression of everything she has learned, and continues to learn, every day.",
+      "n1": "May Esayed",
+      "r1": "Founder & designer",
+      "n2": "Eman Hussein",
+      "r2": "Visual artist & head printmaker",
+      "n3": "The MIM studio",
+      "r3": "Cutting, printing & finishing"
+    },
+    "contact": {
+      "t01": "Contact us",
+      "t02": "A question about sizing, an order or a custom piece? We usually reply within a few hours, and WhatsApp is the fastest way to reach us.",
+      "t03": "Fastest reply",
+      "t04": "Email",
+      "t05": "Orders & exchanges",
+      "t06": "Call us",
+      "t07": "Call or WhatsApp",
+      "t08": "New drops first",
+      "t09": "Send us a message",
+      "t10": "Thank you, your message is in.",
+      "t11": "We will get back to you by email very soon.",
+      "t12": "What is it about?",
+      "t13": "Name",
+      "t14": "Email",
+      "t15": "Phone",
+      "t16": "Order number (optional)",
+      "t17": "Your message",
+      "t18": "Send message",
+      "t19": "Delivery",
+      "t20": "Cairo, Giza & Alexandria",
+      "t21": "Up to 2 working days",
+      "t22": "Rest of Egypt",
+      "t23": "Up to 5 working days",
+      "t24": "Worldwide",
+      "t25": "We ship worldwide",
+      "t26": "Exchanges",
+      "t27": "Unworn items can be exchanged within 2 days of delivery, in original condition with tags attached.",
+      "t28": "Find us",
+      "t29": "MIM studio, Cairo, Egypt",
+      "t30": "Where to find MIM in store",
+      "t31": "Quick answers",
+      "t32": "All FAQs",
+      "t33": "How to measure",
+      "t34": "How long does delivery take?|How can I pay?|Can I exchange a piece?|How do I find my size?|Do you ship outside Egypt?",
+      "t35": "Up to 2 working days in Cairo, Giza and Alexandria, and up to 5 working days elsewhere in Egypt. Orders placed on weekends and holidays are processed the next working day.|Cash on delivery, or by card at checkout.|Yes, within 2 days of delivery for unworn, unwashed items with all tags attached. Shipping costs apply.|Use the Find my size tool on each product page, check our measuring guide, or message us on WhatsApp and we will help.|Yes, we ship worldwide. Shipping costs are shown at checkout once you enter your address.",
+      "h1a": "Let's",
+      "h1b": "talk.",
+      "topics": "An order|Sizing & fit|Custom piece|Wholesale|Something else"
+    },
+    "foot": {
+      "t01": "Women's wear hand printed with real leaves and sunlight in Egypt. Every piece is one of a kind.",
+      "t02": "Dresses",
+      "t03": "Tops",
+      "t04": "Pants & Skirts",
+      "t05": "Bags & More",
+      "t06": "New in",
+      "t07": "Sale",
+      "t08": "Our story",
+      "t09": "Techniques",
+      "t10": "Our team",
+      "t11": "Store locator",
+      "t12": "Contact us",
+      "t13": "FAQs",
+      "t14": "How to measure",
+      "t15": "Shipping",
+      "t16": "Exchanges & returns",
+      "t17": "My account & orders",
+      "t18": "Delivery across Egypt, shipping worldwide",
+      "t19": "Exchange within 2 days",
+      "t20": "Cash on delivery or card",
+      "t21": "Handmade in Egypt.",
+      "t22": "Payment methods",
+      "t23": "Privacy",
+      "t24": "Terms",
+      "heads": "Shop|Prints|About MIM|Help"
+    },
+    "drawer": {
+      "t01": "Just landed",
+      "t02": "The newest hand-printed pieces",
+      "t03": "About MIM & help",
+      "t04": "Our Story",
+      "t05": "Techniques",
+      "t06": "How to Measure",
+      "t07": "FAQs",
+      "t08": "Contact Us",
+      "t09": "Email",
+      "t10": "Free delivery over {{ fs }} in Cairo & Giza · Worldwide shipping"
+    }
+  }
+}

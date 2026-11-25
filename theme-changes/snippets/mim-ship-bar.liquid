@@ -1,0 +1,42 @@
+{%- comment -%}
+Free-shipping progress bar (cart drawer + cart page). Free shipping over 2,999 EGP (threshold 299901 = 2,999.01 EGP in cents), Cairo & Giza only.
+Re-rendered by Dawn's cart section rendering, so it updates live as quantities change.
+{%- endcomment -%}
+{%- liquid
+assign threshold = 299901
+assign total = cart.items_subtotal_price
+assign remaining = threshold | minus: total
+assign pct = total | times: 100 | divided_by: threshold
+if pct > 100
+assign pct = 100
+endif
+-%}
+{%- if cart.item_count > 0 and cart.currency.iso_code == 'EGP' -%}
+{%- style -%}
+.mim-ship{margin:0 0 1.6rem;padding:1.2rem 1.4rem;border-radius:1.4rem;background:var(--mim-tint);}
+.drawer__inner .mim-ship{margin:0 0 1.2rem;}
+.mim-ship__msg{display:flex;align-items:center;gap:.8rem;margin:0 0 .9rem;font-size:1.35rem;line-height:1.4;color:var(--mim-ink);}
+.mim-ship__msg svg{flex:none;color:var(--mim-teal);}
+.mim-ship__msg b{font-weight:700;color:var(--mim-teal-d);}
+.mim-ship__track{height:.7rem;border-radius:99px;background:rgba(0,143,157,.15);overflow:hidden;}
+.mim-ship__track i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--mim-teal-2),var(--mim-teal));transition:width .6s var(--mim-ease);}
+.mim-ship.is-done .mim-ship__track i{background:var(--mim-teal);}
+.mim-ship__note{margin:.8rem 0 0;font-size:1.15rem;color:var(--mim-muted);}
+[dir=rtl] .mim-ship__track i{margin-inline-start:0}
+{%- endstyle -%}
+<div class="mim-ship{% if remaining <= 0 %} is-done{% endif %}" role="status">
+<p class="mim-ship__msg">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>
+<span>
+{%- if remaining > 0 -%}
+{%- assign rem_money = remaining | money_without_trailing_zeros -%}
+{{ 'mim.ship.remaining_html' | t: amount: rem_money }}
+{%- else -%}
+{{ 'mim.ship.unlocked_html' | t }}
+{%- endif -%}
+</span>
+</p>
+<div class="mim-ship__track" aria-hidden="true"><i style="width: {{ pct }}%"></i></div>
+<p class="mim-ship__note">{{ 'mim.ship.note' | t }}</p>
+</div>
+{%- endif -%}

@@ -1,0 +1,23 @@
+{%- comment -%}
+MIM robots.txt — Shopify's default rules (kept up to date by Shopify) plus a few extras.
+Sitemap: Shopify generates /sitemap.xml automatically (products, collections, pages, blogs, and /ar/ alternates).
+{%- endcomment -%}
+{% for group in robots.default_groups %}
+{{- group.user_agent }}
+{%- for rule in group.rules %}
+{{ rule }}
+{%- endfor %}
+{%- if group.user_agent.value == '*' %}
+{{ 'Disallow: /*?*sort_by*' }}
+{{ 'Disallow: /*?*q=*' }}
+{{ 'Disallow: /*?*variant=*&*' }}
+{{ 'Disallow: /*?*currency=*' }}
+{{ 'Disallow: /pages/products-edit' }}
+{{ 'Disallow: /pages/wishlist' }}
+{{ 'Allow: /*.css$' }}
+{{ 'Allow: /*.js$' }}
+{%- endif %}
+{%- if group.sitemap != blank %}
+{{ group.sitemap }}
+{%- endif %}
+{% endfor %}

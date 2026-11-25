@@ -1,0 +1,358 @@
+/* v3.5: top menu - uppercase, current/open item = brand teal pill, Sale in red */
+.mim-nav .list-menu--inline{gap:.2rem;align-items:center}
+.mim-nav .header__menu-item{position:relative;display:inline-flex;align-items:center;gap:.4rem;padding:.9rem 1.5rem!important;border-radius:99px;font-size:1.3rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--mim-ink);text-decoration:none!important;transition:background-color .2s,color .2s}
+.mim-nav .header__menu-item span{background:none!important;padding:0;color:inherit!important;text-decoration:none!important}
+.mim-nav .header__menu-item .icon-caret{position:static!important;width:1rem;height:.6rem;margin-inline-start:.2rem;transform:none;transition:transform .2s}
+.mim-nav details[open]>.header__menu-item .icon-caret{transform:rotate(180deg)}
+.mim-nav .header__menu-item:hover{background:var(--mim-tint);color:var(--mim-teal-d)}
+.mim-nav .header__menu-item.is-current,.mim-nav details[open]>.header__menu-item{background:var(--mim-teal);color:#fff}
+.mim-nav:has(details[open]) .header__menu-item.is-current:not(details[open]>.header__menu-item){background:transparent;color:var(--mim-teal-d);box-shadow:inset 0 0 0 1.5px var(--mim-teal)}
+.mim-nav #HeaderMenu-sale{color:var(--mim-sale)}
+.mim-nav #HeaderMenu-sale:hover{background:#fdecee;color:var(--mim-sale)}
+.mim-nav #HeaderMenu-sale.is-current{background:var(--mim-sale);color:#fff}
+html[dir=rtl] .mim-nav .header__menu-item{padding:.9rem 1.5rem!important;letter-spacing:0;text-transform:none;font-size:1.45rem}
+/* v3.5: dropdown = floating pill bar under the header */
+.mim-nav .mega-menu__content.mim-pillbar{background:transparent!important;border:0!important;box-shadow:none!important;padding:1.4rem 1.5rem 0!important;overflow:visible!important;max-height:none!important;pointer-events:none}
+.mim-pillbar__list{pointer-events:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;width:max-content;max-width:min(100%,136rem);margin:0 auto;padding:.6rem;list-style:none;border-radius:99px;background:#F3ECE2;box-shadow:0 12px 32px -14px rgba(20,39,43,.35)}
+.mim-pill{display:inline-flex;align-items:center;height:4rem;padding:0 1.6rem;border-radius:99px;background:#fff;color:var(--mim-ink);font-size:1.25rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background-color .2s,color .2s,transform .2s}
+.mim-pill:hover{background:var(--mim-teal);color:#fff;transform:translateY(-1px)}
+.mim-pill.is-active{background:var(--mim-teal);color:#fff}
+.mim-pill:focus-visible{outline:2px solid var(--mim-teal-d);outline-offset:2px}
+html[dir=rtl] .mim-pill{letter-spacing:0;text-transform:none;font-size:1.4rem}
+@media (max-width:1199px){.mim-pillbar__list{border-radius:2.4rem}}
+/* v3.5: shop by print - 3 larger cards beside the story panel so the row matches its height */
+@media (min-width:990px){
+.mim-prints .mim-rail__track{grid-auto-columns:calc((100% - 2 * 1.6rem) / 3)!important;gap:1.6rem!important;align-items:start}
+.mim-prints .mim-card__media{aspect-ratio:3 / 4}
+.mim-prints .mim-card__title{font-size:1.45rem}
+.mim-prints .mim-card__price{font-size:1.45rem}
+}
+/* v3.5: infinite scroll on product grids */
+.mim-inf .pagination-wrapper{display:none}
+.mim-inf__more{display:flex;justify-content:center;align-items:center;gap:1rem;min-height:8rem;color:var(--mim-muted);font-size:1.3rem}
+.mim-inf__more[hidden]{display:none}
+.mim-inf__spin{width:2.4rem;height:2.4rem;border-radius:50%;border:2px solid var(--mim-line);border-top-color:var(--mim-teal);animation:mimInfSpin .8s linear infinite}
+@keyframes mimInfSpin{to{transform:rotate(360deg)}}
+/* v3.5: buy row - quantity + Add to cart side by side, Buy it now full width underneath */
+.product__info-container>.product-form__quantity+div>product-form .product-form__buttons{max-width:none;overflow:visible}
+.product__info-container>.product-form__quantity+div>product-form .shopify-payment-button{margin:1rem 0 0;margin-inline-start:-14.2rem;width:calc(100% + 14.2rem)}
+.product__info-container .shopify-payment-button__button{min-height:5.2rem;border-radius:99px;font-size:1.5rem;font-weight:600;letter-spacing:.04em}
+@media (max-width:360px){.product__info-container>.product-form__quantity+div>product-form .shopify-payment-button{margin-inline-start:-12.2rem;width:calc(100% + 12.2rem)}}
+/* v3.5: tabbed / weather shelf */
+.mim-shelf{padding:6rem 0 2rem}
+.mim-shelf__tabs{display:flex;gap:.8rem;overflow-x:auto;scrollbar-width:none;margin:0 0 2.4rem;padding-bottom:.4rem}
+.mim-shelf__tabs::-webkit-scrollbar{display:none}
+.mim-shelf__tab{flex:none;display:inline-flex;align-items:center;gap:.8rem;height:4.6rem;padding:0 2rem;border-radius:99px;border:1.5px solid var(--mim-line);background:#fff;cursor:pointer;font:inherit;font-size:1.4rem;font-weight:600;color:var(--mim-ink);transition:background-color .25s,color .25s,border-color .25s}
+.mim-shelf__tab:hover{border-color:var(--mim-teal);color:var(--mim-teal-d)}
+.mim-shelf__tab.is-active{background:var(--mim-teal);border-color:var(--mim-teal);color:#fff}
+.mim-shelf__ico{display:inline-block;width:1.2rem;height:1.2rem;border-radius:50%}
+.mim-shelf__ico--sun{background:#F2B705;box-shadow:0 0 0 3px rgba(242,183,5,.25)}
+.mim-shelf__ico--cloud{background:linear-gradient(135deg,#F2B705 45%,#BFD7DB 46%)}
+.mim-shelf__ico--cool{background:#5B8DB8;box-shadow:0 0 0 3px rgba(91,141,184,.25)}
+.mim-shelf__tab.is-active .mim-shelf__ico{box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.mim-shelf__panel[hidden]{display:none}
+.mim-shelf__panel:not([hidden]){animation:mimPanelIn .5s var(--mim-ease) both}
+.mim-shelf__all{display:inline-flex;gap:.6rem;margin-top:2rem;font-weight:600;font-size:1.4rem;color:var(--mim-teal-d);text-decoration:none}
+.mim-shelf__all:hover{text-decoration:underline;text-underline-offset:.3em}
+.mim-shelf__wx{display:inline-flex;align-items:center;margin-inline-end:.8rem;padding:.2rem 1rem;border-radius:99px;background:var(--mim-tint);color:var(--mim-teal-d);font-weight:700}
+.mim-shelf--weather{background:linear-gradient(180deg,#F7F3EC 0%,#fff 100%)}
+@media (max-width:749px){.mim-shelf{padding:4rem 0 1rem}.mim-shelf__tabs{margin-inline:-1.5rem;padding-inline:1.5rem}.mim-shelf__tab{height:4.2rem;padding:0 1.6rem;font-size:1.3rem}}
+/* v3.6: mobile drawer - an open submenu replaces the list (in flow), extras hide until you go back */
+#menu-drawer .menu-drawer__menu.submenu-open>li:not(:has(>details[open])){display:none!important}
+#menu-drawer details[open]>summary{display:none!important}
+#menu-drawer details[open]>.menu-drawer__submenu{position:static!important;transform:none!important;visibility:visible!important;height:auto!important;overflow:visible!important}
+#menu-drawer details[open]>.menu-drawer__submenu>.menu-drawer__inner-submenu{height:auto!important;overflow:visible!important}
+#menu-drawer .menu-drawer__menu.submenu-open,#menu-drawer .menu-drawer__menu.submenu-open>li,#menu-drawer details[open]{visibility:visible!important}
+#menu-drawer:has(details[open]>.menu-drawer__submenu) .mdx,#menu-drawer:has(details[open]>.menu-drawer__submenu) .menu-drawer__utility-links{display:none!important}
+#menu-drawer .menu-drawer__close-button{width:100%;padding:1.6rem 2.4rem;font-size:1.5rem;font-weight:600;background:#F7F3EC;text-decoration:none}
+#menu-drawer .menu-drawer__submenu .menu-drawer__menu-item{padding:1.4rem 2.4rem;font-size:1.6rem;border-bottom:1px solid var(--mim-line)}
+/* v3.6: drawer quick buttons + store button */
+.mdx-quick{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:0 0 1.2rem}
+.mdx-quick__btn{display:flex;align-items:center;justify-content:center;min-height:4.6rem;padding:0 1.2rem;border-radius:99px;border:1.5px solid var(--mim-teal);color:var(--mim-teal-d);font-size:1.4rem;font-weight:600;text-decoration:none;text-align:center}
+.mdx-quick__btn--main{background:var(--mim-teal);color:#fff}
+.mim-store{position:relative;color:var(--mim-ink)}
+.mim-store__btn{display:flex;align-items:center;gap:1rem;cursor:pointer;list-style:none}
+.mim-store__btn::-webkit-details-marker{display:none}
+.mim-store__menu{display:grid;gap:.6rem;margin-top:1rem}
+.mim-store__menu a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 1.4rem;border-radius:1.2rem;background:#fff;color:var(--mim-ink);text-decoration:none;box-shadow:inset 0 0 0 1px var(--mim-line);transition:box-shadow .2s,color .2s}
+.mim-store__menu a:hover{box-shadow:inset 0 0 0 1.5px var(--mim-teal);color:var(--mim-teal-d)}
+.mim-store__menu b{font-size:1.4rem;font-weight:600}
+.mim-store__menu small{font-size:1.2rem;color:var(--mim-teal-d);white-space:nowrap}
+.mim-store--banner .mim-store__menu{position:absolute;top:calc(100% + .8rem);inset-inline-end:0;min-width:28rem;margin:0;padding:.8rem;border-radius:1.6rem;background:#fff;box-shadow:0 18px 40px -16px rgba(0,0,0,.35)}
+.mim-store__ico{flex:none;display:grid;place-items:center;width:3.8rem;height:3.8rem;border-radius:50%;background:var(--mim-teal);color:#fff}
+.mim-store__txt{display:flex;flex-direction:column;line-height:1.25}
+.mim-store__txt b{font-size:1.45rem;font-weight:600}
+.mim-store__txt small{font-size:1.2rem;color:var(--mim-muted)}
+.mim-store--drawer{margin:0 0 1.6rem;padding:1rem 1.2rem;border-radius:1.6rem;background:var(--mim-tint)}
+.mim-store--plain{display:inline-flex;margin-top:1.6rem;padding:.8rem 1.8rem .8rem .8rem;border-radius:99px;background:var(--mim-teal);color:#fff}
+.mim-store--plain .mim-store__ico{background:#fff;color:var(--mim-teal)}
+.mim-store--plain .mim-store__txt small{color:rgba(255,255,255,.8)}
+.section-mim-store-strip{position:relative;z-index:2;height:0}
+.mim-store-strip{position:relative;display:flex;justify-content:flex-end}
+.mim-store--banner{position:absolute;top:1.6rem;inset-inline-end:1.5rem;padding:.6rem 1.6rem .6rem .6rem;border-radius:99px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);box-shadow:0 10px 30px -12px rgba(0,0,0,.35);transition:transform .2s}
+.mim-store--banner:hover{transform:translateY(-2px)}
+.mim-store--banner .mim-store__ico{width:3.4rem;height:3.4rem}
+@media (max-width:989px){.section-mim-store-strip{display:none}}
+/* v3.6: contact store map */
+.mim-map{padding:4rem 0 8rem}
+.mim-map__head{max-width:60rem;margin-bottom:3rem}
+.mim-map__lead{margin:.8rem 0 0;color:var(--mim-muted);font-size:1.5rem}
+.mim-map__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;align-items:stretch}
+.mim-map__card{display:flex;flex-direction:column;border-radius:2.4rem;overflow:hidden;background:#F7F3EC}
+.mim-map__frame{height:30rem}
+.mim-map__frame iframe{display:block;width:100%;height:100%;border:0}
+.mim-map__info{flex:1;display:flex;flex-direction:column;padding:2.8rem}
+.mim-map__tag{align-self:flex-start;padding:.3rem 1.2rem;border-radius:99px;background:#fff;color:var(--mim-teal-d);font-size:1.2rem;font-weight:600}
+.mim-map__info h3{margin:1rem 0 .6rem;font-size:2.2rem;font-weight:500;color:var(--mim-ink)}
+.mim-map__addr{font-style:normal;font-size:1.5rem;line-height:1.6}
+.mim-map__hours{margin:.8rem 0 0;font-size:1.4rem;color:var(--mim-muted)}
+.mim-map__actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:auto;padding-top:2rem}
+.mim-map__btn{display:inline-flex;align-items:center;gap:.8rem;min-height:4.6rem;padding:0 2rem;border-radius:99px;background:var(--mim-teal);color:#fff;font-size:1.4rem;font-weight:600;text-decoration:none}
+.mim-map__btn--ghost{background:#fff;color:var(--mim-ink);box-shadow:inset 0 0 0 1.5px var(--mim-line)}
+@media (max-width:749px){.mim-map__grid{grid-template-columns:1fr}.mim-map__info{padding:2.2rem}.mim-map__frame{height:24rem}}
+/* v3.6: menu extras */
+.mim-pill--dark{background:var(--mim-ink);color:#fff}
+.mim-pill--ghost{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(20,39,43,.18)}
+.mim-pillbar__sep{width:1px;align-self:stretch;margin:.6rem .2rem;background:rgba(20,39,43,.15)}
+.mim-nav .mim-nav__all{box-shadow:inset 0 0 0 1.5px var(--mim-teal);color:var(--mim-teal-d)}
+@media (max-width:1199px){.mim-nav .header__menu-item{padding:.8rem 1.1rem!important;letter-spacing:.05em;font-size:1.2rem}}
+/* v3.6: size pills - text optically centred */
+.product-form__input--pill input[type=radio]+label{line-height:1;padding-top:.2rem}
+/* v3.6: Find my size - lighter, smaller type; header always visible */
+html body .mim-sf__trigger{padding:1rem 1.2rem}
+html body .mim-sf__trigger-icon{width:3.6rem;height:3.6rem}
+html body .mim-sf__trigger-label b{font-size:1.4rem;font-weight:500}
+html body .mim-sf__trigger-label small{font-size:1.2rem}
+html body .mim-sf__panel{overflow:hidden}
+html body .mim-sf__head{position:relative;z-index:3;background:var(--sf-bg,#fff);padding:1.6rem 2rem .8rem}
+html body .mim-sf__eyebrow{font-size:1.25rem;font-weight:500}
+html body .mim-sf__product-title{font-size:1.3rem;font-weight:400}
+html body .mim-sf__count{font-size:1.1rem;font-weight:500}
+html body .mim-sf__title{font-size:2.1rem;font-weight:500;letter-spacing:-.01em}
+html body .mim-sf__sub{font-size:1.3rem}
+html body .mim-sf__label{font-size:1.2rem;font-weight:500}
+html body .mim-sf__value{font-size:3rem;font-weight:500}
+html body .mim-sf__live-size,html body .mim-sf__live-label{font-weight:500}
+html body .mim-sf__next{height:4.8rem;font-size:1.4rem;font-weight:500}
+html body .mim-sf__units button{font-weight:500}
+html body .mim-sf__choices span,html body .mim-sf__fit strong{font-weight:500}
+/* v3.6: cart drawer uses the real viewport height so checkout is never cut off on phones */
+cart-drawer .drawer__inner{height:100dvh;max-height:100dvh}
+.drawer .cart-item__name{font-size:1.3rem!important}
+/* v3.6: hide the floating store button while a desktop dropdown is open */
+body:has(.mega-menu[open]) .section-mim-store-strip{opacity:0;pointer-events:none}
+.section-mim-store-strip{transition:opacity .2s}
+/* v3.8: language switch - hovering another language turns it teal (the active one stays white on teal) */
+@media (hover:hover){.mim-lang .mlx-seg .mlx-opt:not(.is-on):hover{color:var(--mim-teal-d)!important}.mim-lang .mlx-seg:has(.mlx-opt:hover) .mlx-opt.is-on{color:#fff!important}}
+/* v3.8: weather chip stays hidden until the temperature arrives */
+.mim-shelf__wx[hidden]{display:none!important}
+/* v3.8: quick-add chips never wrap into tall pills; long lists scroll inside the panel */
+.mim-qa__chip{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1}
+.mim-qa__chips{max-height:15rem;overflow-y:auto;overscroll-behavior:contain}
+/* v3.8: rails swipe freely (no forced stop on every card) */
+.mim-rail__track>*,.mim-cats__rail>*{scroll-snap-stop:normal!important}
+.mim-rail__track,.mim-cats__rail{overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+/* v3.8 About page: sideways containers */
+html body .mab{overflow:visible;overflow-x:clip}
+.mab-strip .mst-rv,.mab-team__grid .mst-rv,.mab-tech .mst-rv,.mab-values .mst-rv,.mab-founder__media .mst-rv{opacity:1!important;transform:none!important;transition:none!important}
+.mab-tech__tabs{position:relative;overscroll-behavior-x:contain}
+.mab-team__grid{overscroll-behavior-x:contain;scroll-padding-inline:1.5rem}
+@media (hover:none),(max-width:989px){
+html body .mab-strip{overflow-x:auto!important;overflow-y:hidden;scroll-snap-type:x proximity;scrollbar-width:none;padding-inline:1.5rem;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.mab-strip::-webkit-scrollbar{display:none}
+.mab-strip__track{animation:none!important;transform:none!important}
+.mab-strip__item{scroll-snap-align:start}
+.mab-strip__item[aria-hidden=true]{display:none}
+}
+/* v3.8 footer: one divider between the menus and the perks on phones */
+@media (max-width:749px){html body .mft-top{padding-bottom:0;border-bottom:0}html body .mft-cols{margin-top:.8rem}html body .mft-col summary{padding-inline-end:.4rem}}
+/* v3.8 smoother scrolling: the browser skips painting sections far below the screen */
+.mim-t-index #MainContent>.shopify-section:nth-child(n+5),.shopify-section-group-footer-group{content-visibility:auto;contain-intrinsic-size:auto 640px}
+/* v3.8: euro price note in the cart (FR / NL) */
+.mim-fx-note{margin:.8rem 0 0;font-size:1.2rem;line-height:1.5;color:var(--mim-muted,#5c6b6e);text-align:end}
+/* v3.9 product page: variant pills - our style must beat the theme's picker stylesheet, which loads later */
+html body .product-form__input--pill input[type=radio]+label{display:inline-flex;align-items:center;justify-content:center;gap:.8rem;min-width:5.2rem;height:4.4rem;padding:.15rem 1.8rem 0;line-height:1;border-radius:99px;font-size:1.4rem;font-weight:500;letter-spacing:0;margin:.4rem .6rem .4rem 0;border:1.5px solid var(--mim-line);vertical-align:middle}
+html[dir=rtl] body .product-form__input--pill input[type=radio]+label{margin:.4rem 0 .4rem .6rem}
+html body .product-form__input--pill input[type=radio]+label.mim-has-sw{padding-inline-start:1.1rem}
+html body .product-form__input--pill .mim-sw{display:inline-block;width:1.8rem;height:1.8rem;margin:-.15rem 0 0;border-radius:50%;background:var(--sw);box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
+html body .product-form__input--pill input[type=radio]:checked+label .mim-sw{box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(255,255,255,.6)}
+/* v3.9 product page: image slider on every screen - one photo at a time, arrows + "1 / 5" counter */
+@media (min-width:750px){
+html body media-gallery .product__media-list.slider{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;gap:0!important;margin:0!important;padding:0!important}
+html body media-gallery .product__media-list.slider::-webkit-scrollbar{display:none}
+html body media-gallery .product__media-list>.product__media-item{flex:0 0 100%!important;width:100%!important;max-width:100%!important;margin:0!important;padding:0!important;scroll-snap-align:start;display:block!important}
+}
+html body media-gallery .slider-buttons{display:flex!important;align-items:center;justify-content:center;gap:1rem;margin:1.4rem auto 0;width:max-content;padding:.4rem;border-radius:99px;background:#F3F6F6}
+html body media-gallery .slider-buttons .slider-button{display:grid!important;width:4rem;height:4rem;border-radius:50%;background:#fff;border:0;box-shadow:0 4px 12px -6px rgba(20,39,43,.4);color:var(--mim-ink);display:grid;place-items:center;cursor:pointer}
+html body media-gallery .slider-buttons .slider-button:hover:not([disabled]){background:var(--mim-teal);color:#fff}
+html body media-gallery .slider-buttons .slider-button[disabled]{opacity:.35;cursor:default}
+html body media-gallery .slider-counter{min-width:5.6rem;text-align:center;font-size:1.4rem;font-weight:600;color:var(--mim-ink);letter-spacing:.04em}
+html body media-gallery .slider-buttons.small-hide{display:none!important}
+/* v3.9 cards: quick add opens only from the + button on desktop too (no hover panel) */
+@media (hover:hover) and (min-width:990px){
+html body .mim-qa__toggle{display:grid!important;opacity:0;transform:scale(.9);transition:opacity .2s,transform .2s,background .2s}
+html body .mim-card:hover .mim-qa__toggle,html body .mim-qa__toggle:focus-visible{opacity:1;transform:none}
+html body .mim-card:hover .mim-qa:not(.is-open) .mim-qa__panel,html body .mim-card:focus-within .mim-qa:not(.is-open) .mim-qa__panel{opacity:0;visibility:hidden;transform:translateY(10px)}
+}
+/* v3.9 cards: colour dots are buttons that switch the photo */
+html body .mim-card__dots .mim-dot{appearance:none;-webkit-appearance:none;padding:0;border:0;margin:0;cursor:pointer;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--sw);box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);transition:box-shadow .2s,transform .2s}
+html body .mim-card__dots .mim-dot:hover{transform:scale(1.12)}
+html body .mim-card__dots .mim-dot.is-on{box-shadow:inset 0 0 0 1px rgba(0,0,0,.15),0 0 0 2px #fff,0 0 0 3.5px var(--mim-ink)}
+html body .mim-card__dots{gap:.8rem;padding:.3rem .2rem}
+/* v3.9 size finder: live-estimate chips never clipped; silhouette without the fixed guide line (the head moved away from it as the body scaled) */
+html body .mim-sf__live{padding:1.2rem 2rem;min-height:5.6rem}
+html body .mim-sf__live-chips{align-items:center;padding:.4rem .3rem;margin:-.4rem 0;overflow-y:visible}
+html body .mim-sf__lchip{height:3.2rem;min-width:3.2rem;padding:0 .9rem;line-height:1;box-shadow:inset 0 0 0 1px var(--sf-line)}
+html body .mim-sf__lchip.is-on{transform:none;box-shadow:none;animation:none}
+html body .mim-sf__figure svg line{display:none}
+html body .mim-sf__figure{align-self:end;padding-bottom:1rem}
+html body .mim-sf__body-shape{transform-origin:30px 170px}
+/* v3.9 empty cart drawer: header row + centred card instead of floating text */
+html body cart-drawer.is-empty .drawer__inner{display:flex;flex-direction:column;padding:0}
+html body cart-drawer.is-empty .drawer__inner>.drawer__header,html body cart-drawer.is-empty .mim-ship-bar,html body cart-drawer.is-empty .drawer__footer{display:none}
+html body .mim-empty{display:flex;flex-direction:column;height:100%;padding:0;overflow-y:auto}
+html body .mim-empty__head{display:flex;align-items:center;justify-content:space-between;padding:2rem 2.4rem;border-bottom:1px solid var(--mim-line,rgba(20,39,43,.12))}
+html body .mim-empty__title{margin:0;font-size:1.8rem;font-weight:600;color:var(--mim-ink)}
+html body .mim-empty .mim-empty__close{position:static;width:4rem;height:4rem;border-radius:50%;background:#F3F6F6;display:grid;place-items:center;padding:0;margin:0}
+html body .mim-empty .mim-empty__close .svg-wrapper{width:1.6rem;height:1.6rem}
+html body .mim-empty__body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.2rem;padding:3.2rem 2.4rem 4rem}
+html body .mim-empty__icon{display:grid;place-items:center;width:7.2rem;height:7.2rem;border-radius:50%;background:var(--mim-tint,#EEF6F7);color:var(--mim-teal,#008F9D);margin-bottom:.4rem}
+html body .mim-empty__text{margin:0;font-size:2.2rem;font-weight:600;color:var(--mim-ink)}
+html body .mim-empty__sub{margin:0;font-size:1.45rem;color:rgba(20,39,43,.65)}
+html body .mim-empty__ctas{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;width:100%;max-width:36rem;margin-top:1.2rem}
+html body .mim-empty__ctas .button{min-height:4.8rem;margin:0;padding:0 1.2rem;font-size:1.4rem}
+html body .mim-empty__cats{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;list-style:none;margin:1.6rem 0 0;padding:0;max-width:36rem}
+html body .mim-empty__cats a{display:inline-flex;align-items:center;height:3.6rem;padding:0 1.4rem;border-radius:99px;border:1.5px solid var(--mim-line,rgba(20,39,43,.12));color:var(--mim-ink);text-decoration:none;font-size:1.3rem;font-weight:500}
+html body .mim-empty__cats a:hover{border-color:var(--mim-teal);color:var(--mim-teal-d)}
+html body .mim-empty__login{margin:2rem 0 0;font-size:1.3rem;color:rgba(20,39,43,.65)}
+html body .mim-empty__login a{color:var(--mim-teal-d)}
+html body .mim-empty__ctas .button--secondary{background:#fff;color:var(--mim-ink);box-shadow:inset 0 0 0 1.5px var(--mim-ink)}
+html body .mim-empty__ctas .button--secondary:after,html body .mim-empty__ctas .button--secondary:before{display:none}
+/* v3.9 Judge.me: gold stars */
+html body .jdgm-star,html body .jdgm-star.jdgm--on,html body .jdgm-star.jdgm--half{color:#D4AF37!important}
+html body .jdgm-star.jdgm--off{color:#D9D9D9!important}
+html body .jdgm-rev-widg{max-width:var(--page-width,140rem);margin-inline:auto}
+/* v3.9 audit: Arabic - the photo slider runs left-to-right internally so its counter and arrows stay correct */
+html[dir=rtl] body media-gallery slider-component{direction:ltr}
+html[dir=rtl] body media-gallery .slider-counter{direction:ltr;unicode-bidi:isolate}
+/* v3.9 audit: Arabic search boxes - the clear/search buttons sit on the left, so the text keeps clear of them */
+html[dir=rtl] body .search__input.field__input{padding-left:9.8rem;padding-right:2rem;text-align:right}
+/* v3.9 audit: Bought together on phones - long names and selects stay inside the card */
+html body .mim-fbt__item,html body .mim-fbt__info{min-width:0}
+html body .mim-fbt__select{width:100%;max-width:100%}
+html body .mim-fbt__name{overflow-wrap:anywhere}
+
+/* v3.9.1 phone header: menu + search | logo centred | language + bag; account lives in the side menu */
+@media (max-width:989px){
+html body .header{grid-template-columns:4.4rem 4.4rem 1fr 4.4rem 4.4rem!important;grid-template-areas:"left-icons search heading icons icons"!important;column-gap:0!important}
+html body .header>.header__heading-link,html body .header>.header__heading{grid-area:heading;justify-self:center!important;margin:0!important}
+html body .header__icons{grid-area:icons;justify-self:end;gap:0!important;padding:0!important}
+html body .header>header-drawer,html body .header>.header__search{margin:0!important;justify-self:center}
+html body .header__icons .header__icon--account{display:none!important}
+html body .header__icons .mim-lang{width:4.4rem;justify-content:center;margin:0!important}
+html body .header__icons .mim-lang .mlx-dd__cur{min-width:0!important;width:auto!important;height:2.6rem!important;padding:0 .7rem!important;gap:0!important;font-size:1.15rem!important;font-weight:500!important;letter-spacing:.04em;border-width:1px!important}
+html body .header__icons .mim-lang .mlx-dd__cur svg{display:none!important}
+html body .header__icons .header__icon--cart{width:4.4rem;height:4.4rem;margin:0!important}
+}
+/* v3.9.1 Shop all: same quiet weight as the rest of the bar */
+html body .mim-nav .header__menu-item.mim-nav__all{font-weight:500;box-shadow:none}
+/* v3.9.1 side menu: plain rows, regular weight */
+html body .menu-drawer__navigation .menu-drawer__menu-item{font-size:1.7rem;font-weight:400;padding-block:1.1rem}
+html body .menu-drawer__navigation>.menu-drawer__menu>li{border:0!important}
+/* v3.9.1 Judge.me: stars, name and review only; 16px fields so iPhones don't zoom */
+html body .jdgm-form input,html body .jdgm-form textarea,html body .jdgm-form select{font-size:16px!important}
+@media (max-width:749px){html body input,html body textarea,html body select{font-size:16px}}
+html body .jdgm-form__fieldset:has(input[name=review_title]),html body .jdgm-form__fieldset:has(.jdgm-media-fieldset__container),html body .jdgm-form__fieldset:has(.jdgm-picture-fieldset__box),html body .jdgm-form__reviewer-name-format-container{display:none!important}
+/* v3.9.1 product lightbox on phones: picture fits the screen */
+@media (max-width:749px){html body .product-media-modal__content{padding:6rem 0 2rem}html body .product-media-modal__content>*,html body .product-media-modal__content img{width:100%!important;max-width:100%;height:auto!important;object-fit:contain}}
+/* v3.9.1 rail counter */
+.mim-rail-nav{display:flex;align-items:center;justify-content:center;gap:1.2rem;width:max-content;margin:1.6rem auto 0;padding:.4rem;border-radius:99px;background:var(--mim-tint,#EEF5F5)}
+.mim-rail-nav[hidden]{display:none}
+.mim-rail-nav__btn{display:grid;place-items:center;width:3.6rem;height:3.6rem;padding:0;border:0;border-radius:50%;background:#fff;color:var(--mim-ink,#14272B);box-shadow:0 1px 4px rgba(20,39,43,.12);cursor:pointer}
+.mim-rail-nav__btn:disabled{opacity:.35;box-shadow:none;cursor:default}
+.mim-rail-nav__count{min-width:4.4rem;text-align:center;font-size:1.3rem;font-weight:500;font-variant-numeric:tabular-nums;color:var(--mim-ink,#14272B)}
+html[dir=rtl] .mim-rail-nav__btn svg{transform:scaleX(-1)}
+/* v3.9.1 sold-out cards: grey and faded, badge stays readable */
+html body .mim-card.is-soldout img{filter:grayscale(1);opacity:.55;transition:opacity .2s}
+html body .mim-card.is-soldout:hover img{opacity:.7}
+html body .mim-card.is-soldout :is(h3,.mim-card__title,.mim-card__price,.price,.mim-dots){opacity:.55}
+html body .mim-card.is-soldout .mim-card__badge{filter:none;opacity:1;background:#14272B;color:#fff}
+/* v3.9.2 phone header: every slot 44px, logo and language code centred on the same line in every language */
+@media (max-width:989px){
+html body .header{align-items:center!important}
+html body .header>.header__heading-link,html body .header>.header__heading{display:flex!important;align-items:center;justify-content:center;align-self:center!important;line-height:0!important;padding:0!important}
+html body .header__heading-logo{display:block;margin:0 auto}
+html body .header__icons{align-self:center!important;align-items:center}
+html body .header__icons .mim-lang{display:flex;align-items:center;justify-content:center;width:4.4rem;height:4.4rem}
+html body .header__icons .mim-lang .mlx-dd__cur{display:grid!important;place-items:center;width:3.2rem!important;height:3.2rem!important;padding:0!important;border-radius:50%;font-family:var(--font-body-family),Jost,sans-serif!important;font-size:1.15rem!important;line-height:1!important;letter-spacing:.03em}
+html body .header__icons .mim-lang .mlx-dd__cur span{display:block;line-height:1!important;margin:0;padding:0}
+html body .header__icons .mim-lang .mlx-dd__cur::after,html body .header__icons .mim-lang .mlx-dd__cur::before{content:none!important}
+html body .header__icons .header__icon--cart{display:flex;align-items:center;justify-content:center}
+}
+/* v3.9.2 breadcrumb (Home / Category / Product) lines up with the page text */
+html body .mim-crumbs.page-width{padding-left:1.5rem!important;padding-right:1.5rem!important}
+@media (min-width:750px){html body .mim-crumbs.page-width{padding-left:5rem!important;padding-right:5rem!important}}
+/* v3.9.2 category cards start on the page margin like every other rail; one set of arrows (the ‹ 1 / N › under each rail) */
+html body .mim-cats__rail{scroll-padding-inline:1.5rem}
+@media (min-width:750px){html body .mim-cats__rail{scroll-padding-inline:5rem}}
+html body .mim-rail__btn{display:none!important}
+/* v3.9.2 speed: the browser skips layout and paint of homepage sections until they come near the screen */
+html body.mim-t-index #MainContent>.shopify-section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 900px}
+/* v3.9.2 product photo fills the same width as the title and buttons on phones */
+@media (max-width:749px){
+html body .product__media-list .product__media-item{width:calc(100vw - 3rem)!important;max-width:none!important;flex:0 0 calc(100vw - 3rem)!important}
+html body .product__media-item .product-media-container{width:100%!important;max-width:100%!important}
+html body .product__media-item .product__modal-opener,html body .product__media-item .product__media{width:100%!important;max-width:100%!important}
+html body .product__media-item .product-media-container .product__media{padding-top:0!important;aspect-ratio:var(--ratio,1)}
+}
+/* v3.9.2 contact page map text sits on the page margin */
+html body .mim-map.page-width{box-sizing:border-box;padding-left:1.5rem!important;padding-right:1.5rem!important}
+@media (min-width:750px){html body .mim-map.page-width{padding-left:5rem!important;padding-right:5rem!important}}
+@media (max-width:749px){html body .product__media-list{clip-path:inset(0 1.5rem)}}
+/* v3.9.3 card stars: gold, partial fill for the average, review count in grey */
+html body .mim-card__stars{display:flex;align-items:center;gap:.5rem;margin:.4rem 0 0;font-size:1.35rem;line-height:1}
+html body .mim-card__stars span{letter-spacing:.12rem;background:linear-gradient(90deg,#D4AF37 var(--r),#DADADA var(--r));-webkit-background-clip:text;background-clip:text;color:transparent}
+html body .mim-card__stars small{font-size:1.2rem;color:rgba(20,39,43,.6)}
+html[dir=rtl] .mim-card__stars span{background:linear-gradient(270deg,#D4AF37 var(--r),#DADADA var(--r));-webkit-background-clip:text;background-clip:text}
+/* v3.9.3 enlarged photos: swipe sideways through every photo, with ‹ n / N › */
+html body .product-media-modal__content.mim-zg{display:flex!important;flex-direction:row;align-items:center;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6rem 0 9rem!important;height:100%;box-sizing:border-box}
+html body .product-media-modal__content.mim-zg::-webkit-scrollbar{display:none}
+html body .product-media-modal__content.mim-zg>*{display:block!important;flex:0 0 100%;width:100%!important;max-width:100%!important;height:100%!important;max-height:100%;margin:0!important;object-fit:contain;scroll-snap-align:center;scroll-snap-stop:always}
+.mim-zg-nav{position:fixed;left:50%;bottom:calc(2.4rem + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:1.2rem;padding:.4rem;border-radius:99px;background:rgba(238,246,247,.95);box-shadow:0 4px 18px rgba(20,39,43,.12)}
+.mim-zg-nav button{display:grid;place-items:center;width:4rem;height:4rem;padding:0;border:0;border-radius:50%;background:#fff;color:#14272B;box-shadow:0 1px 4px rgba(20,39,43,.14);cursor:pointer}
+.mim-zg-nav button:disabled{opacity:.35;box-shadow:none}
+.mim-zg-nav span{min-width:4.6rem;text-align:center;font-size:1.4rem;font-weight:500;font-variant-numeric:tabular-nums;color:#14272B}
+html[dir=rtl] .mim-zg-nav button svg{transform:scaleX(-1)}
+/* v3.9.3 card colour dots: the selected ring is drawn inside the dot so it is never clipped at the card edge */
+html body .mim-card__dots{padding:.3rem 0}
+html body .mim-card__dots .mim-dot{width:1.8rem;height:1.8rem}
+html body .mim-card__dots .mim-dot.is-on{box-shadow:inset 0 0 0 2px var(--mim-ink),inset 0 0 0 4px #fff}
+
+/* v3.9.4 Latest drops: first product rail on the homepage, highlighted band */
+.mim-railsec--latest{background:#e6f3f3;border-block:1px solid rgba(0,143,157,.16);padding-bottom:4rem}
+.mim-railsec--latest .mim-eyebrow{background:#fff;border-radius:99px;padding:.5rem 1.2rem}
+.mim-railsec--latest .mim-eyebrow:before{animation:mimPulseTeal 1.6s infinite}
+@keyframes mimPulseTeal{0%{box-shadow:0 0 0 0 rgba(0,143,157,.45)}70%{box-shadow:0 0 0 .8rem rgba(0,143,157,0)}to{box-shadow:0 0 0 0 rgba(0,143,157,0)}}
+@media (prefers-reduced-motion:reduce){.mim-railsec--latest .mim-eyebrow:before{animation:none}}
+.mim-railsec--latest .mim-h2{font-size:clamp(3rem,6vw,4.8rem)}
+.mim-railsec--latest .mim-link{background:var(--mim-teal);color:#fff;border-radius:99px;padding:0 1.8rem;min-height:44px}
+.mim-railsec--latest .mim-link:hover{background:#007a86}
+
+/* v3.9.7 Product page fixes. Arabic: photo arrows point sideways (‹ ›), Judge.me stars keep their own icon font
+   (the Arabic body font was replacing it, showing boxes). All languages: no empty gaps above/below the price
+   (Judge.me badge with no reviews, empty instalments form). */
+html[dir=rtl] .slider-button .svg-wrapper{transform:none!important}
+html[dir=rtl] .slider-button--prev .icon{transform:rotate(-90deg)!important}
+html[dir=rtl] .slider-button--next .icon{transform:rotate(90deg)!important}
+html body .jdgm-star,html[lang=ar] body .jdgm-star{font-family:JudgemeStar!important}
+.product__info-container>.shopify-app-block:has(.jdgm-prev-badge[data-number-of-reviews="0"]){display:none}
+.product__info-container>div:has(>form.installment):not(:has(shopify-payment-terms)){display:none}
+.product__info-container>.product__title{margin-bottom:.4rem!important}
+.product__info-container>[id^="price-"]{margin-top:.4rem!important;margin-bottom:.2rem!important}
+.product__info-container>.product__tax{margin-top:0!important;margin-bottom:1.6rem!important}
+
+/* Photos of the selected colour only */
+.mim-cm-hide{display:none!important}
+.product__media-list .product__media-item.mim-cm-show.product__media-item--variant,.thumbnail-list__item.mim-cm-show{display:block!important}
+
+.mim-card.is-swapping .mim-card__img1{opacity:.55;transition:opacity .2s}
