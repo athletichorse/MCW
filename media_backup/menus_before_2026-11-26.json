@@ -1,0 +1,583 @@
+[
+ {
+  "id": "gid://shopify/Menu/106729996391",
+  "handle": "main-menu",
+  "title": "Main menu",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/243903692903",
+    "title": "Home",
+    "url": "/",
+    "type": "FRONTPAGE",
+    "resourceId": null,
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/243903725671",
+    "title": "Shop by products",
+    "url": "/collections/all",
+    "type": "CATALOG",
+    "resourceId": null,
+    "tags": [],
+    "items": [
+     {
+      "id": "gid://shopify/MenuItem/244027162727",
+      "title": "Dresses",
+      "url": "/collections/dresses",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137519530087",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/244027293799",
+      "title": "Tops",
+      "url": "/collections/tops",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137519956071",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/244027424871",
+      "title": "Pants",
+      "url": "/collections/pants",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137520250983",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/244027687015",
+      "title": "Cardigans & more",
+      "url": "/collections/cardigans-more",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137521365095",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/244027818087",
+      "title": "Bags & more",
+      "url": "/collections/bags-more",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137521528935",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/246638739559",
+      "title": "New arrivals",
+      "url": "/collections/new-arrivals",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137521692775",
+      "tags": [],
+      "items": []
+     }
+    ]
+   },
+   {
+    "id": "gid://shopify/MenuItem/244029161575",
+    "title": "Collections",
+    "url": "/collections",
+    "type": "COLLECTIONS",
+    "resourceId": null,
+    "tags": [],
+    "items": [
+     {
+      "id": "gid://shopify/MenuItem/244029194343",
+      "title": "Botanical print",
+      "url": "/collections/botanical",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137524052071",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/244029456487",
+      "title": "Cyano print",
+      "url": "/collections/summer-essential",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137524346983",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/244029587559",
+      "title": "Eco print",
+      "url": "/collections/eco-print",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/477561782580",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/244029718631",
+      "title": "Block print",
+      "url": "/collections/block-print",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/477561815348",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/675120841012",
+      "title": "Favorites ",
+      "url": "/collections/mix",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/477561880884",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/246642573415",
+      "title": "Bags & more",
+      "url": "/collections/bags-more",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137521528935",
+      "tags": [],
+      "items": [
+       {
+        "id": "gid://shopify/MenuItem/246642606183",
+        "title": "Back bags",
+        "url": "/collections/back-bags",
+        "type": "COLLECTION",
+        "resourceId": "gid://shopify/Collection/137524871271",
+        "tags": []
+       },
+       {
+        "id": "gid://shopify/MenuItem/246642638951",
+        "title": "Bags",
+        "url": "/collections/bags",
+        "type": "COLLECTION",
+        "resourceId": "gid://shopify/Collection/137524904039",
+        "tags": []
+       },
+       {
+        "id": "gid://shopify/MenuItem/246642671719",
+        "title": "Laptop cases",
+        "url": "/collections/laptop-cases",
+        "type": "COLLECTION",
+        "resourceId": "gid://shopify/Collection/137524936807",
+        "tags": []
+       },
+       {
+        "id": "gid://shopify/MenuItem/246642704487",
+        "title": "Pencil cases & clutches",
+        "url": "/collections/pencil-cases-clutches",
+        "type": "COLLECTION",
+        "resourceId": "gid://shopify/Collection/137524969575",
+        "tags": []
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "gid://shopify/MenuItem/244033060967",
+    "title": "Our Story",
+    "url": "/pages/our-story",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42427383911",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/244033224807",
+    "title": "Techniques",
+    "url": "/pages/techniques",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42427514983",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/244034175079",
+    "title": "Gallery",
+    "url": "/pages/gallery",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42427547751",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/412577759335",
+    "title": "Our Team",
+    "url": "/pages/copy-of-gallery",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/79683092583",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/414876106855",
+    "title": "How To Measure ?",
+    "url": "/pages/how-to-measure",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/81726996583",
+    "tags": [],
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/Menu/106730029159",
+  "handle": "footer",
+  "title": "Footer menu",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/493238747444",
+    "title": "Search",
+    "url": "/search",
+    "type": "SEARCH",
+    "resourceId": null,
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/493238780212",
+    "title": "Terms of Service",
+    "url": "/policies/terms-of-service",
+    "type": "SHOP_POLICY",
+    "resourceId": "gid://shopify/ShopPolicy/23442784359",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/493238812980",
+    "title": "Refund policy",
+    "url": "/policies/refund-policy",
+    "type": "SHOP_POLICY",
+    "resourceId": "gid://shopify/ShopPolicy/23442718823",
+    "tags": [],
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/Menu/106787111015",
+  "handle": "footer-categories",
+  "title": "Footer - Categories",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/244045611111",
+    "title": "Shop by products",
+    "url": "/collections/all",
+    "type": "CATALOG",
+    "resourceId": null,
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/244045643879",
+    "title": "Collections",
+    "url": "/collections/all",
+    "type": "CATALOG",
+    "resourceId": null,
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/244045676647",
+    "title": "Search",
+    "url": "/search",
+    "type": "SEARCH",
+    "resourceId": null,
+    "tags": [],
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/Menu/106787176551",
+  "handle": "footer-information",
+  "title": "Footer - Information",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/244045807719",
+    "title": "Our Story",
+    "url": "/pages/our-story",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42427383911",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/244045840487",
+    "title": "Techniques",
+    "url": "/pages/techniques",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42427514983",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/244046168167",
+    "title": "FAQs",
+    "url": "/pages/faqs",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42430038119",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/244046200935",
+    "title": "Contact us",
+    "url": "/pages/contact-us",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42430005351",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/244046233703",
+    "title": "Shipping Policy",
+    "url": "/pages/shipping-policy",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42430070887",
+    "tags": [],
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/Menu/251831550260",
+  "handle": "customer-account-main-menu",
+  "title": "Customer account main menu",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/634846740788",
+    "title": "Orders",
+    "url": "https://shopify.com/7190544487/account/orders",
+    "type": "CUSTOMER_ACCOUNT_PAGE",
+    "resourceId": "gid://shopify/CustomerAccountPage/119909679412",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/676261527860",
+    "title": "Profile",
+    "url": "https://shopify.com/7190544487/account/profile",
+    "type": "CUSTOMER_ACCOUNT_PAGE",
+    "resourceId": "gid://shopify/CustomerAccountPage/119909712180",
+    "tags": [],
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/Menu/272689955124",
+  "handle": "mim-main",
+  "title": "MIM main menu",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/681225584948",
+    "title": "Shop",
+    "url": "/collections",
+    "type": "COLLECTIONS",
+    "resourceId": null,
+    "tags": [],
+    "items": [
+     {
+      "id": "gid://shopify/MenuItem/681225617716",
+      "title": "Dresses",
+      "url": "/collections/dresses",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137519530087",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/681225650484",
+      "title": "Tops",
+      "url": "/collections/tops",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137519956071",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/681225683252",
+      "title": "Pants & Skirts",
+      "url": "/collections/pants",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137520250983",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/681225716020",
+      "title": "Kimonos & Cardigans",
+      "url": "/collections/cardigan-more",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137521823847",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/681225748788",
+      "title": "Scarves & Shawls",
+      "url": "/collections/scarves-shawls",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/479980519732",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/681225781556",
+      "title": "Bags & More",
+      "url": "/collections/bags-more",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137521528935",
+      "tags": [],
+      "items": []
+     }
+    ]
+   },
+   {
+    "id": "gid://shopify/MenuItem/681225814324",
+    "title": "Prints",
+    "url": "/collections",
+    "type": "COLLECTIONS",
+    "resourceId": null,
+    "tags": [],
+    "items": [
+     {
+      "id": "gid://shopify/MenuItem/681225847092",
+      "title": "Cyano Sun Print",
+      "url": "/collections/cyano",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/155411611751",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/681225879860",
+      "title": "Eco Print",
+      "url": "/collections/eco-print",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/477561782580",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/681225912628",
+      "title": "Block Print",
+      "url": "/collections/block-print",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/477561815348",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/681225945396",
+      "title": "Botanical",
+      "url": "/collections/botanical",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137524052071",
+      "tags": [],
+      "items": []
+     },
+     {
+      "id": "gid://shopify/MenuItem/681225978164",
+      "title": "Hand Printed",
+      "url": "/collections/hand-printed",
+      "type": "COLLECTION",
+      "resourceId": "gid://shopify/Collection/137521791079",
+      "tags": [],
+      "items": []
+     }
+    ]
+   },
+   {
+    "id": "gid://shopify/MenuItem/681226010932",
+    "title": "Latest Drops",
+    "url": "/collections/latest",
+    "type": "COLLECTION",
+    "resourceId": "gid://shopify/Collection/479980552500",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/681226076468",
+    "title": "Sale",
+    "url": "/collections/sale",
+    "type": "COLLECTION",
+    "resourceId": "gid://shopify/Collection/479980585268",
+    "tags": [],
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "gid://shopify/Menu/272690053428",
+  "handle": "mim-drawer-info",
+  "title": "MIM drawer - about & help",
+  "items": [
+   {
+    "id": "gid://shopify/MenuItem/681226535220",
+    "title": "Our Story",
+    "url": "/pages/our-story",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42427383911",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/681226567988",
+    "title": "Techniques",
+    "url": "/pages/techniques",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42427514983",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/681226600756",
+    "title": "Our Team",
+    "url": "/pages/copy-of-gallery",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/79683092583",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/681226633524",
+    "title": "How to Measure",
+    "url": "/pages/how-to-measure",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/81726996583",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/681226666292",
+    "title": "FAQs",
+    "url": "/pages/faqs",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42430038119",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/681226699060",
+    "title": "Contact Us",
+    "url": "/pages/contact-us",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/42430005351",
+    "tags": [],
+    "items": []
+   },
+   {
+    "id": "gid://shopify/MenuItem/681226731828",
+    "title": "Store Locator",
+    "url": "/pages/store-locator",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/112877633844",
+    "tags": [],
+    "items": []
+   }
+  ]
+ }
+]
