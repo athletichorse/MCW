@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Order confirmation</title>
+<style>
+  @media (max-width:620px){ .mim-card{border-radius:0!important} .mim-pad{padding-left:22px!important;padding-right:22px!important} .mim-h1{font-size:26px!important} }
+  a{color:#008F9D}
+</style>
+</head>
+<body style="margin:0;padding:0;background:#F3ECE2;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Thank you for your order {{ name }}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3ECE2;">
+<tr><td align="center" style="padding:28px 12px;">
+<table role="presentation" class="mim-card" width="600" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;background:#ffffff;border-radius:20px;overflow:hidden;">
+<tr><td align="center" style="padding:30px 20px 18px;border-bottom:1px solid #EEF6F7;">
+<a href="{{ shop.url }}" style="text-decoration:none;"><img src="https://cdn.shopify.com/s/files/1/0071/9054/4487/files/mim-logo-hires.png" alt="MIM Creative Wear" width="132" style="display:block;width:132px;max-width:132px;height:auto;border:0;"></a>
+</td></tr>
+<tr><td class="mim-pad" style="padding:34px 40px 8px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+<p style="margin:0 0 10px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#00737E;font-weight:bold;">Order {{ name }}</p>
+<h1 class="mim-h1" style="margin:0 0 14px;font-size:30px;line-height:1.2;font-weight:600;color:#14272B;">Thank you{% if customer.first_name %}, {{ customer.first_name }}{% endif %}!</h1>
+<p style="margin:0;font-size:16px;line-height:1.65;color:#5C6B6E;">Your order is confirmed and we're getting your hand-printed pieces ready. We'll email you again when it's on its way.</p>
+</td></tr>
+<tr><td class="mim-pad" align="left" style="padding:22px 40px 30px;">
+<table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:#008F9D;border-radius:999px;">
+<a href="{{ order_status_url }}" style="display:inline-block;padding:15px 30px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:999px;">View your order</a>
+</td></tr></table>
+</td></tr>
+<tr><td class="mim-pad" style="padding:22px 40px 4px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+<p style="margin:0 0 6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#00737E;font-weight:bold;">Your pieces</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+{% for line in subtotal_line_items %}
+<tr>
+<td width="76" style="padding:12px 0;border-bottom:1px solid #EEF6F7;vertical-align:top;">
+{% if line.image %}<img src="{{ line | img_url: 'compact_cropped' }}" alt="{{ line.title | escape }}" width="64" height="64" style="display:block;width:64px;height:64px;border-radius:12px;object-fit:cover;border:0;">{% endif %}
+</td>
+<td style="padding:12px 10px;border-bottom:1px solid #EEF6F7;vertical-align:top;font-size:15px;line-height:1.45;color:#14272B;">
+<strong>{% if line.product.title %}{{ line.product.title }}{% else %}{{ line.title }}{% endif %}</strong>
+{% if line.variant.title != 'Default Title' and line.variant.title != blank %}<br><span style="font-size:13px;color:#5C6B6E;">{{ line.variant.title }}</span>{% endif %}
+<br><span style="font-size:13px;color:#5C6B6E;">Qty {{ line.quantity }}</span>
+</td>
+<td align="right" style="padding:12px 0;border-bottom:1px solid #EEF6F7;vertical-align:top;font-size:15px;color:#14272B;white-space:nowrap;">{{ line.final_line_price | money }}</td>
+</tr>
+{% endfor %}
+</table>
+</td></tr>
+<tr><td class="mim-pad" style="padding:12px 40px 0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+<tr><td style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;color:#14272B;">Subtotal</td><td align="right" style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;color:#14272B;">{{ subtotal_price | money }}</td></tr>
+{% if total_discounts > 0 %}<tr><td style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;color:#14272B;">Discount</td><td align="right" style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;color:#14272B;">−{{ total_discounts | money }}</td></tr>{% endif %}
+{% if shipping_price > 0 %}<tr><td style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;color:#14272B;">Shipping</td><td align="right" style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;color:#14272B;">{{ shipping_price | money }}</td></tr>{% endif %}
+{% if tax_price > 0 %}<tr><td style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;color:#14272B;">Taxes</td><td align="right" style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;color:#14272B;">{{ tax_price | money }}</td></tr>{% endif %}
+<tr><td colspan="2" style="border-top:1px solid #EEF6F7;height:6px;font-size:0;">&nbsp;</td></tr>
+<tr><td style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:bold;font-size:17px;color:#14272B;">Total</td><td align="right" style="padding:5px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:bold;font-size:17px;color:#14272B;">{{ total_price | money_with_currency }}</td></tr>
+</table>
+</td></tr>
+<tr><td class="mim-pad" style="padding:6px 40px 26px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#5C6B6E;">{% if gateway contains 'Cash' or gateway contains 'COD' %}You'll pay {{ total_price | money }} in cash when your order arrives.<br>{% endif %}Need to change something? Reply to this email or message us on WhatsApp.</td></tr>
+
+<tr><td class="mim-pad" style="padding:0 40px 32px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EEF6F7;border-radius:16px;">
+<tr><td style="padding:18px 20px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#14272B;">
+<span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#00737E;font-weight:bold;">Hand-printed in Cairo</span><br>
+Every MIM piece is printed by hand with real leaves, sunlight or carved blocks, so no two are exactly alike. Yours is one of a kind.
+</td></tr></table>
+</td></tr>
+<tr><td style="background:#14272B;padding:26px 40px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#ffffff;" class="mim-pad">
+<p style="margin:0 0 12px;font-size:15px;font-weight:bold;">Questions? We're happy to help.</p>
+<p style="margin:0 0 16px;font-size:14px;line-height:1.7;">
+<a href="https://wa.me/201222116237" style="color:#7FD3DB;text-decoration:none;">WhatsApp +20 12 22116237</a><br>
+<a href="mailto:mim@mimcreativewear.com" style="color:#7FD3DB;text-decoration:none;">mim@mimcreativewear.com</a><br>
+<a href="https://www.instagram.com/mimcreativewear" style="color:#7FD3DB;text-decoration:none;">Instagram @mimcreativewear</a>
+</p>
+<p style="margin:0;font-size:12px;line-height:1.6;color:#B9C4C6;">
+Visit us: Fustat office (Ghoneim St., off El Gameya St.) · CSA Maadi shop (4 Road 21)<br>
+<a href="{{ shop.url }}" style="color:#B9C4C6;">mimcreativewear.com</a>
+</p>
+</td></tr>
+</table>
+</td></tr></table>
+</body>
+</html>
