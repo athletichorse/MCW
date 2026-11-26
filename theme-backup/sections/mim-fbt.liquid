@@ -44,7 +44,7 @@ endif
 </select>
 {%- endif -%}
 <span class="mim-fbt__price" data-fbt-price>
-{%- if v.compare_at_price > v.price -%}<span class="mim-price-sale">{{ v.price | money }}</span> <s class="mim-price-old">{{ v.compare_at_price | money }}</s>{%- else -%}{{ v.price | money }}{%- endif -%}
+{%- if v.compare_at_price > v.price -%}<span class="mim-price-sale">{{ v.price | money_without_trailing_zeros }}</span> <s class="mim-price-old">{{ v.compare_at_price | money_without_trailing_zeros }}</s>{%- else -%}{{ v.price | money_without_trailing_zeros }}{%- endif -%}
 </span>
 </div>
 </li>

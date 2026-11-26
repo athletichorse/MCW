@@ -1,0 +1,556 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+ "sections": {
+  "hero": {
+   "type": "mim-hero",
+   "disabled": true,
+   "blocks": {
+    "s-cyano": {
+     "type": "slide",
+     "settings": {
+      "print": "cyano",
+      "collection": "cyano",
+      "title": "",
+      "text": ""
+     }
+    },
+    "s-eco": {
+     "type": "slide",
+     "settings": {
+      "print": "eco",
+      "collection": "eco-print",
+      "title": "",
+      "text": ""
+     }
+    },
+    "s-block": {
+     "type": "slide",
+     "settings": {
+      "print": "block",
+      "collection": "block-print",
+      "title": "",
+      "text": ""
+     }
+    },
+    "s-botanical": {
+     "type": "slide",
+     "settings": {
+      "print": "botanical",
+      "collection": "botanical",
+      "title": "",
+      "text": ""
+     }
+    }
+   },
+   "block_order": [
+    "s-cyano",
+    "s-eco",
+    "s-block",
+    "s-botanical"
+   ],
+   "settings": {
+    "h1": "",
+    "interval": 6
+   }
+  },
+  "marquee": {
+   "type": "mim-marquee",
+   "settings": {
+    "locale_key": "marquee",
+    "items": "",
+    "style": "big",
+    "speed": 60,
+    "color_scheme": "scheme-1"
+   }
+  },
+  "weather": {
+   "type": "mim-shelf",
+   "blocks": {
+    "w-warm": {
+     "type": "tab",
+     "settings": {
+      "label": "Hot days",
+      "label_ar": "أيام حارة",
+      "label_fr": "Jours chauds",
+      "label_nl": "Warme dagen",
+      "collection": "summer-essential-dresses",
+      "season": "warm",
+      "icon": "sun",
+      "line": "Light linen and cotton for hot days",
+      "line_ar": "كتان وقطن خفيف للأيام الحارة",
+      "line_fr": "Lin et coton légers pour les journées chaudes",
+      "line_nl": "Licht linnen en katoen voor warme dagen"
+     }
+    },
+    "w-mild": {
+     "type": "tab",
+     "settings": {
+      "label": "Mild days",
+      "label_ar": "أيام معتدلة",
+      "label_fr": "Jours doux",
+      "label_nl": "Milde dagen",
+      "collection": "cardigan-more",
+      "season": "mild",
+      "icon": "cloud",
+      "line": "Easy layers for warm days and cool evenings",
+      "line_ar": "طبقات خفيفة لنهار دافئ ومساء بارد",
+      "line_fr": "Des couches légères pour les journées douces et les soirées fraîches",
+      "line_nl": "Lichte laagjes voor warme dagen en koele avonden"
+     }
+    },
+    "w-cool": {
+     "type": "tab",
+     "settings": {
+      "label": "Cool days",
+      "label_ar": "أيام باردة",
+      "label_fr": "Jours frais",
+      "label_nl": "Koele dagen",
+      "collection": "winter-vibes",
+      "season": "cool",
+      "icon": "cool",
+      "line": "Knits, kimonos and scarves to keep you warm",
+      "line_ar": "تريكو وكيمونو وأوشحة للدفء",
+      "line_fr": "Mailles, kimonos et foulards pour rester au chaud",
+      "line_nl": "Breisels, kimono's en sjaals om warm te blijven"
+     }
+    }
+   },
+   "block_order": [
+    "w-warm",
+    "w-mild",
+    "w-cool"
+   ],
+   "settings": {
+    "mode": "weather",
+    "eyebrow": "Dressed for today",
+    "heading": "Easy layers for warm days and cool evenings",
+    "eyebrow_ar": "إطلالة اليوم",
+    "heading_ar": "طبقات خفيفة لنهار دافئ ومساء بارد",
+    "limit": 8,
+    "city": "Cairo",
+    "lat": "30.04",
+    "lon": "31.24",
+    "eyebrow_fr": "Votre tenue du jour",
+    "heading_fr": "Des couches légères pour les journées douces",
+    "eyebrow_nl": "Gekleed voor vandaag",
+    "heading_nl": "Lichte laagjes voor zachte dagen"
+   }
+  },
+  "accessories": {
+   "type": "mim-shelf",
+   "blocks": {
+    "a-scarves": {
+     "type": "tab",
+     "settings": {
+      "label": "Scarves & Shawls",
+      "label_ar": "أوشحة وشالات",
+      "label_fr": "Foulards & châles",
+      "label_nl": "Sjaals & omslagdoeken",
+      "collection": "scarves-shawls"
+     }
+    },
+    "a-bags": {
+     "type": "tab",
+     "settings": {
+      "label": "Bags",
+      "label_ar": "حقائب",
+      "label_fr": "Sacs",
+      "label_nl": "Tassen",
+      "collection": "bags-more",
+      "product_type": "Bags"
+     }
+    },
+    "a-sleeves": {
+     "type": "tab",
+     "settings": {
+      "label": "Laptop & Tablet Sleeves",
+      "label_ar": "جرابات لابتوب وتابلت",
+      "label_fr": "Housses ordinateur & tablette",
+      "label_nl": "Laptop- & tablethoezen",
+      "collection": "bags-more",
+      "keywords": "laptop,tablet,ipad,sleeve"
+     }
+    },
+    "a-pouches": {
+     "type": "tab",
+     "settings": {
+      "label": "Pouches & Cases",
+      "label_ar": "حافظات ومقلمات",
+      "label_fr": "Pochettes & trousses",
+      "label_nl": "Etuis",
+      "collection": "bags-more",
+      "product_type": "Pouches & Sleeves",
+      "exclude": "laptop,tablet,ipad,sleeve"
+     }
+    }
+   },
+   "block_order": [
+    "a-scarves",
+    "a-bags",
+    "a-sleeves",
+    "a-pouches"
+   ],
+   "settings": {
+    "mode": "tabs",
+    "eyebrow": "Accessories",
+    "heading": "Hand-printed accessories",
+    "eyebrow_ar": "إكسسوارات",
+    "heading_ar": "إكسسوارات مطبوعة يدوياً",
+    "limit": 8,
+    "eyebrow_fr": "Accessoires",
+    "heading_fr": "Accessoires imprimés à la main",
+    "eyebrow_nl": "Accessoires",
+    "heading_nl": "Met de hand bedrukte accessoires"
+   }
+  },
+  "prints": {
+   "type": "mim-prints",
+   "blocks": {
+    "p-cyano": {
+     "type": "print",
+     "settings": {
+      "print": "cyano",
+      "collection": "cyano"
+     }
+    },
+    "p-eco": {
+     "type": "print",
+     "settings": {
+      "print": "eco",
+      "collection": "eco-print"
+     }
+    },
+    "p-botanical": {
+     "type": "print",
+     "settings": {
+      "print": "botanical",
+      "collection": "botanical"
+     }
+    },
+    "p-block": {
+     "type": "print",
+     "settings": {
+      "print": "block",
+      "collection": "block-print"
+     }
+    },
+    "p-hand": {
+     "type": "print",
+     "settings": {
+      "print": "hand",
+      "collection": "hand-printed"
+     }
+    }
+   },
+   "block_order": [
+    "p-cyano",
+    "p-eco",
+    "p-botanical",
+    "p-block",
+    "p-hand"
+   ],
+   "settings": {
+    "eyebrow": "",
+    "heading": "",
+    "limit": 6
+   }
+  },
+  "categories": {
+   "type": "mim-categories",
+   "blocks": {
+    "c1": {
+     "type": "category",
+     "settings": {
+      "collection": "dresses",
+      "title": ""
+     }
+    },
+    "c2": {
+     "type": "category",
+     "settings": {
+      "collection": "tops",
+      "title": ""
+     }
+    },
+    "c3": {
+     "type": "category",
+     "settings": {
+      "collection": "pants",
+      "title": ""
+     }
+    },
+    "c4": {
+     "type": "category",
+     "settings": {
+      "collection": "cardigan-more",
+      "title": ""
+     }
+    },
+    "c5": {
+     "type": "category",
+     "settings": {
+      "collection": "bags-more",
+      "title": ""
+     }
+    },
+    "c6": {
+     "type": "category",
+     "settings": {
+      "collection": "scarves-shawls",
+      "title": ""
+     }
+    }
+   },
+   "block_order": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c6",
+    "c5"
+   ],
+   "settings": {
+    "eyebrow": "",
+    "heading": "",
+    "link_label": ""
+   }
+  },
+  "arrivals": {
+   "type": "mim-rail",
+   "settings": {
+    "locale_key": "latest",
+    "eyebrow": "",
+    "heading": "",
+    "link_label": "",
+    "collection": "latest",
+    "limit": 8,
+    "padding_top": 48,
+    "color_scheme": "scheme-1",
+    "style": "latest"
+   }
+  },
+  "basics": {
+   "type": "mim-rail",
+   "disabled": true,
+   "settings": {
+    "locale_key": "basics",
+    "eyebrow": "",
+    "heading": "",
+    "link_label": "",
+    "collection": "comfort-zone-basic-element",
+    "limit": 10,
+    "padding_top": 40,
+    "color_scheme": "scheme-1"
+   }
+  },
+  "values": {
+   "type": "mim-values",
+   "settings": {
+    "heading": ""
+   }
+  },
+  "newsletter": {
+   "type": "mim-newsletter",
+   "settings": {
+    "heading": "",
+    "text": ""
+   }
+  },
+  "sale": {
+   "type": "mim-rail",
+   "settings": {
+    "locale_key": "sale",
+    "eyebrow": "",
+    "heading": "",
+    "link_label": "",
+    "collection": "sale",
+    "limit": 8,
+    "padding_top": 56,
+    "color_scheme": "scheme-1",
+    "style": "sale"
+   }
+  },
+  "best": {
+   "type": "mim-rail",
+   "settings": {
+    "locale_key": "best",
+    "eyebrow": "",
+    "heading": "",
+    "link_label": "",
+    "collection": "best-sellers",
+    "limit": 8,
+    "padding_top": 40,
+    "color_scheme": "scheme-1",
+    "style": "plain"
+   }
+  },
+  "trust": {
+   "type": "mim-trust",
+   "settings": {}
+  },
+  "mega": {
+   "type": "mim-mega",
+   "blocks": {
+    "m-new": {
+     "type": "slide",
+     "settings": {
+      "collection": "dresses",
+      "tone": "sand",
+      "eyebrow": "New in · Dresses",
+      "eyebrow_ar": "وصل حديثاً · فساتين",
+      "title": "Linen and cotton, made to breathe",
+      "title_ar": "كتان وقطن بخفة النسيم",
+      "text": "The Threads embroidered linen, Tropic Shift cotton and Tree of Life cyano dresses.",
+      "text_ar": "فساتين ثريدز الكتان المطرز وتروبيك شيفت القطني وشجرة الحياة سيانو.",
+      "cta": "Shop new dresses",
+      "cta_ar": "تسوقي الفساتين الجديدة",
+      "word": "New",
+      "word_ar": "جديد",
+      "art_1": "shopify://shop_images/THREADS_Emb._Linen_Dress_3_26K6.png",
+      "art_2": "shopify://shop_images/TROPICAL_SHIFT_Co._Dress_4_26S1.png",
+      "art_3": "shopify://shop_images/TreeofLifeCyanoDress26S101.png"
+     }
+    },
+    "m-sun": {
+     "type": "slide",
+     "settings": {
+      "collection": "cyano",
+      "tone": "cyano",
+      "eyebrow": "Sun printed",
+      "eyebrow_ar": "مطبوع بالشمس",
+      "title": "Printed by the sun",
+      "title_ar": "مطبوعة بأشعة الشمس",
+      "text": "Real leaves, Egyptian sunlight and deep Prussian blue. Every cyanotype is one of a kind.",
+      "text_ar": "أوراق حقيقية وشمس مصرية وأزرق بروسي عميق. كل قطعة سيانوتايب فريدة.",
+      "cta": "Shop cyanotype",
+      "cta_ar": "تسوقي السيانوتايب",
+      "word": "Cyano",
+      "word_ar": "سيانو",
+      "image": "shopify://shop_images/20251031_083729_1.jpg",
+      "image_mobile": "shopify://shop_images/WntrBlssm.jpg"
+     }
+    },
+    "m-wrap": {
+     "type": "slide",
+     "settings": {
+      "collection": "cardigan-more",
+      "tone": "ink",
+      "eyebrow": "Cooler days",
+      "eyebrow_ar": "أيام أبرد",
+      "title": "Wrap up in prints",
+      "title_ar": "تدفئي بالطبعات",
+      "text": "The free-size Drape Scarf Poncho and the Cyan Dawn botanical scarf.",
+      "text_ar": "بونشو الوشاح بمقاس حر ووشاح سيان داون النباتي.",
+      "cta": "Shop layers",
+      "cta_ar": "تسوقي الطبقات",
+      "word": "Layers",
+      "word_ar": "طبقات",
+      "art_1": "shopify://shop_images/DRAPE_SCARF_PONCHO_Black_3_23CW5.png",
+      "art_2": "shopify://shop_images/DRAPE_SCARF_PONCHO_Dark_Blue_2_23CW5.png",
+      "art_3": "shopify://shop_images/CYANDAWNBOTANICALSCARF.png"
+     }
+    },
+    "m-kaftan": {
+     "type": "slide",
+     "settings": {
+      "collection": "dresses",
+      "tone": "teal",
+      "eyebrow": "Free size",
+      "eyebrow_ar": "مقاس حر",
+      "title": "Easy shapes, effortless days",
+      "title_ar": "قصّات مريحة لأيام بلا عناء",
+      "text": "The Midline linen kaftan, the Go Boho A-line midi and the Tropic Shift cotton dress.",
+      "text_ar": "قفطان ميدلاين الكتان وفستان جو بوهو الميدي وفستان تروبيك شيفت القطني.",
+      "cta": "Shop kaftans & midis",
+      "cta_ar": "تسوقي القفاطين والفساتين",
+      "word": "Kaftan",
+      "word_ar": "قفطان",
+      "art_1": "shopify://shop_images/MIDLINEKAFTAN126S20.png",
+      "art_2": "shopify://shop_images/GO_BOHO_Co.Visc._Dress_26W15_2.png",
+      "art_3": "shopify://shop_images/TROPICAL_SHIFT_Co._Dress_3_26S1.png"
+     }
+    },
+    "m-bags": {
+     "type": "slide",
+     "settings": {
+      "collection": "bags-more",
+      "tone": "sage",
+      "eyebrow": "Bags & more",
+      "eyebrow_ar": "حقائب والمزيد",
+      "title": "Canvas bags, printed by hand",
+      "title_ar": "حقائب كانفاس مطبوعة يدوياً",
+      "text": "The Inside Out shopper, the Eco Mosaic cross bag and the Saqara cyano laptop sleeve.",
+      "text_ar": "حقيبة إنسايد آوت وحقيبة إيكو موزاييك وجراب ساقارة سيانو للابتوب.",
+      "cta": "Shop bags",
+      "cta_ar": "تسوقي الحقائب",
+      "word": "Bags",
+      "word_ar": "حقائب",
+      "art_1": "shopify://shop_images/AM1Inside-OutToteRed.jpg",
+      "art_2": "shopify://shop_images/Cyano_Blue_Print_Laptop_Sleeve_ACO1_GEM.jpg",
+      "art_3": "shopify://shop_images/Eco_Mosaic_Cross_Bag_ACB2.jpg"
+     }
+    },
+    "m-sale": {
+     "type": "slide",
+     "settings": {
+      "collection": "sale",
+      "eyebrow": "Sale",
+      "title": "Favourites, now reduced",
+      "text": "Hand-printed pieces at special prices, while stock lasts.",
+      "cta": "Shop the sale",
+      "eyebrow_ar": "تخفيضات",
+      "title_ar": "المفضلات بأسعار مخفضة",
+      "text_ar": "قطع مطبوعة يدوياً بأسعار خاصة حتى نفاد الكمية.",
+      "cta_ar": "تسوقي التخفيضات",
+      "tone": "sale",
+      "word": "Sale",
+      "word_ar": "تخفيضات"
+     }
+    }
+   },
+   "block_order": [
+    "m-new",
+    "m-wrap",
+    "m-sun",
+    "m-kaftan",
+    "m-bags",
+    "m-sale"
+   ],
+   "settings": {
+    "label": "Featured collections",
+    "interval": 6,
+    "stamp": "Hand printed in Egypt · One of a kind · ",
+    "stamp_ar": "مطبوع يدوياً في مصر · قطعة فريدة · "
+   }
+  },
+  "store": {
+   "type": "mim-store-strip",
+   "settings": {}
+  }
+ },
+ "order": [
+  "store",
+  "mega",
+  "marquee",
+  "arrivals",
+  "weather",
+  "categories",
+  "accessories",
+  "prints",
+  "sale",
+  "best",
+  "basics",
+  "values",
+  "trust",
+  "newsletter",
+  "hero"
+ ]
+}

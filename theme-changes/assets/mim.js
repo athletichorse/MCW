@@ -200,6 +200,22 @@
       totalEl.textContent = money(sum, i18n.money); btn.disabled = n === 0;
     }
     root.addEventListener('change', update);
+    items.forEach(function (it) {
+      var data = it.querySelector('[data-fbt-variants]'); if (!data) return;
+      var vs = []; try { vs = JSON.parse(data.textContent); } catch (e) { return; }
+      var hid = it.querySelector('[data-fbt-variant]'), priceEl = it.querySelector('[data-fbt-price]');
+      it.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-fbt-opt]'); if (!b || b.disabled || b.hasAttribute('data-single')) return;
+        it.querySelectorAll('[data-fbt-opt="' + b.dataset.fbtOpt + '"]').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+        var want = []; it.querySelectorAll('.mim-fbt__chip.is-on').forEach(function (x) { want[+x.dataset.fbtOpt] = x.dataset.val; });
+        var hit = vs.filter(function (v) { return v.ok && v.o.every(function (o, i) { return want[i] === undefined || want[i] === o; }); })[0];
+        if (!hit) { hit = vs.filter(function (v) { return v.ok && v.o[+b.dataset.fbtOpt] === b.dataset.val; })[0]; if (hit) it.querySelectorAll('[data-fbt-opt]').forEach(function (x) { x.classList.toggle('is-on', hit.o[+x.dataset.fbtOpt] === x.dataset.val); }); }
+        if (!hit) return;
+        hid.value = hit.id; hid.dataset.price = hit.price;
+        if (priceEl) priceEl.innerHTML = hit.cmp > hit.price ? '<span class="mim-price-sale">' + money(hit.price, i18n.money) + '</span> <s class="mim-price-old">' + money(hit.cmp, i18n.money) + '</s>' : money(hit.price, i18n.money);
+        update();
+      });
+    });
     btn.addEventListener('click', function () {
       var list = [];
       items.forEach(function (it) { if (it.querySelector('[data-fbt-check]').checked) { var o = sel(it); if (o && o.value) list.push({ id: +o.value, quantity: 1 }); } });

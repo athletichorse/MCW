@@ -100,7 +100,10 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   All collection and category pages use `mim-card`, so new collections get this automatically; any new section or snippet
   that shows product photos must do the same. The product gallery fetches the next photos once the page has loaded
   (mim-v35.js), so swiping never waits.
-- **Homepage order**: store strip → featured slider → marquee → **Latest drops** (first product rail, collection `latest`,
+- **Homepage order (26 Nov 2026)**: store strip → featured slider → marquee → **Shop by category** (`mim-categories`, tile grid 2 cols phone /
+  4 desktop, in shopping order: New in, Dresses, Kimonos & Jackets, Tops, Pants, Scarves & Shawls, Bags, Pouches & Sleeves; each tile uses a chosen
+  in-stock product's model photo and has EN/FR/NL/AR titles; no piece counts) → Latest drops → Best sellers → Prints → weather shelf → accessories → …
+  Earlier note, kept for the Latest drops style: store strip → featured slider → marquee → **Latest drops** (first product rail, collection `latest`,
   style `latest`: light-teal band, white "Just dropped" pill with a teal pulsing dot, filled teal "Shop latest" button) → weather shelf → …
 - **Speed**: homepage sections after the first two use `content-visibility:auto`; the drawer stylesheet loads non-blocking.
 - **Product rails** (homepage `.mim-rail__track`, `.mim-cats__rail`): one ‹ 1 / N › counter under each rail (no top arrows).
@@ -127,6 +130,10 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   (`snippets/mim-fabric.liquid`, rendered in the price block of `main-product`), label "Fabric" + value in the visitor's language.
   The value comes from metafield `custom.fabric`, read from the product description (see rule 13); hidden when empty.
   Keep it when editing the product page, and keep every fabric label translated in FR/NL/AR.
+- **Bought together** (`mim-fbt`): the current piece is highlighted (teal border, tinted card, "This item" pill, bigger photo); add-ons are
+  compact. Options are chip buttons (one row per option, sold-out values crossed out), never dropdowns; a single value shows as one chip.
+- **Footer**: no light gap under it. `html` background is the footer ink colour; the room for the sticky add-to-cart bar sits inside the dark footer.
+- **Gallery arrows**: when the selected colour has a single photo, the slider arrows and counter are hidden (`mim-one` in mim-v35.js).
 - **Product page**: one-photo slider with arrows and "1 / N" counter; Judge.me star badge under the title and
   review widget below the product; gold stars (#D4AF37).
 

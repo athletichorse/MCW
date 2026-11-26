@@ -6,6 +6,24 @@ endcapture
 assign pairs = picks | strip | split: ','
 -%}
 {%- if product.available and pairs.size > 0 -%}
+{%- style -%}
+.mim-fbt__item--main{border:2px solid var(--mim-teal)!important;background:var(--mim-tint)!important;padding:1.6rem!important;grid-template-columns:auto 10rem minmax(0,1fr)!important;box-shadow:0 14px 34px -24px rgba(0,115,126,.6)}
+.mim-fbt__item--main .mim-fbt__name{font-size:1.7rem;font-weight:500!important}
+.mim-fbt__item--main .mim-fbt__price{font-size:1.7rem}
+.mim-fbt__item--main .mim-fbt__this{display:inline-block;width:max-content;padding:.25rem .9rem;border-radius:99px;background:var(--mim-teal);color:#fff;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase}
+.mim-fbt__item--add{grid-template-columns:auto 5.6rem minmax(0,1fr)!important;padding:.9rem 1.1rem!important;gap:1.1rem!important}
+.mim-fbt__item--add .mim-fbt__name{font-size:1.3rem}
+.mim-fbt__item--add .mim-fbt__price{font-size:1.3rem}
+.mim-fbt__item--add .mim-fbt__info{gap:.35rem}
+.mim-fbt__opts{display:grid;gap:.5rem}
+.mim-fbt__opt{display:flex;flex-wrap:wrap;gap:.4rem}
+.mim-fbt__chip{min-width:3.2rem;height:3rem;padding:0 1.1rem;border-radius:99px;border:1px solid var(--mim-line);background:#fff;color:var(--mim-ink);font:inherit;font-size:1.2rem;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.mim-fbt__chip.is-on{background:var(--mim-ink);border-color:var(--mim-ink);color:#fff}
+.mim-fbt__chip[data-single]{cursor:default}
+.mim-fbt__chip:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.mim-fbt__item--add .mim-fbt__chip{height:2.6rem;padding:0 .9rem;font-size:1.1rem}
+@media(max-width:749px){.mim-fbt__item--main{grid-template-columns:auto 8rem minmax(0,1fr)!important}.mim-fbt__item--add{grid-template-columns:auto 4.8rem minmax(0,1fr)!important}}
+{%- endstyle -%}
 <section class="mim-fbt page-width mim-r" data-mim-fbt>
 <h2 class="mim-fbt__title">{{ 'mim.fbt.heading' | t }}</h2>
 <div class="mim-fbt__wrap">
@@ -23,7 +41,7 @@ endif
 -%}
 {%- if p -%}
 {%- assign v = p.selected_or_first_available_variant -%}
-<li class="mim-fbt__item" data-fbt-item>
+<li class="mim-fbt__item{% if n == 0 %} mim-fbt__item--main{% else %} mim-fbt__item--add{% endif %}" data-fbt-item>
 <label class="mim-fbt__check">
 <input type="checkbox" checked data-fbt-check{% if n == 0 %} data-fbt-main{% endif %}>
 <span aria-hidden="true"></span>
@@ -37,11 +55,20 @@ endif
 {%- if p.has_only_default_variant -%}
 <input type="hidden" data-fbt-variant value="{{ v.id }}" data-price="{{ v.price }}">
 {%- else -%}
-<select class="mim-fbt__select" data-fbt-variant aria-label="{{ p.title | escape }}">
-{%- for pv in p.variants -%}
-{%- if pv.available -%}<option value="{{ pv.id }}" data-price="{{ pv.price }}"{% if pv.id == v.id %} selected{% endif %}>{%- for o in pv.options -%}{% render 'mim-tr', text: o %}{%- unless forloop.last %} / {% endunless -%}{%- endfor -%}</option>{%- endif -%}
+<input type="hidden" data-fbt-variant value="{{ v.id }}" data-price="{{ v.price }}">
+<div class="mim-fbt__opts" data-fbt-opts>
+{%- for opt in p.options_with_values -%}
+{%- assign oi = forloop.index0 -%}
+<div class="mim-fbt__opt" role="group" aria-label="{% render 'mim-tr', text: opt.name %}">
+{%- for val in opt.values -%}
+{%- assign ok = false -%}
+{%- for pv in p.variants -%}{%- if pv.available and pv.options[oi] == val -%}{%- assign ok = true -%}{%- break -%}{%- endif -%}{%- endfor -%}
+<button type="button" class="mim-fbt__chip{% if v.options[oi] == val %} is-on{% endif %}" data-fbt-opt="{{ oi }}" data-val="{{ val | escape }}"{% unless ok %} disabled{% endunless %}{% if opt.values.size == 1 %} data-single{% endif %}>{% render 'mim-tr', text: val %}</button>
 {%- endfor -%}
-</select>
+</div>
+{%- endfor -%}
+</div>
+<script type="application/json" data-fbt-variants>[{%- for pv in p.variants -%}{"id":{{ pv.id }},"price":{{ pv.price }},"cmp":{{ pv.compare_at_price | default: 0 }},"ok":{{ pv.available }},"o":{{ pv.options | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]</script>
 {%- endif -%}
 <span class="mim-fbt__price" data-fbt-price>
 {%- if v.compare_at_price > v.price -%}<span class="mim-price-sale">{{ v.price | money_without_trailing_zeros }}</span> <s class="mim-price-old">{{ v.compare_at_price | money_without_trailing_zeros }}</s>{%- else -%}{{ v.price | money_without_trailing_zeros }}{%- endif -%}

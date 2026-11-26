@@ -1,0 +1,110 @@
+{%- comment -%}
+MIM Shop by category (v3.9.9). A tidy tile grid placed right after the hero, in shopping order:
+New in → clothing (dresses, kimonos & jackets, tops, pants) → accessories (scarves, bags, pouches & sleeves).
+Each tile: a chosen product's model photo (block "product"), else the image override, else the collection's first product.
+Titles per language (title / title_fr / title_nl / title_ar), else the collection's own (translated) title. No piece counts.
+Phone: 2 columns. Desktop: 4 columns. Photos lazy-load below the first screen.
+{%- endcomment -%}
+{%- liquid
+assign kb = 'mim.home.cats.'
+assign t_eyebrow = section.settings.eyebrow
+if t_eyebrow == blank
+assign k = kb | append: 'eyebrow'
+assign t_eyebrow = k | t
+endif
+assign t_heading = section.settings.heading
+if t_heading == blank
+assign k = kb | append: 'heading_html'
+assign t_heading = k | t
+endif
+assign t_link = section.settings.link_label
+if t_link == blank
+assign k = kb | append: 'link_label'
+assign t_link = k | t
+endif
+assign lc = request.locale.iso_code
+-%}
+<section class="mim-cats2">
+<div class="page-width">
+<div class="mim-head mim-r">
+<div>
+<p class="mim-eyebrow">{{ t_eyebrow }}</p>
+<h2 class="mim-h2">{{ t_heading }}</h2>
+</div>
+<a class="mim-link" href="{{ routes.collections_url }}">{{ t_link }} <span aria-hidden="true">→</span></a>
+</div>
+<div class="mim-cats2__grid">
+{%- for block in section.blocks -%}
+{%- liquid
+assign c = block.settings.collection
+assign img = block.settings.image
+if img == blank and block.settings.product != blank
+assign img = block.settings.product.featured_media.preview_image
+endif
+if img == blank and c != blank
+assign img = c.products[0].featured_media.preview_image
+endif
+case lc
+when 'fr'
+assign title = block.settings.title_fr
+when 'nl'
+assign title = block.settings.title_nl
+when 'ar'
+assign title = block.settings.title_ar
+else
+assign title = block.settings.title
+endcase
+if title == blank and c != blank
+assign title = c.title
+endif
+-%}
+<a class="mim-cats2__card mim-r" style="--d: {{ forloop.index0 }}" href="{% if c != blank %}{{ c.url }}{% else %}{{ routes.collections_url }}{% endif %}" {{ block.shopify_attributes }}>
+<span class="mim-cats2__img">
+{%- if img != blank -%}
+{{ img | image_url: width: 720 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600, 720', sizes: '(min-width: 990px) 22vw, (min-resolution: 2.5dppx) 66vw, 46vw', alt: title }}
+{%- endif -%}
+</span>
+<span class="mim-cats2__name">{{ title }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+{%- endfor -%}
+</div>
+</div>
+</section>
+<style>
+.mim-cats2{padding-block:clamp(3.6rem,5vw,6.4rem)}
+.mim-cats2 .mim-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.mim-cats2__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem 1.2rem}
+.mim-cats2__card{display:grid;gap:1rem;text-decoration:none;color:var(--mim-ink,#14272B)}
+.mim-cats2__img{display:block;aspect-ratio:4/5;border-radius:1.8rem;overflow:hidden;background:var(--mim-tint,#EEF6F7)}
+.mim-cats2__img img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.mim-cats2__name{display:flex;align-items:center;justify-content:space-between;gap:.8rem;font-size:1.55rem;font-weight:500;line-height:1.25}
+.mim-cats2__name svg{flex:none;color:var(--mim-teal,#008F9D);transition:transform .3s}
+html[dir=rtl] .mim-cats2__name svg{transform:scaleX(-1)}
+@media (hover:hover){.mim-cats2__card:hover img{transform:scale(1.04)}.mim-cats2__card:hover .mim-cats2__name svg{transform:translateX(.4rem)}}
+@media (min-width:990px){.mim-cats2__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:2.8rem 2rem}.mim-cats2__name{font-size:1.7rem}}
+@media (prefers-reduced-motion:reduce){.mim-cats2__img img,.mim-cats2__name svg{transition:none}}
+</style>
+{% schema %}
+{
+"name": "MIM Categories",
+"tag": "div",
+"class": "section mim-section",
+"settings": [
+{ "type": "text", "id": "eyebrow", "label": "Eyebrow", "info": "Leave blank to use the built-in text in each language." },
+{ "type": "text", "id": "heading", "label": "Heading" },
+{ "type": "text", "id": "link_label", "label": "Link label" }
+],
+"blocks": [
+{ "type": "category", "name": "Category", "settings": [
+{ "type": "collection", "id": "collection", "label": "Collection" },
+{ "type": "product", "id": "product", "label": "Photo from product", "info": "Its first photo is used on the tile." },
+{ "type": "image_picker", "id": "image", "label": "Image override" },
+{ "type": "text", "id": "title", "label": "Title (English)" },
+{ "type": "text", "id": "title_fr", "label": "Title (French)" },
+{ "type": "text", "id": "title_nl", "label": "Title (Dutch)" },
+{ "type": "text", "id": "title_ar", "label": "Title (Arabic)" }
+] }
+],
+"presets": [{ "name": "MIM Categories", "blocks": [{ "type": "category" }, { "type": "category" }, { "type": "category" }, { "type": "category" }] }]
+}
+{% endschema %}

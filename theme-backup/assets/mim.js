@@ -175,7 +175,7 @@
   /* ---------- money ---------- */
   function money(cents, fmt) {
     fmt = fmt || '{{amount}}';
-    function f(n, d, ts, ds) { n = (n / 100).toFixed(d); var p = n.split('.'); return p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ts) + (p[1] ? ds + p[1] : ''); }
+    function f(n, d, ts, ds) { n = (n / 100).toFixed(d); var p = n.split('.'); return p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ts) + (p[1] && +p[1] ? ds + p[1] : ''); }
     return fmt.replace(/\{\{\s*(\w+)\s*\}\}/, function (_, k) {
       if (k === 'amount_no_decimals') return f(cents, 0, ',', '.');
       if (k === 'amount_with_comma_separator') return f(cents, 2, '.', ',');

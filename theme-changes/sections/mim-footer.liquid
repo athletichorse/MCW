@@ -1,0 +1,186 @@
+{%- liquid
+assign main_menu = linklists['mim-main']
+assign info_menu = linklists['mim-drawer-info']
+assign shop_links = nil
+assign print_links = nil
+for l in main_menu.links
+if forloop.index == 1
+assign shop_links = l.links
+elsif forloop.index == 2
+assign print_links = l.links
+endif
+endfor
+assign wa = section.settings.whatsapp | remove: '+' | remove: ' ' | remove: '-'
+-%}
+<footer class="mft">
+<div class="page-width">
+<div class="mft-top">
+<div class="mft-brand">
+<a href="{{ routes.root_url }}" class="mft-logo">
+{%- if settings.logo != blank -%}
+{{ settings.logo | image_url: width: 300 | image_tag: loading: 'lazy', widths: '150, 300', sizes: '150px', alt: shop.name }}
+{%- else -%}{{ shop.name }}{%- endif -%}
+</a>
+<p class="mft-tag">{{ 'mim.foot.t01' | t }}</p>
+<div class="mft-social">
+{%- if wa != blank -%}
+<a href="https://wa.me/{{ wa }}" target="_blank" rel="noopener" class="mft-ico mft-ico--wa" aria-label="WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm5.8 15.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.6 8.6 0 0 1-4.3-3.7c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg></a>
+{%- endif -%}
+{%- if settings.social_instagram_link != blank -%}
+<a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" class="mft-ico" aria-label="Instagram"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="5" width="22" height="22" rx="6"/><circle cx="16" cy="16" r="5"/><circle cx="22.5" cy="9.5" r="1" fill="currentColor"/></svg></a>
+{%- endif -%}
+{%- if settings.social_facebook_link != blank -%}
+<a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener" class="mft-ico" aria-label="Facebook"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M18 29V17.5h3.8l.6-4.5H18v-2.8c0-1.3.4-2.2 2.2-2.2h2.3v-4c-.4 0-1.8-.2-3.4-.2-3.3 0-5.6 2-5.6 5.8V13H9.8v4.5h3.7V29H18z"/></svg></a>
+{%- endif -%}
+{%- if settings.social_tiktok_link != blank -%}
+<a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener" class="mft-ico" aria-label="TikTok"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M22 4h-4.3v16.6a3.7 3.7 0 1 1-3.7-3.7c.4 0 .7 0 1 .1v-4.4l-1-.1a8 8 0 1 0 8 8v-8.7a10 10 0 0 0 5.8 1.9V9.4A5.8 5.8 0 0 1 22 4z"/></svg></a>
+{%- endif -%}
+<a href="mailto:{{ section.settings.email }}" class="mft-ico" aria-label="Email"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4" y="7" width="24" height="18" rx="3"/><path d="M5 9l11 8 11-8"/></svg></a>
+</div>
+</div>
+{%- capture col_shop -%}
+{%- if shop_links.size > 0 -%}
+{%- for l in shop_links -%}<li><a href="{{ l.url }}">{{ l.title }}</a></li>{%- endfor -%}
+{%- else -%}
+<li><a href="/collections/dresses">{{ 'mim.foot.t02' | t }}</a></li>
+<li><a href="/collections/tops">{{ 'mim.foot.t03' | t }}</a></li>
+<li><a href="/collections/pants">{{ 'mim.foot.t04' | t }}</a></li>
+<li><a href="/collections/bags-more">{{ 'mim.foot.t05' | t }}</a></li>
+{%- endif -%}
+<li><a href="/collections/latest">{{ 'mim.foot.t06' | t }}</a></li>
+<li><a href="/collections/sale" class="mft-sale">{{ 'mim.foot.t07' | t }}</a></li>
+{%- endcapture -%}
+{%- capture col_prints -%}
+{%- if print_links.size > 0 -%}
+{%- for l in print_links -%}<li><a href="{{ l.url }}">{{ l.title }}</a></li>{%- endfor -%}
+{%- else -%}
+<li><a href="/collections/cyano">Cyano</a></li>
+<li><a href="/collections/eco-print">Eco print</a></li>
+<li><a href="/collections/block-print">Block print</a></li>
+<li><a href="/collections/botanical">Botanical</a></li>
+{%- endif -%}
+{%- endcapture -%}
+{%- capture col_about -%}
+<li><a href="/pages/our-story">{{ 'mim.foot.t08' | t }}</a></li>
+<li><a href="/pages/techniques">{{ 'mim.foot.t09' | t }}</a></li>
+<li><a href="/pages/copy-of-gallery">{{ 'mim.foot.t10' | t }}</a></li>
+<li><a href="/pages/store-locator">{{ 'mim.foot.t11' | t }}</a></li>
+<li><a href="/pages/contact-us">{{ 'mim.foot.t12' | t }}</a></li>
+{%- endcapture -%}
+{%- capture col_help -%}
+<li><a href="/pages/faqs">{{ 'mim.foot.t13' | t }}</a></li>
+<li><a href="/pages/how-to-measure">{{ 'mim.foot.t14' | t }}</a></li>
+{%- if shop.shipping_policy != blank -%}<li><a href="{{ shop.shipping_policy.url }}">{{ 'mim.foot.t15' | t }}</a></li>{%- endif -%}
+{%- if shop.refund_policy != blank -%}<li><a href="{{ shop.refund_policy.url }}">{{ 'mim.foot.t16' | t }}</a></li>{%- endif -%}
+<li><a href="{{ routes.account_url }}">{{ 'mim.foot.t17' | t }}</a></li>
+{%- endcapture -%}
+{%- liquid
+assign heads = 'mim.foot.heads' | t | split: '|'
+-%}
+<div class="mft-cols">
+{%- for h in heads -%}
+<details class="mft-col" open>
+<summary><span>{{ h }}</span><i aria-hidden="true"></i></summary>
+<ul>
+{%- case forloop.index -%}
+{%- when 1 -%}{{ col_shop }}
+{%- when 2 -%}{{ col_prints }}
+{%- when 3 -%}{{ col_about }}
+{%- else -%}{{ col_help }}
+{%- endcase -%}
+</ul>
+</details>
+{%- endfor -%}
+</div>
+</div>
+<div class="mft-perks">
+<span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>{{ 'mim.foot.t18' | t }}</span>
+<span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4"/></svg>{{ 'mim.foot.t19' | t }}</span>
+<span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg>{{ 'mim.foot.t20' | t }}</span>
+</div>
+<div class="mft-bottom">
+<p>&copy; {{ 'now' | date: '%Y' }} MIM Creative Wear. {{ 'mim.foot.t21' | t }}</p>
+{%- if shop.enabled_payment_types.size > 0 -%}
+<ul class="mft-pay" aria-label="{{ 'mim.foot.t22' | t }}">
+{%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag: class: 'mft-pay__icon' }}</li>{%- endfor -%}
+</ul>
+{%- endif -%}
+<ul class="mft-legal">
+{%- if shop.privacy_policy != blank -%}<li><a href="{{ shop.privacy_policy.url }}">{{ 'mim.foot.t23' | t }}</a></li>{%- endif -%}
+{%- if shop.terms_of_service != blank -%}<li><a href="{{ shop.terms_of_service.url }}">{{ 'mim.foot.t24' | t }}</a></li>{%- endif -%}
+</ul>
+</div>
+</div>
+</footer>
+<style>
+.mft{background:#14272B;color:rgba(255,255,255,.78);padding-top:clamp(5rem,7vw,8rem);margin-top:0}
+.mft a{color:inherit;text-decoration:none}
+.mft-top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,3fr);gap:clamp(3rem,6vw,8rem);padding-bottom:4.8rem;border-bottom:1px solid rgba(255,255,255,.12)}
+.mft-logo{display:inline-block;background:#fff;border-radius:1.6rem;padding:1rem 1.6rem}
+.mft-logo img{display:block;width:11rem;height:auto}
+.mft-tag{margin:2rem 0 2.4rem;font-size:1.45rem;line-height:1.7;max-width:34ch}
+.mft-social{display:flex;flex-wrap:wrap;gap:1rem}
+.mft-ico{display:grid;place-items:center;width:4.4rem;height:4.4rem;border-radius:50%;border:1px solid rgba(255,255,255,.22);color:#fff;transition:background .2s,border-color .2s}
+.mft-ico svg{width:2rem;height:2rem}
+.mft-ico:hover{background:#008F9D;border-color:#008F9D}
+.mft-ico--wa{background:#25D366;border-color:#25D366}
+.mft-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2.4rem}
+.mft-col summary{display:flex;justify-content:space-between;align-items:center;list-style:none;cursor:default;pointer-events:none;margin-bottom:1.6rem;font-size:1.3rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7ABFC6}
+[dir=rtl] .mft-col summary{letter-spacing:0}
+.mft-col summary::-webkit-details-marker{display:none}
+.mft-col summary i{display:none}
+.mft-col ul{list-style:none;margin:0;padding:0;display:grid;gap:1.1rem}
+.mft-col a{font-size:1.5rem;color:rgba(255,255,255,.82);transition:color .2s}
+.mft-col a:hover{color:#fff;text-decoration:underline;text-underline-offset:.3em}
+.mft-col a.mft-sale{color:#FF8A8A}
+.mft-perks{display:flex;flex-wrap:wrap;gap:1.2rem 3.2rem;padding:2.8rem 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:1.4rem}
+.mft-perks span{display:inline-flex;align-items:center;gap:1rem}
+.mft-perks svg{width:2.2rem;height:2.2rem;color:#7ABFC6;flex:none}
+.mft-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.6rem;padding:2.4rem 0 3.2rem;font-size:1.3rem}
+.mft-bottom p{margin:0;color:rgba(255,255,255,.6)}
+.mft-pay{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.6rem}
+.mft-pay__icon{width:3.8rem;height:2.4rem;display:block}
+.mft-legal{list-style:none;margin:0;padding:0;display:flex;gap:2rem}
+.mft-legal a{color:rgba(255,255,255,.6)}
+.mft-legal a:hover{color:#fff}
+@media (max-width:989px){
+.mft-top{grid-template-columns:1fr;gap:3.2rem}
+.mft-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:3.2rem 2rem}
+}
+@media (max-width:749px){
+.mft{padding-top:4.8rem}
+.mft-cols{grid-template-columns:1fr;gap:0;border-top:1px solid rgba(255,255,255,.12)}
+.mft-col{border-bottom:1px solid rgba(255,255,255,.12)}
+.mft-col summary{pointer-events:auto;cursor:pointer;margin:0;padding:1.8rem 0;font-size:1.35rem}
+.mft-col summary i{display:block;position:relative;width:1.4rem;height:1.4rem}
+.mft-col summary i:before,.mft-col summary i:after{content:"";position:absolute;inset:50% 0 auto;height:1.5px;background:currentColor;transform:translateY(-50%)}
+.mft-col summary i:after{transform:translateY(-50%) rotate(90deg);transition:transform .25s}
+.mft-col[open] summary i:after{transform:translateY(-50%) rotate(0)}
+.mft-col ul{padding-bottom:2rem;gap:1.4rem}
+.mft-perks{flex-direction:column;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.12)}
+.mft-bottom{flex-direction:column;align-items:flex-start;padding-bottom:calc(2.4rem + env(safe-area-inset-bottom,0px))}
+}
+
+/* no light gap under the footer: the room the sticky add-to-cart bar needs is taken inside the dark footer */
+body:has(.mim-sticky.is-on){padding-bottom:0!important}
+body:has(.mim-sticky.is-on) .mft-bottom{padding-bottom:calc(8.4rem + env(safe-area-inset-bottom,0px))}
+html{background:#14272B}body{background:var(--gradient-background,#fff)}
+</style>
+<script>
+(function(){
+var mq=window.matchMedia('(max-width: 749px)');
+function set(){document.querySelectorAll('.mft-col').forEach(function(d){if(mq.matches)d.removeAttribute('open');else d.setAttribute('open','');});}
+set();if(mq.addEventListener)mq.addEventListener('change',set);
+})();
+</script>
+{% schema %}
+{
+"name": "MIM Footer",
+"tag": "div",
+"class": "section-mim-footer",
+"settings": [
+{ "type": "text", "id": "whatsapp", "label": "WhatsApp number", "default": "+20 122 211 6237" },
+{ "type": "text", "id": "email", "label": "Email", "default": "mim@mimcreativewear.com" }
+]
+}
+{% endschema %}
