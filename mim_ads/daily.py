@@ -7,7 +7,7 @@ Usage:
   python3 mim_ads/daily.py rebuild-state products.json    # new machine: recreate .secrets/state.json
 
 products.json: list of Shopify products, newest first:
-  [{"handle", "title", "inStock": bool, "images": [{"url","width","height"}]}]
+  [{"handle", "title", "inStock": bool, "offSeason": bool, "images": [{"url","width","height"}]}]
 
 Hard rules baked in: never touches budgets, bidding, targeting, conversions,
 links or other accounts. Only swaps creatives (images/text) in the asset groups.
@@ -113,7 +113,8 @@ def refresh(products_path, apply):
     products = json.load(open(products_path))
     in_stock = {p['handle'] for p in products if p.get('inStock')}
     title = {p['handle']: p['title'] for p in products}
-    usable = [p for p in products if p.get('inStock') and best_image(p)]
+    # season rule: products marked offSeason (see season.py) never get new ads
+    usable = [p for p in products if p.get('inStock') and not p.get('offSeason') and best_image(p)]
     target = usable[:NEW_COUNT]
     target_h = [p['handle'] for p in target]
     print('New arrivals target:', ', '.join(title[h] for h in target_h))

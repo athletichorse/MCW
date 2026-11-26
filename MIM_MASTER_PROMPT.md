@@ -18,19 +18,20 @@ RULES
 5. Ask before anything that cannot be undone. Never publish a theme without my yes. Back up any store text before replacing it.
 6. Crawl my site slowly (1 request every 2 seconds) or Shopify blocks you.
 7. Keep replies short, no dashes, clickable links.
+8. SEASON RULE: every ad must fit the current Egypt season. Winter = November to March: no summer dresses, beach, resort or linen/cotton voile summer items or wording. Summer = April to October: no winter knits, ponchos or cozy collars. Bags, pouches, pencil and laptop cases are all season. Each run: build the off season product id list from Shopify tags (summer tags: summer essential, Summer essentials, summer 2026, Summerdress, Beachdress, Resortwear, Vacationwear, Poolside attire; skip items also tagged winter vibes, and skip bags/cases), run python3 mim_ads/season.py apply <ids.json>, set offSeason true in products.json, and swap any off season image or text in the asset groups (remove first, then add: headlines are at the 15 limit). Never enable the campaign while season.py check fails.
 
-CURRENT STATE (as of 2026-11-25)
+CURRENT STATE (as of 2026-11-26)
 1. Campaign is PAUSED on my request until Google approves the products. All Merchant Center products were "pending initial review". Turn it back on (status only) once in stock products are eligible, and tell me.
 2. Targeting: upscale Greater Cairo only: New Cairo (Fifth Settlement, Katameya Heights, Mivida, Mountain View, Lake View, Hyde Park, Mirador), Zamalek, Garden City (1 km radius), Maadi, Heliopolis, Rehab, Madinaty, New Capital, Sheikh Zayed, 6th of October, Dokki, Mohandessin, plus 8 older radius pins over the same areas. Pyramids Heights still needs a map pin from me. Languages: English, German, Italian, Arabic.
-3. Asset group AG5 (Italy and Germany) is paused. AG1 to AG4 are on, each with 15 headlines and up to 20 images (including upscaled photos of Monstera Blush, Sunset Palm, Jaspis, Midline Kaftan).
+3. Asset group AG5 (Italy and Germany) is paused. AG1 to AG4 are on. Winter refresh on 2026-11-26: summer images (Monstera Blush, Sunset Palm, Jaspis, Midline Kaftan) and linen/cotton wording removed, winter knit wording added. 436 summer feed items excluded in AG2, AG3, AG5; AG1 and AG4 still need season.py apply (Google API daily quota).
 4. Audience signal: women 25+, Luxury Shoppers, Luxury Fashion Buyers, Fashionistas, Luxury Travelers, Fine Jewelry, plus customer lists.
 5. Ad strength was "Poor" during review; the main missing piece is a YouTube video. Add one when I send a link.
 6. Theme "MIM v3.9.7 (Arabic product fixes)": How to measure link fixed for ar/fr/nl and published. 11 URL redirects added for deleted products, old collections and /pages/about.
 7. Shipping (live): Cairo and Giza Standard 85 EGP (2 to 5 days), free over 2,999; Express 120 (1 to 2 days). Rest of Egypt Standard 85, Express 120. Outside Egypt 1,200 up to 4,000, 3,200 above. Leftover: the "international" profile still charges 900 EGP to the USA.
 
 PENDING (check each, finish what you can, ask me for the rest)
-1. Store policies: new Shipping, Refund, Privacy and Terms are in policy_backup/new_policies.json and new_policies.html (originals in original_policies.md). Confirm I pasted them in Shopify, or apply them with my app token. Contact information stays as is.
-2. Fix or flag the 900 EGP USA rate in the "international" shipping profile.
+1. Store policies: Privacy, Refund, Shipping and Terms went live on 2026-11-25 and match checkout (Cairo, Giza, 6th of October, Helwan 85 EGP, free over 2,999, Express 120; Alexandria 120; rest of Egypt 150; abroad 1,200 up to 4,000 then 3,200). The live versions are the reference now. Open item: the Contact information policy still shows the old factory address while Privacy and Terms show the Fustat office and CSA Maadi store; align them once I confirm.
+2. The "international" shipping profile (USA 900 EGP) has 0 products, so it has no effect.
 3. Merchant Center: shipping and return settings must match the policies (2 day exchange window).
 4. 6 archived or draft products still return 404 (Long Dress WA26, W261 Soft Knit V Dress, 24SV19 Dress 2 Layered, 23CW16 Long Dress Black, D2 Max Maxi Dress, SV13 Tattoo Top). Ask me: reactivate or rename the handle so a redirect can work.
 5. SEO: the 9 older dresses have generic image alt text ("view 2"). Check whether my automatic SEO fix handled it.
