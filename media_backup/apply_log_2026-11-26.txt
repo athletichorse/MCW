@@ -1,0 +1,19 @@
+{"product": "Botanica Cross Bag", "handle": "acb1-printed-canvas-cross-bag-22x22", "new": 15, "deleted": 5, "order_ok": true, "final_count": 15}
+{"product": "Botanical Bliss Linen Top", "handle": "24k2-top", "new": 10, "deleted": 3, "order_ok": true, "final_count": 10}
+{"product": "Cyan Stitch Cross Bag", "handle": "cyan-stitch-cross-bag", "new": 5, "deleted": 2, "order_ok": true, "final_count": 5}
+{"product": "Eco Mosaic Cross Bag", "handle": "hand-printed-canvas-cross-bag-eco-acb2-s", "new": 10, "deleted": 2, "order_ok": true, "final_count": 12}
+{"product": "Flora A-Line Ecoprint Dress", "handle": "24s1-dress-one-layer-eco", "new": 15, "deleted": 2, "order_ok": true, "final_count": 17}
+{"product": "Floral Leaf Print Layered Dress White & Sprayed Blue", "handle": "dress-sleeveless-round-neck-two-layers-white-sprayed-blue-n1-u22", "new": 5, "deleted": 1, "order_ok": true, "final_count": 6}
+{"product": "Flow Scarf Cotton Voile", "handle": "23-scarf", "new": 25, "deleted": 5, "order_ok": true, "final_count": 30}
+{"product": "Garden Shawl Cyano Print", "handle": "23cw27-garden-shawl-scarf", "new": 20, "deleted": 5, "order_ok": true, "final_count": 24}
+{"product": "Gardenia Scarf Cotton Voile", "handle": "25-scarf", "new": 10, "deleted": 3, "order_ok": true, "final_count": 10}
+{"product": "Long Mosaic", "handle": "sv12-color-patch-poncho", "new": 10, "deleted": 7, "order_ok": true, "final_count": 12}
+{"product": "Lush Cash Mayo", "handle": "25-cashmayo", "new": 20, "deleted": 4, "order_ok": true, "final_count": 28}
+{"product": "MIM Signature Dress Golden Maat White", "handle": "dress-sleeveless-round-neck-two-layers-white-golden-maat-n1-up", "new": 5, "deleted": 2, "order_ok": true, "final_count": 8}
+{"product": "MIM Signature Dress Green Maat White", "handle": "dress-sleeveless-round-neck-two-layers-white-green-maat-n1-up", "new": 5, "deleted": 2, "order_ok": true, "final_count": 6}
+{"product": "Petal Ecoprint Dress Slim", "handle": "eco5-dress-one-layer-eco-print", "new": 15, "deleted": 1, "order_ok": true, "final_count": 22}
+{"product": "Scarf Poncho", "handle": "scarf-poncho", "new": 20, "deleted": 4, "order_ok": true, "final_count": 24}
+{"product": "Sea Breeze Summer Kimono", "handle": "24s20-cardigan", "new": 10, "deleted": 1, "order_ok": true, "final_count": 37}
+{"product": "Terra Tones Ecoprint Blouse", "handle": "23s9-eco-blouse", "new": 15, "deleted": 2, "order_ok": true, "final_count": 17}
+{"product": "Twilight Linen Midi Dress", "handle": "24k3-dress-3v-neck", "new": 5, "deleted": 2, "order_ok": true, "final_count": 8}
+{"product": "Wrap and Roll Beech Wood Tote", "handle": "beechwood-bag", "new": 15, "deleted": 2, "order_ok": true, "final_count": 15}
