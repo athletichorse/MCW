@@ -268,3 +268,6 @@ var t;new MutationObserver(function(){clearTimeout(t);t=setTimeout(scan,300);}).
 document.addEventListener('mouseover',function(e){var c=e.target.closest&&e.target.closest('.mim-card');if(c)warm(c);},{passive:true});
 if(document.readyState==='complete')scan();else window.addEventListener('load',scan);
 })();
+
+/* Card colour dots: once a colour is picked, stop the hover photo (always the first colour's 2nd shot) covering it */
+document.addEventListener('click',function(e){var d=e.target.closest&&e.target.closest('.mim-dot');if(!d)return;var c=d.closest('.mim-card');if(c)c.classList.toggle('mim-picked',!d.parentNode.firstElementChild.isSameNode(d)||c.classList.contains('mim-picked'));},true);

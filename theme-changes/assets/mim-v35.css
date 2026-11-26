@@ -361,3 +361,7 @@ html body .jdgm-star,html[lang=ar] body .jdgm-star{font-family:JudgemeStar!impor
 .cart-item dl .product-option{display:inline-flex;align-items:baseline;gap:.3em;white-space:nowrap;max-width:100%}
 .cart-item dl .product-option dt,.cart-item dl .product-option dd{margin:0}
 .cart-item dl:empty,.cart-item dl:not(:has(.product-option)){display:none}
+
+/* Card colour dots: picked colour stays visible on hover */
+.mim-card.mim-picked .mim-card__img2{opacity:0!important;visibility:hidden}
+.mim-card.mim-picked .mim-card__img1{opacity:1!important;transform:none}
