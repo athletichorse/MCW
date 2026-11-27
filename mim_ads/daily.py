@@ -12,7 +12,7 @@ products.json: list of Shopify products, newest first:
 Hard rules baked in: never touches budgets, bidding, targeting, conversions,
 links or other accounts. Only swaps creatives (images/text) in the asset groups.
 """
-import sys, json, io, base64, urllib.request
+import sys, json, io, base64, urllib.request, urllib.error
 from ads import q, call, state, save_state, errors
 
 BUDGET_CAP_MICROS = 100_000_000  # 100 EGP/day
@@ -75,8 +75,16 @@ def report():
 
 # ---------------------------------------------------------------- images
 def _fetch(url):
+    import time
     from PIL import Image
-    return Image.open(io.BytesIO(urllib.request.urlopen(url).read())).convert('RGB')
+    for attempt in range(5):
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (mim-ads image fetch)'})
+            return Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=60).read())).convert('RGB')
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == 4:
+                raise
+            time.sleep(10 * (attempt + 1))
 
 
 def _jpeg(im):
@@ -148,6 +156,7 @@ def refresh(products_path, apply):
         A[rn] = {'kind': 'text', 'handles': handles, 'text': text}
 
     cache = {}
+    added_ls = set()
 
     def photo(h):
         if h not in cache:
@@ -174,7 +183,12 @@ def refresh(products_path, apply):
                 continue
             if meta['kind'] == 'landscape':
                 pool = [h for h in (target_h if is_new else [p['handle'] for p in usable])]
-                if len(pool) >= 3:
+                key = (grn, tuple(pool[:3]))
+                if len(pool) >= 3 and key in added_ls:
+                    ops_remove.append(r['assetGroupAsset']['resourceName'])
+                    notes.append(f"{gname}: remove duplicate landscape with old item(s) {stale}")
+                elif len(pool) >= 3:
+                    added_ls.add(key)
                     add_image(grn, triptych([photo(h) for h in pool[:3]]), 'MARKETING_IMAGE', pool[:3], 'MIM ls ' + ','.join(pool[:3]))
                     ops_remove.append(r['assetGroupAsset']['resourceName'])
                     notes.append(f"{gname}: replace landscape with sold out/old item(s) {stale}")
@@ -237,7 +251,12 @@ def refresh(products_path, apply):
     if not apply:
         print('(dry run, nothing changed)')
         return
-    # add first, then remove, so minimum asset counts are always met
+    # remove first, then add: asset groups sit at Google's limits (15 headlines,
+    # 5 descriptions, 20 images); removals above always keep at least one square image
+    if ops_remove:
+        r = call('googleAds:mutate', {'mutateOperations': [{'assetGroupAssetOperation': {'remove': rn}} for rn in ops_remove]})
+        if errors(r):
+            raise SystemExit('Remove failed: ' + errors(r))
     ops = new_assets + ops_add
     if ops:
         r = call('googleAds:mutate', {'mutateOperations': ops})
@@ -247,10 +266,6 @@ def refresh(products_path, apply):
         for i, op in enumerate(new_assets):
             tmp_rn = op['assetOperation']['create']['resourceName']
             A[res[i]['assetResult']['resourceName']] = A.pop(tmp_rn)
-    if ops_remove:
-        r = call('googleAds:mutate', {'mutateOperations': [{'assetGroupAssetOperation': {'remove': rn}} for rn in ops_remove]})
-        if errors(r):
-            print('Some removals failed: ' + errors(r))
     s['assets'] = {k: v for k, v in A.items() if '/-' not in k}
     save_state(s)
     print('Applied.')
