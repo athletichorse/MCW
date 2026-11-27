@@ -12,7 +12,7 @@ SETUP
 
 RULES
 1. Never show, print or type any secret, token, password, account ID or card info.
-2. Never change budget, bidding, targeting, conversions or linked accounts without my OK. Never exceed 100 EGP/day.
+2. Never change budget, bidding, targeting, conversions or linked accounts without my OK. Never exceed 100 EGP/day. Daily budget is 50 EGP since 2026-11-27 so Google's 2x daily overdelivery can never pass 100.
 3. No billing changes, promo codes, trials or paid upgrades.
 4. Only use my in stock products and high resolution images (over 900 px). AI upscaled images are allowed when I ask.
 5. Ask before anything that cannot be undone. Never publish a theme without my yes. Back up any store text before replacing it.
@@ -24,7 +24,8 @@ CURRENT STATE (as of 2026-11-26)
 1. Campaign is PAUSED on my request until Google approves the products. All Merchant Center products were "pending initial review". Turn it back on (status only) once in stock products are eligible, and tell me.
 2. Targeting: upscale Greater Cairo only: New Cairo (Fifth Settlement, Katameya Heights, Mivida, Mountain View, Lake View, Hyde Park, Mirador), Zamalek, Garden City (1 km radius), Maadi, Heliopolis, Rehab, Madinaty, New Capital, Sheikh Zayed, 6th of October, Dokki, Mohandessin, plus 8 older radius pins over the same areas. Pyramids Heights still needs a map pin from me. Languages: English, German, Italian, Arabic.
 3. Asset group AG5 (Italy and Germany) is paused. AG1 to AG4 are on. Winter refresh on 2026-11-26: summer images (Monstera Blush, Sunset Palm, Jaspis, Midline Kaftan) and linen/cotton wording removed, winter knit wording added. 436 summer feed items excluded in AG2, AG3, AG5; AG1 and AG4 still need season.py apply (Google API daily quota).
-4. Audience signal: women 25+, Luxury Shoppers, Luxury Fashion Buyers, Fashionistas, Luxury Travelers, Fine Jewelry, plus customer lists.
+4. Account level exclusions (2026-11-27): 145 mobile app categories excluded to cut accidental app clicks (91% of the first day's spend was Display).
+5. Audience signal: women 25+, Luxury Shoppers, Luxury Fashion Buyers, Fashionistas, Luxury Travelers, Fine Jewelry, plus customer lists.
 5. Ad strength was "Poor" during review; the main missing piece is a YouTube video. Add one when I send a link.
 6. Theme "MIM v3.9.7 (Arabic product fixes)": How to measure link fixed for ar/fr/nl and published. 11 URL redirects added for deleted products, old collections and /pages/about.
 7. Shipping (live): Cairo and Giza Standard 85 EGP (2 to 5 days), free over 2,999; Express 120 (1 to 2 days). Rest of Egypt Standard 85, Express 120. Outside Egypt 1,200 up to 4,000, 3,200 above. Leftover: the "international" profile still charges 900 EGP to the USA.
