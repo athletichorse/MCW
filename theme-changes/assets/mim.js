@@ -184,41 +184,67 @@
     });
   }
 
-  /* ---------- frequently bought together ---------- */
+  /* ---------- frequently bought together (v2: tiles, colour dots / selects, item count) ---------- */
   function initFbt(root) {
     if (root.dataset.ready) return; root.dataset.ready = '1';
     var i18n = {}; try { i18n = JSON.parse(root.querySelector('[data-fbt-i18n]').textContent); } catch (e) {}
     var items = root.querySelectorAll('[data-fbt-item]'), totalEl = root.querySelector('[data-fbt-total]');
+    var countEl = root.querySelector('[data-fbt-count]');
     var btn = root.querySelector('[data-fbt-add]'), msg = root.querySelector('[data-fbt-msg]');
-    function sel(it) { var v = it.querySelector('[data-fbt-variant]'); return v.tagName === 'SELECT' ? v.options[v.selectedIndex] : v; }
+    function hid(it) { return it.querySelector('[data-fbt-variant]'); }
+    function countText(n) {
+      if (!n) return i18n.none || '';
+      if (n === 1) return i18n.one || '1';
+      if (n === 2 && i18n.two) return i18n.two;
+      return (i18n.many || '{n}').replace('{n}', n);
+    }
     function update() {
       var sum = 0, n = 0;
       items.forEach(function (it) {
         var on = it.querySelector('[data-fbt-check]').checked; it.classList.toggle('is-off', !on);
-        var o = sel(it); if (on && o) { sum += +o.dataset.price || 0; n++; }
+        var o = hid(it); if (on && o && o.value) { sum += +o.dataset.price || 0; n++; }
       });
       totalEl.textContent = money(sum, i18n.money); btn.disabled = n === 0;
+      if (countEl) countEl.textContent = countText(n);
     }
-    root.addEventListener('change', update);
+    root.addEventListener('change', function (e) { if (e.target.matches('[data-fbt-check]')) update(); });
     items.forEach(function (it) {
       var data = it.querySelector('[data-fbt-variants]'); if (!data) return;
       var vs = []; try { vs = JSON.parse(data.textContent); } catch (e) { return; }
-      var hid = it.querySelector('[data-fbt-variant]'), priceEl = it.querySelector('[data-fbt-price]');
-      it.addEventListener('click', function (e) {
-        var b = e.target.closest('[data-fbt-opt]'); if (!b || b.disabled || b.hasAttribute('data-single')) return;
-        it.querySelectorAll('[data-fbt-opt="' + b.dataset.fbtOpt + '"]').forEach(function (x) { x.classList.toggle('is-on', x === b); });
-        var want = []; it.querySelectorAll('.mim-fbt__chip.is-on').forEach(function (x) { want[+x.dataset.fbtOpt] = x.dataset.val; });
-        var hit = vs.filter(function (v) { return v.ok && v.o.every(function (o, i) { return want[i] === undefined || want[i] === o; }); })[0];
-        if (!hit) { hit = vs.filter(function (v) { return v.ok && v.o[+b.dataset.fbtOpt] === b.dataset.val; })[0]; if (hit) it.querySelectorAll('[data-fbt-opt]').forEach(function (x) { x.classList.toggle('is-on', hit.o[+x.dataset.fbtOpt] === x.dataset.val); }); }
-        if (!hit) return;
-        hid.value = hit.id; hid.dataset.price = hit.price;
-        if (priceEl) priceEl.innerHTML = hit.cmp > hit.price ? '<span class="mim-price-sale">' + money(hit.price, i18n.money) + '</span> <s class="mim-price-old">' + money(hit.cmp, i18n.money) + '</s>' : money(hit.price, i18n.money);
+      var h = hid(it), priceEl = it.querySelector('[data-fbt-price]'), cname = it.querySelector('[data-fbt-cname]');
+      function current() {
+        var want = [];
+        it.querySelectorAll('select[data-fbt-opt]').forEach(function (x) { want[+x.dataset.fbtOpt] = x.value; });
+        it.querySelectorAll('button[data-fbt-opt].is-on').forEach(function (x) { want[+x.dataset.fbtOpt] = x.dataset.val; });
+        return want;
+      }
+      function show(v) {
+        it.querySelectorAll('select[data-fbt-opt]').forEach(function (x) { x.value = v.o[+x.dataset.fbtOpt]; });
+        it.querySelectorAll('button[data-fbt-opt]').forEach(function (x) {
+          var on = v.o[+x.dataset.fbtOpt] === x.dataset.val; x.classList.toggle('is-on', on); x.setAttribute('aria-pressed', on);
+          if (on && cname) cname.textContent = x.dataset.label || x.dataset.val;
+        });
+        h.value = v.id; h.dataset.price = v.price;
+        if (priceEl) priceEl.innerHTML = v.cmp > v.price ? '<span class="mim-price-sale">' + money(v.price, i18n.money) + '</span> <s class="mim-price-old">' + money(v.cmp, i18n.money) + '</s>' : money(v.price, i18n.money);
         update();
+      }
+      function pick(idx, val) {
+        var want = current(); want[idx] = val;
+        var hit = vs.filter(function (v) { return v.ok && v.o.every(function (o, i) { return want[i] === undefined || want[i] === o; }); })[0]
+          || vs.filter(function (v) { return v.ok && v.o[idx] === val; })[0];
+        if (hit) show(hit);
+      }
+      it.addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-fbt-opt]'); if (!b || b.disabled) return;
+        pick(+b.dataset.fbtOpt, b.dataset.val);
+      });
+      it.addEventListener('change', function (e) {
+        var s = e.target.closest('select[data-fbt-opt]'); if (s) pick(+s.dataset.fbtOpt, s.value);
       });
     });
     btn.addEventListener('click', function () {
       var list = [];
-      items.forEach(function (it) { if (it.querySelector('[data-fbt-check]').checked) { var o = sel(it); if (o && o.value) list.push({ id: +o.value, quantity: 1 }); } });
+      items.forEach(function (it) { if (it.querySelector('[data-fbt-check]').checked) { var o = hid(it); if (o && o.value) list.push({ id: +o.value, quantity: 1 }); } });
       if (!list.length) return;
       btn.disabled = true; btn.classList.add('is-loading'); msg.textContent = '';
       var drawer = document.querySelector('cart-drawer');
@@ -235,6 +261,10 @@
         .catch(function (e) { msg.textContent = (e && e.description) || i18n.error || 'Error'; })
         .finally(function () { btn.disabled = false; btn.classList.remove('is-loading'); });
     });
+    /* phone: the FBT bar has its own sticky button, so hide the product sticky bar while the block is on screen */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (en) { document.body.classList.toggle('mfb-in', en.isIntersecting); }); }).observe(root);
+    }
     update();
   }
 

@@ -1,33 +1,120 @@
-{%- comment -%} Bought together: the best match from each of the first two complementary categories (see mim-xsell). {%- endcomment -%}
+{%- comment -%}
+Bought together (v2, 28 Nov 2026): the best match from each of the first two complementary categories (see mim-xsell).
+Desktop: one compact row of equal tiles (photo on top) joined by "+", then a summary column (total, item count, button).
+Phone: stacked list with 64px thumbs and a sticky full-width button. Only options with more than one value are shown;
+colour = swatch dots (up to 6 values) or a compact select. Logic in assets/mim.js (initFbt).
+{%- endcomment -%}
 {%- liquid
 capture picks
 render 'mim-xsell', product: product, limit: 2, per_type: 1
 endcapture
 assign pairs = picks | strip | split: ','
+assign lc = request.locale.iso_code
+case lc
+when 'fr'
+assign t_one = '1 article'
+assign t_many = '{n} articles'
+assign t_none = 'Aucun article'
+when 'nl'
+assign t_one = '1 artikel'
+assign t_many = '{n} artikelen'
+assign t_none = 'Geen artikelen'
+when 'ar'
+assign t_one = 'قطعة واحدة'
+assign t_many = '{n} قطع'
+assign t_two = 'قطعتان'
+assign t_none = 'لا توجد قطع'
+else
+assign t_one = '1 item'
+assign t_many = '{n} items'
+assign t_none = 'No items'
+endcase
 -%}
 {%- if product.available and pairs.size > 0 -%}
 {%- style -%}
-.mim-fbt__item--main{border:2px solid var(--mim-teal)!important;background:var(--mim-tint)!important;padding:1.6rem!important;grid-template-columns:auto 10rem minmax(0,1fr)!important;box-shadow:0 14px 34px -24px rgba(0,115,126,.6)}
-.mim-fbt__item--main .mim-fbt__name{font-size:1.7rem;font-weight:500!important}
-.mim-fbt__item--main .mim-fbt__price{font-size:1.7rem}
-.mim-fbt__item--main .mim-fbt__this{display:inline-block;width:max-content;padding:.25rem .9rem;border-radius:99px;background:var(--mim-teal);color:#fff;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase}
-.mim-fbt__item--add{grid-template-columns:auto 5.6rem minmax(0,1fr)!important;padding:.9rem 1.1rem!important;gap:1.1rem!important}
-.mim-fbt__item--add .mim-fbt__name{font-size:1.3rem}
-.mim-fbt__item--add .mim-fbt__price{font-size:1.3rem}
-.mim-fbt__item--add .mim-fbt__info{gap:.35rem}
-.mim-fbt__opts{display:grid;gap:.5rem}
-.mim-fbt__opt{display:flex;flex-wrap:wrap;gap:.4rem}
-.mim-fbt__chip{min-width:3.2rem;height:3rem;padding:0 1.1rem;border-radius:99px;border:1px solid var(--mim-line);background:#fff;color:var(--mim-ink);font:inherit;font-size:1.2rem;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
-.mim-fbt__chip.is-on{background:var(--mim-ink);border-color:var(--mim-ink);color:#fff}
-.mim-fbt__chip[data-single]{cursor:default}
-.mim-fbt__chip:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
-.mim-fbt__item--add .mim-fbt__chip{height:2.6rem;padding:0 .9rem;font-size:1.1rem}
-@media(max-width:749px){.mim-fbt__item--main{grid-template-columns:auto 8rem minmax(0,1fr)!important}.mim-fbt__item--add{grid-template-columns:auto 4.8rem minmax(0,1fr)!important}}
+.mfb{--tw:18rem;--gap:3.6rem}
+@media(min-width:1280px){.mfb{--tw:20rem;--gap:4rem}}
+.mfb__wrap{display:flex;flex-wrap:wrap;align-items:center;gap:3.2rem 4rem}
+.mfb__list{list-style:none;margin:0;padding:0;display:flex;gap:var(--gap);align-items:flex-start}
+.mfb__item{position:relative;width:var(--tw);display:grid;gap:.8rem;align-content:start}
+.mfb__item+.mfb__item:before{content:"+";position:absolute;top:calc(var(--tw) * 2 / 3 - 1.4rem);inset-inline-start:calc(var(--gap) / -2 - 1.4rem);width:2.8rem;height:2.8rem;border-radius:50%;background:var(--mim-tint);color:var(--mim-teal-d);display:grid;place-items:center;font-size:1.8rem;font-weight:500;line-height:1}
+.mfb__media{position:relative}
+.mfb__img{display:block;aspect-ratio:3/4;border-radius:1.4rem;overflow:hidden;background:var(--mim-tint);transition:opacity .25s,filter .25s}
+.mfb__img img{width:100%;height:100%;object-fit:cover;display:block}
+.mfb__check{position:absolute;top:.8rem;inset-inline-start:.8rem;width:2.6rem;height:2.6rem;cursor:pointer;z-index:1}
+.mfb__check input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.mfb__check span{position:absolute;inset:0;border-radius:.8rem;background:#fff;border:1.5px solid var(--mim-line);box-shadow:0 2px 8px -2px rgba(20,39,43,.25);transition:background .2s,border-color .2s}
+.mfb__check input:checked+span{background:var(--mim-teal);border-color:var(--mim-teal)}
+.mfb__check input:checked+span:after{content:"";position:absolute;left:50%;top:45%;width:.6rem;height:1.1rem;border:solid #fff;border-width:0 2px 2px 0;transform:translate(-50%,-50%) rotate(45deg)}
+.mfb__check input:focus-visible+span{outline:2px solid var(--mim-teal);outline-offset:2px}
+.mfb__this{position:absolute;bottom:.8rem;inset-inline-start:.8rem;padding:.3rem .9rem;border-radius:99px;background:var(--mim-teal);color:#fff;font-size:1.05rem;font-weight:500;letter-spacing:.04em;line-height:1.4;pointer-events:none}
+.mfb__this--text{display:none}
+.mfb__info{display:grid;gap:.6rem;min-width:0;transition:opacity .25s}
+.mfb__name{font-size:1.4rem;line-height:1.35;color:var(--mim-ink);text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:400}
+.mfb__name:hover{text-decoration:underline;text-underline-offset:.3rem}
+.mfb__price{font-size:1.4rem;font-weight:600;color:var(--mim-teal-d);direction:ltr;unicode-bidi:isolate;justify-self:start}
+.mfb__price s{font-weight:400;color:var(--mim-muted);font-size:1.2rem}
+.mfb__opts{display:grid;gap:.6rem}
+.mfb__dots{display:flex;align-items:center;gap:.7rem;min-height:2.4rem;flex-wrap:nowrap}
+.mfb__dot{appearance:none;-webkit-appearance:none;flex:none;width:2rem;height:2rem;padding:0;margin:0;border:0;border-radius:50%;background:var(--sw,conic-gradient(#e67e22,#c0392b,#2f6db5,#3f8a4f,#f2c94c,#e67e22));box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);cursor:pointer;transition:box-shadow .2s}
+.mfb__dot.is-on{box-shadow:inset 0 0 0 2px var(--mim-ink),inset 0 0 0 4px #fff}
+.mfb__dot:disabled{opacity:.3;cursor:not-allowed;background-image:linear-gradient(135deg,transparent 46%,rgba(20,39,43,.7) 46% 54%,transparent 54%)}
+.mfb__dot:focus-visible{outline:2px solid var(--mim-teal);outline-offset:2px}
+.mfb__cname{font-size:1.2rem;color:var(--mim-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.mfb__sel{width:100%;height:3.4rem;padding:0 3rem 0 1.2rem;border-radius:99px;border:1px solid var(--mim-line);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2314272b' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 1.2rem center;-webkit-appearance:none;appearance:none;font:inherit;font-size:1.25rem;color:var(--mim-ink);cursor:pointer}
+html[dir=rtl] .mfb__sel{padding:0 1.2rem 0 3rem;background-position:left 1.2rem center}
+.mfb__sel:focus-visible{outline:2px solid var(--mim-teal);outline-offset:1px}
+.mfb__item.is-off .mfb__img{opacity:.45;filter:grayscale(.6)}
+.mfb__item.is-off .mfb__info{opacity:.5}
+.mfb__sum{flex:0 0 26rem;padding:2.4rem;border-radius:var(--mim-r,2rem);background:var(--mim-tint);display:grid;gap:1.2rem}
+.mfb__total{margin:0;display:grid;gap:.2rem}
+.mfb__total span{font-size:1.3rem;color:var(--mim-muted)}
+.mfb__total b{font-size:2.4rem;font-weight:600;color:var(--mim-ink);direction:ltr;unicode-bidi:isolate;justify-self:start;line-height:1.2}
+.mfb__count{margin:0;font-size:1.3rem;color:var(--mim-muted)}
+.mfb__sum .mim-btn{width:100%}
+.mfb__msg{margin:0;min-height:1.8rem;font-size:1.3rem;color:var(--mim-teal-d)}
+.mfb__msg:empty{display:none}
+@media(min-width:750px) and (max-width:1099px){.mfb{--tw:16rem;--gap:3.2rem}.mfb__sum{flex:1 1 100%;grid-template-columns:1fr auto;align-items:center}.mfb__sum .mim-btn{width:auto;padding-inline:3rem}.mfb__sum>.mfb__count{grid-column:1}.mfb__sum .mim-btn{grid-column:2;grid-row:1 / span 2}}
+@media(max-width:749px){
+.mfb__wrap{display:block}
+.mfb__list{display:grid;gap:0}
+.mfb__item{width:auto;grid-template-columns:2.6rem 6.4rem minmax(0,1fr);gap:1.2rem;align-items:center;padding:1.2rem 0;border-bottom:1px solid var(--mim-line)}
+.mfb__item:first-child{padding-top:0}
+.mfb__item+.mfb__item:before{content:none}
+.mfb__media{display:contents}
+.mfb__check{position:relative;top:auto;inset-inline-start:auto;grid-column:1;grid-row:1}
+.mfb__img{grid-column:2;grid-row:1;width:6.4rem;border-radius:1rem}
+.mfb__this--photo{display:none}
+.mfb__this--text{display:block}
+.mfb__this{position:static;justify-self:start;padding:.15rem .7rem;font-size:1rem}
+.mfb__info{grid-column:3;grid-row:1;gap:.4rem}
+.mfb__name{font-size:1.35rem;-webkit-line-clamp:1}
+.mfb__row{display:flex;align-items:center;gap:1rem;justify-content:space-between}
+.mfb__opts{flex:1;min-width:0;display:flex;gap:.6rem;align-items:center}
+.mfb__row{flex-wrap:wrap;row-gap:.6rem}
+.mfb__opts{flex:0 1 auto}
+.mfb__dots{flex:none}
+.mfb__sel{height:3rem;font-size:1.2rem;width:9rem;flex:none}
+.mfb__opts:only-child,.mfb__opts:has(.mfb__sel:only-child){flex:1}
+.mfb__dots{gap:.6rem}
+.mfb__dot{width:2.2rem;height:2.2rem}
+.mfb__cname{display:none}
+.mfb__price{font-size:1.35rem;flex:none}
+.mfb__sum{position:sticky;bottom:0;z-index:5;margin:1.2rem -1.5rem 0;padding:1.2rem 1.5rem calc(1.2rem + env(safe-area-inset-bottom));border-radius:1.6rem 1.6rem 0 0;background:#fff;box-shadow:0 -10px 30px -18px rgba(20,39,43,.45);grid-template-columns:1fr auto;align-items:center;gap:.8rem 1.2rem}
+.mfb__total{display:flex;align-items:baseline;gap:.8rem}
+.mfb__total b{font-size:2rem}
+.mfb__count{text-align:end}
+.mfb__sum .mim-btn{grid-column:1 / -1}
+.mfb__msg{grid-column:1 / -1;text-align:center}
+body.mfb-in .mim-sticky{transform:translateY(140%)!important}
+}
+@media(min-width:750px){.mfb__row{display:grid;gap:.6rem}}
+@media(prefers-reduced-motion:reduce){.mfb *{transition:none!important}}
 {%- endstyle -%}
-<section class="mim-fbt page-width mim-r" data-mim-fbt>
+<section class="mim-fbt mfb page-width mim-r" data-mim-fbt>
 <h2 class="mim-fbt__title">{{ 'mim.fbt.heading' | t }}</h2>
-<div class="mim-fbt__wrap">
-<ul class="mim-fbt__list">
+<div class="mfb__wrap">
+<ul class="mfb__list">
 {%- for n in (0..2) -%}
 {%- liquid
 if n == 0
@@ -41,50 +128,100 @@ endif
 -%}
 {%- if p -%}
 {%- assign v = p.selected_or_first_available_variant -%}
-<li class="mim-fbt__item{% if n == 0 %} mim-fbt__item--main{% else %} mim-fbt__item--add{% endif %}" data-fbt-item>
-<label class="mim-fbt__check">
-<input type="checkbox" checked data-fbt-check{% if n == 0 %} data-fbt-main{% endif %}>
+{%- capture p_title -%}{% render 'mim-title', title: p.title %}{%- endcapture -%}
+<li class="mfb__item{% if n == 0 %} is-main{% endif %}" data-fbt-item>
+<div class="mfb__media">
+<label class="mfb__check">
+<input type="checkbox" checked data-fbt-check{% if n == 0 %} data-fbt-main{% endif %} aria-label="{{ p_title | strip | escape }}">
 <span aria-hidden="true"></span>
 </label>
-<a class="mim-fbt__img" href="{{ p.url }}">
-{%- if p.featured_media -%}{%- assign fbt_alt = p.featured_media.alt | default: p.title -%}{{ p.featured_media.preview_image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 240', sizes: '120px', alt: fbt_alt }}{%- endif -%}
+<a class="mfb__img" href="{{ p.url }}" tabindex="-1" aria-hidden="true">
+{%- if p.featured_media -%}{%- assign fbt_alt = p.featured_media.alt | default: p.title -%}{{ p.featured_media.preview_image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '120, 200, 300, 400', sizes: '(min-width: 750px) 200px, (min-resolution: 2.5dppx) 43px, 64px', alt: fbt_alt }}{%- endif -%}
 </a>
-<div class="mim-fbt__info">
-{%- if n == 0 -%}<small class="mim-fbt__this">{{ 'mim.fbt.this' | t }}</small>{%- endif -%}
-<a class="mim-fbt__name" href="{{ p.url }}">{% render 'mim-title', title: p.title %}</a>
-{%- if p.has_only_default_variant -%}
-<input type="hidden" data-fbt-variant value="{{ v.id }}" data-price="{{ v.price }}">
-{%- else -%}
-<input type="hidden" data-fbt-variant value="{{ v.id }}" data-price="{{ v.price }}">
-<div class="mim-fbt__opts" data-fbt-opts>
-{%- for opt in p.options_with_values -%}
-{%- assign oi = forloop.index0 -%}
-<div class="mim-fbt__opt" role="group" aria-label="{% render 'mim-tr', text: opt.name %}">
-{%- for val in opt.values -%}
-{%- assign ok = false -%}
-{%- for pv in p.variants -%}{%- if pv.available and pv.options[oi] == val -%}{%- assign ok = true -%}{%- break -%}{%- endif -%}{%- endfor -%}
-<button type="button" class="mim-fbt__chip{% if v.options[oi] == val %} is-on{% endif %}" data-fbt-opt="{{ oi }}" data-val="{{ val | escape }}"{% unless ok %} disabled{% endunless %}{% if opt.values.size == 1 %} data-single{% endif %}>{% render 'mim-tr', text: val %}</button>
-{%- endfor -%}
+{%- if n == 0 -%}<small class="mfb__this mfb__this--photo">{{ 'mim.fbt.this' | t }}</small>{%- endif -%}
 </div>
+<div class="mfb__info">
+{%- if n == 0 -%}<small class="mfb__this mfb__this--text">{{ 'mim.fbt.this' | t }}</small>{%- endif -%}
+<a class="mfb__name" href="{{ p.url }}">{{ p_title }}</a>
+<input type="hidden" data-fbt-variant value="{{ v.id }}" data-price="{{ v.price }}">
+<div class="mfb__row">
+{%- unless p.has_only_default_variant -%}
+<div class="mfb__opts">
+{%- for opt in p.options_with_values -%}
+{%- if opt.values.size > 1 -%}
+{%- liquid
+assign oi = forloop.index0
+assign oname = opt.name | downcase
+capture o_tr
+render 'mim-tr', text: opt.name
+endcapture
+assign o_tr = o_tr | strip
+-%}
+{%- if oname == 'color' or oname == 'colour' -%}
+{%- if opt.values.size <= 6 -%}
+<div class="mfb__dots" role="group" aria-label="{{ o_tr | escape }}">
+{%- for val in opt.values -%}
+{%- liquid
+assign ok = false
+for pv in p.variants
+if pv.available and pv.options[oi] == val
+assign ok = true
+break
+endif
+endfor
+capture sw
+render 'mim-color', value: val
+endcapture
+assign sw = sw | strip
+capture vt
+render 'mim-tr', text: val
+endcapture
+assign vt = vt | strip
+-%}
+<button type="button" class="mfb__dot{% if v.options[oi] == val %} is-on{% endif %}" data-fbt-opt="{{ oi }}" data-val="{{ val | escape }}" data-label="{{ vt | escape }}"{% if sw != blank %} style="--sw: {{ sw }}"{% endif %} title="{{ vt | escape }}" aria-label="{{ o_tr | escape }}: {{ vt | escape }}" aria-pressed="{% if v.options[oi] == val %}true{% else %}false{% endif %}"{% unless ok %} disabled{% endunless %}></button>
+{%- endfor -%}
+{%- capture cur -%}{% render 'mim-tr', text: v.options[oi] %}{%- endcapture -%}
+<span class="mfb__cname" data-fbt-cname>{{ cur | strip }}</span>
+</div>
+{%- continue -%}
+{%- endif -%}
+{%- endif -%}
+<select class="mfb__sel" data-fbt-opt="{{ oi }}" aria-label="{{ o_tr | escape }}">
+{%- for val in opt.values -%}
+{%- liquid
+assign ok = false
+for pv in p.variants
+if pv.available and pv.options[oi] == val
+assign ok = true
+break
+endif
+endfor
+-%}
+<option value="{{ val | escape }}"{% if v.options[oi] == val %} selected{% endif %}{% unless ok %} disabled{% endunless %}>{% render 'mim-tr', text: val %}</option>
+{%- endfor -%}
+</select>
+{%- endif -%}
 {%- endfor -%}
 </div>
 <script type="application/json" data-fbt-variants>[{%- for pv in p.variants -%}{"id":{{ pv.id }},"price":{{ pv.price }},"cmp":{{ pv.compare_at_price | default: 0 }},"ok":{{ pv.available }},"o":{{ pv.options | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]</script>
-{%- endif -%}
-<span class="mim-fbt__price" data-fbt-price>
+{%- endunless -%}
+<span class="mfb__price" data-fbt-price>
 {%- if v.compare_at_price > v.price -%}<span class="mim-price-sale">{{ v.price | money_without_trailing_zeros }}</span> <s class="mim-price-old">{{ v.compare_at_price | money_without_trailing_zeros }}</s>{%- else -%}{{ v.price | money_without_trailing_zeros }}{%- endif -%}
 </span>
+</div>
 </div>
 </li>
 {%- endif -%}
 {%- endfor -%}
 </ul>
-<div class="mim-fbt__total">
-<p>{{ 'mim.fbt.total' | t }} <b data-fbt-total>—</b></p>
+<div class="mfb__sum">
+<p class="mfb__total"><span>{{ 'mim.fbt.total' | t }}</span> <b data-fbt-total>—</b></p>
+<p class="mfb__count" data-fbt-count></p>
 <button type="button" class="mim-btn mim-btn--solid" data-fbt-add>{{ 'mim.fbt.add' | t }}</button>
-<p class="mim-fbt__msg" data-fbt-msg role="status" aria-live="polite"></p>
+<p class="mfb__msg" data-fbt-msg role="status" aria-live="polite"></p>
 </div>
 </div>
-<script type="application/json" data-fbt-i18n>{"added": {{ 'mim.fbt.added' | t | json }}, "error": {{ 'mim.fbt.error' | t | json }}, "money": {{ shop.money_format | strip_html | json }}}</script>
+<script type="application/json" data-fbt-i18n>{"added": {{ 'mim.fbt.added' | t | json }}, "error": {{ 'mim.fbt.error' | t | json }}, "money": {{ shop.money_format | strip_html | json }}, "one": {{ t_one | json }}, "many": {{ t_many | json }}, "none": {{ t_none | json }}, "two": {{ t_two | default: '' | json }}}</script>
 </section>
 {%- endif -%}
 {% schema %}

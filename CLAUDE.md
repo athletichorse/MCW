@@ -130,8 +130,11 @@ upload has no print at all, tell the owner instead of featuring it; don't change
   (`snippets/mim-fabric.liquid`, rendered in the price block of `main-product`), label "Fabric" + value in the visitor's language.
   The value comes from metafield `custom.fabric`, read from the product description (see rule 13); hidden when empty.
   Keep it when editing the product page, and keep every fabric label translated in FR/NL/AR.
-- **Bought together** (`mim-fbt`): the current piece is highlighted (teal border, tinted card, "This item" pill, bigger photo); add-ons are
-  compact. Options are chip buttons (one row per option, sold-out values crossed out), never dropdowns; a single value shows as one chip.
+- **Bought together** (`mim-fbt`, redesigned 28 Nov 2026, classes `mfb-*`): desktop = one compact row of equal tiles (photo on top,
+  3:4 rounded, name, price, variant control) joined by "+", then a tint summary column (total, item count, button). Phone = stacked
+  list with 64px thumbs and a sticky full-width button (the product sticky bar hides while the block is on screen). "This item" is a
+  small pill only; the tile looks like the others. Only options with more than one value are shown: Color = swatch dots (≤6 values,
+  else a select), other options = compact select; sold-out values disabled. Item count text is in the section (EN/FR/NL/AR).
 - **Footer**: no light gap under it. `html` background is the footer ink colour; the room for the sticky add-to-cart bar sits inside the dark footer.
 - **Gallery arrows**: when the selected colour has a single photo, the slider arrows and counter are hidden (`mim-one` in mim-v35.js).
 - **Product page**: one-photo slider with arrows and "1 / N" counter; Judge.me star badge under the title and
