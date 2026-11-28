@@ -1,7 +1,9 @@
 # MIM Creative Wear (mimcreativewear.com) — store conventions
 
 Shopify store, currency EGP, Egypt. Languages: EN (default), FR, NL, AR.
-Theme work happens on an unpublished copy (the connector cannot write the live theme); the owner publishes.
+Theme edits go straight to the LIVE theme (owner's standing instruction, repeated 25–28 Nov 2026: "don't ask me to publish, edit live").
+The Shopify connector can't write the live theme, so use the owner's "Mim Claude App": env vars `SHOPIFY_CLIENT_ID` / `SHOPIFY_CLIENT_SECRET`
+→ client-credentials token (POST /admin/oauth/access_token, ~24h) → `themeFilesUpsert` on the MAIN theme. Back up every file first (`theme-backup/`).
 
 ## New products and images — always set these up
 When a product or image is added (or found missing these), fill in:
