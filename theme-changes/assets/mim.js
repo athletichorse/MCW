@@ -261,9 +261,10 @@
         .catch(function (e) { msg.textContent = (e && e.description) || i18n.error || 'Error'; })
         .finally(function () { btn.disabled = false; btn.classList.remove('is-loading'); });
     });
-    /* phone: the FBT bar has its own sticky button, so hide the product sticky bar while the block is on screen */
+    /* phone: the FBT bar has its own sticky button, so hide the product sticky bar and lift the WhatsApp bubble above it while the block is on screen */
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { es.forEach(function (en) { document.body.classList.toggle('mfb-in', en.isIntersecting); }); }).observe(root);
+      var sumEl = root.querySelector('.mfb__sum');
+      new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting && sumEl) document.body.style.setProperty('--mfb-h', sumEl.offsetHeight + 'px'); document.body.classList.toggle('mfb-in', en.isIntersecting); }); }).observe(root);
     }
     update();
   }

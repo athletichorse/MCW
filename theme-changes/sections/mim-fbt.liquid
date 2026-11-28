@@ -107,6 +107,8 @@ html[dir=rtl] .mfb__sel{padding:0 1.2rem 0 3rem;background-position:left 1.2rem 
 .mfb__sum .mim-btn{grid-column:1 / -1}
 .mfb__msg{grid-column:1 / -1;text-align:center}
 body.mfb-in .mim-sticky{transform:translateY(140%)!important}
+.mim-wa{transition:translate .3s var(--mim-ease,ease)}
+body.mfb-in .mim-wa{translate:0 calc(-1 * var(--mfb-h,11rem))}
 }
 @media(min-width:750px){.mfb__row{display:grid;gap:.6rem}}
 @media(prefers-reduced-motion:reduce){.mfb *{transition:none!important}}
