@@ -1,0 +1,50 @@
+{%- comment -%}
+MIM colour swatch value for an option value. Outputs a CSS background value or nothing.
+Usage: {%- capture sw -%}{% render 'mim-color', value: value %}{%- endcapture -%}
+{%- endcomment -%}
+{%- liquid
+assign map = "pastels:pastel|pastel:pastel|cyano:#1f5fa8|sun flower yellow:#f4c430|light cobalt blue:#5b82d6|carnelian orange:#c9502b|dark chance grey:#5f615c|chocolate brown:#5b3a29|stainless grey:#8f9497|dark aubergine:#3a1f34|emerald green:#1f8a5f|bright yellow:#f7d23e|sapphire blue:#1f4f9b|light yellow:#f7e79a|aspen yellow:#e8c547|fresh cherry:#b0213f|canvas beige:#d9c9a8|canvas white:#f2efe7|sunny yellow:#f7d23e|silver grey:#b9bcbf|cobalt blue:#1f4fbf|blue lagoon:#2a9db5|powder blue:#b6cfe4|apple green:#8cc152|pink bonbon:#f2a3c4|oxford blue:#22305a|chance grey:#8d8f8a|lemon green:#c6d84a|coblat blue:#1f4fbf|blue silver:#9fb1c4|silvergrey:#b9bcbf|solid teal:#008f9d|dark olive:#4f5330|jade green:#3fa07f|terracotta:#c0603d|sun flower:#f4c430|tuscan sun:#f0b44c|multicolor:conic|royal blue:#2a4fa8|light grey:#c9c9c9|olive grey:#8a8a6e|dark brown:#4e3423|light rose:#f0c3c8|sand beige:#d8c39d|off white:#f4efe4|off-white:#f4efe4|dark grey:#555a5e|dark blue:#1f2f5a|deep blue:#1f3c73|dark teal:#0e5a61|turquoise:#3cbcb8|pistachio:#b9cf8e|sunflower:#f4c430|navy blue:#1f2f5a|aubergine:#4b2a43|tturqoise:#3cbcb8|jad green:#3fa07f|teal blue:#0f7c8c|offwhite:#f4efe4|ash grey:#a8a9a4|deebblue:#1f3c73|darkteal:#0e5a61|turqoise:#3cbcb8|ruby red:#9b1b30|wine red:#722f37|mandarin:#f08a24|sky blue:#8ec5e8|turquise:#3cbcb8|lavender:#b9a7d9|burgundy:#6d1f2f|charcoal:#3b3d3f|fuchsia:#c2185b|mustard:#c9a227|caramel:#b9783f|silver:#c4c6c8|mastic:#e8dfc9|cobalt:#1f4fbf|indigo:#3a3f8f|forest:#2f5233|orange:#e67e22|yellow:#f2c94c|copper:#b06a3b|violet:#7b5ea7|cherry:#9b1d3a|maroon:#6b1e24|black:#1a1a1a|balck:#1a1a1a|white:#ffffff|beige:#e3d3b8|biege:#e3d3b8|cream:#f3ead6|ocean:#1f6f8b|green:#3f8a4f|olive:#6f7440|brick:#a2482f|melon:#f6a96b|lemon:#f3e25c|honey:#c98f2c|amber:#d18b2a|camel:#c19a6b|brown:#7b4b2a|earth:#8a6d4f|grape:#6b3a6e|multi:conic|mango:#f4a340|jeans:#4a6a92|orang:#e67e22|khaki:#b5a77a|lilac:#c3a6d8|lila:#9b7fc0|coral:#f07b67|peach:#f7b89a|ivory:#f6f1e2|grey:#9a9a9a|gray:#9a9a9a|blue:#2f6db5|teal:#008f9d|sage:#a7b59a|clay:#b9704e|rose:#e3a6ae|pink:#ec8fb0|gold:#c9a24a|hony:#c98f2c|navy:#1f2f5a|aqua:#59c3c3|cafe:#8a6a4a|fern:#4f7942|wine:#722f37|ruby:#9b1b30|kaki:#b5a77a|nude:#e3c3a6|mint:#a8dcc0|sand:#d8c39d|sky:#8ec5e8|red:#c0392b|mix:conic|tan:#c19a6b" | split: '|'
+assign v = value | downcase | strip | replace: '-', ' ' | replace: '  ', ' '
+assign v = v | replace: ' & ', '|' | replace: '&', '|' | replace: ' and ', '|' | replace: '/', '|' | replace: ',', '|'
+assign parts = v | split: '|'
+assign hexes = ''
+for part in parts
+assign p = part | strip
+assign found = ''
+for pair in map
+assign kv = pair | split: ':'
+if p == kv[0]
+assign found = kv[1]
+break
+endif
+endfor
+if found == ''
+for pair in map
+assign kv = pair | split: ':'
+if p contains kv[0]
+assign found = kv[1]
+break
+endif
+endfor
+endif
+if found != ''
+assign hexes = hexes | append: found | append: ','
+endif
+endfor
+assign list = hexes | split: ','
+assign n = list.size
+if n == 0
+comment
+Unknown names (prints, mixes such as "Flower Power") still get a swatch: a soft multicolour dot.
+endcomment
+echo 'conic-gradient(#e3a6ae 0 25%,#a8dcc0 0 50%,#8ec5e8 0 75%,#f3e25c 0)'
+elsif list[0] == 'pastel'
+echo 'conic-gradient(#f6c6d0 0 25%,#c9e4f6 0 50%,#d9f2c9 0 75%,#fbe7b5 0)'
+elsif list[0] == 'conic'
+echo 'conic-gradient(#008f9d 0 25%,#e67e22 0 50%,#f2c94c 0 75%,#1a1a1a 0)'
+elsif n == 1
+echo list[0]
+else
+echo 'linear-gradient(135deg,' | append: list[0] | append: ' 0 50%,' | append: list[1] | append: ' 50% 100%)'
+endif
+-%}
